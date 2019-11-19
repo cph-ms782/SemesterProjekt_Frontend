@@ -6,8 +6,6 @@ import {
   Switch
 } from "react-router-dom";
 import facade from "./components/loginFacade";
-// import LogIn from "./components/LogIn";
-// import Data from "./components/Data";
 import Home from "./components/Home";
 import Team from "./components/Team";
 import AllAboutTeam from "./components/AllAboutTeam";
@@ -16,20 +14,8 @@ import UserInfo from "./components/UserInfo";
 
 function App() {
   console.log("App");
- /* const token = localStorage.getItem("jwtToken");
- const [loggedIn, setLoggedIn] = useState(token ? true : false);
+  const [teamName, setTeamName] = useState("");
 
-  const logout = () => {
-    console.log("App - logout");
-    facade.logout();
-    setLoggedIn(false);
-    console.log("loggedIn", loggedIn);
-  };
-  const login = (user, pass) => {
-    console.log("App - login");
-    facade.login(user, pass).then(res => setLoggedIn(true));
-    console.log("loggedIn", loggedIn);
-  }; */
   return (
     <div>
       <Router >
@@ -39,12 +25,14 @@ function App() {
             <Route exact path="/"><Home /></Route>
             <Route path="/team"><Team /></Route>
             <Route path="/allaboutteam"><AllAboutTeam /></Route>
-            <Route path="/search"><Search /></Route>
+            <Route path="/search" ><Search teamName={{ teamName: [teamName, setTeamName] }} /></Route>
             <Route path="/userinfo"><UserInfo /></Route>
             <Route component={NoMatch} />
           </Switch>
         </div>
       </Router>
+      <p>teamnumber </p>
+      <p>{teamName}</p>
     </div>
   );
 }
