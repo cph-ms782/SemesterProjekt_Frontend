@@ -6,8 +6,7 @@ function Team() {
   return (
     <div>
       <p>Teeeaaaam</p>
-      <select>
-      <option disabled selected value> - select a team - </option>
+      <select placeholder="Teams">
         {teams.map(team => {
           return <option>{team}</option>;
         })}

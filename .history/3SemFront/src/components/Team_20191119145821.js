@@ -7,7 +7,7 @@ function Team() {
     <div>
       <p>Teeeaaaam</p>
       <select>
-      <option disabled selected value> - select a team - </option>
+      <option disabled selected value> -- select an option -- </option>
         {teams.map(team => {
           return <option>{team}</option>;
         })}
