@@ -1,19 +1,23 @@
 import React, { useState } from "react";
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
   Route,
   NavLink,
   Switch
 } from "react-router-dom";
 import facade from "./components/loginFacade";
-import LogIn from "./components/LogIn";
-import Data from "./components/Data";
+// import LogIn from "./components/LogIn";
+// import Data from "./components/Data";
 import Home from "./components/Home";
+import Team from "./components/Team";
+import AllAboutTeam from "./components/AllAboutTeam";
+import Search from "./components/Search";
+import UserInfo from "./components/UserInfo";
 
 function App() {
   console.log("App");
-  const token = localStorage.getItem("jwtToken");
-  const [loggedIn, setLoggedIn] = useState(token ? true : false);
+ /* const token = localStorage.getItem("jwtToken");
+ const [loggedIn, setLoggedIn] = useState(token ? true : false);
 
   const logout = () => {
     console.log("App - logout");
@@ -25,21 +29,18 @@ function App() {
     console.log("App - login");
     facade.login(user, pass).then(res => setLoggedIn(true));
     console.log("loggedIn", loggedIn);
-  };
+  }; */
   return (
     <div>
       <Router >
         <div>
-          <Header loggedIn={loggedIn} />
+          <Header />
           <Switch>
             <Route exact path="/"><Home /></Route>
-            <Route path="/data"><Data loggedIn={loggedIn} /></Route>
-            <Route path="/log"><LogIn
-              facade={facade}
-              loggedIn={loggedIn}
-              login={login}
-              logout={logout}
-            /></Route>
+            <Route path="/team"><Team /></Route>
+            <Route path="/allaboutteam"><AllAboutTeam /></Route>
+            <Route path="/search"><Search /></Route>
+            <Route path="/userinfo"><UserInfo /></Route>
             <Route component={NoMatch} />
           </Switch>
         </div>
@@ -48,14 +49,14 @@ function App() {
   );
 }
 
-function Header({ loggedIn }) {
+function Header() {
   console.log("Header");
   return (
     <div>
       <ul className="header">
         <li><NavLink exact activeClassName="active" to="/">Home</NavLink></li>
-        <li><NavLink activeClassName="active" to="/data">Data</NavLink></li>
-        <li><NavLink activeClassName="active" to="/log">{loggedIn ? <div>Logout</div> : <div>Login</div>}</NavLink></li>
+        <li><NavLink activeClassName="active" to="/team">Team</NavLink></li>
+        <li><NavLink activeClassName="active" to="/search">Search</NavLink></li>
       </ul>
     </div>
   )
@@ -65,7 +66,7 @@ function NoMatch() {
   console.log("NoMatch");
   return (
     <div>
-      hello NoMatch
+      Hello NoMatch
     </div>
   )
 }
