@@ -3,6 +3,7 @@ import React, { } from "react";
 const Search = ({ teamName, updateTeamName }) => {
   console.log("Search");
   console.log("teamName", teamName);
+  const teams = ["team1", "team2", "team3"];
 
   const handleChange = (evt) => {
     console.log("handleChange");
@@ -15,15 +16,13 @@ const Search = ({ teamName, updateTeamName }) => {
 
   return (
     <div>
-      <form>
-        <p>Searching </p>
-        <input
-          type="text"
-          id="teamName"
-          placeholder="Title"
-          onChange={handleChange}
-        />
-      </form>
+      <p>Searching </p>
+      <select onChange={handleChange} id="teamName">
+        <option disabled selected value> - select a team - </option>
+        {teams.map(team => {
+          return <option>{team}</option>;
+        })};
+        </select>
     </div >
   );
 }

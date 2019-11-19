@@ -37,7 +37,7 @@ function App() {
             teamName={teamName}
             updateTeamName={updateTeamName}
           />
-          <Team />
+          <Team teamName={teamName} />
           <UserInfo teamName={teamName} />
         </div>
       </Router>
