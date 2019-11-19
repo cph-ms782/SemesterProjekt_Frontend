@@ -11,17 +11,19 @@ function Team() {
     //const value = target.value;
 
     //setChosenTeam({...chosenTeam, [id]:value});
-    setChosenTeam(document.getElementById("cT").value);
+    setChosenTeam(document.getElementById("cT"));
 };
   return (
     <div>
       <p>Teeeaaaam</p>
-        <select onChange={handleChange} id="cT">
+      <form id="cT">
+        <select onChange={handleChange}>
         <option disabled selected value> - select a team - </option>
         {teams.map(team => {
             return <option>{team}</option>;
         })};
         </select>
+        </form>
         <p>Chosen Team = {chosenTeam}</p>
         <img src="https://upload.wikimedia.org/wikipedia/en/5/53/Arsenal_FC.svg"></img>
     </div>
