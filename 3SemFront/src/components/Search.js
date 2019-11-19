@@ -1,44 +1,30 @@
-import React, { useState } from "react";
+import React, { } from "react";
 
-function Search(props) {
+const Search = ({ teamName, updateTeamName }) => {
   console.log("Search");
-  const {teamName: [teamName, setTeamName]} = {teamName: useState(0),...(props.teamName || {})};
-      
-  const [name, setName] = useState("");
+  console.log("teamName", teamName);
 
   const handleChange = (evt) => {
     console.log("handleChange");
     const target = evt.target;
     const id = evt.target.id;
     console.log("target.value", target.value);
-    setTeamName({ ...teamName, [id]: target.value });
+    updateTeamName({ ...teamName, [id]: target.value });
     console.log("teamName", teamName);
   }
 
-  const handleSubmit = (evt) => {
-    evt.preventDefault();
-    const target = evt.target;
-    const name = evt.target.teamName;
-    console.log("submit");
-      setTeamName(teamName);
-  }
   return (
     <div>
-        <form>
-          <p>Searching </p>
-              <input
-                type="text"
-                id="teamname"
-                placeholder="Title"
-                onChange={handleChange}
-              />
-              <button
-                onClick={handleSubmit}
-              >
-                Submit
-            </button>
-          </form>
-    </div>
+      <form>
+        <p>Searching </p>
+        <input
+          type="text"
+          id="teamName"
+          placeholder="Title"
+          onChange={handleChange}
+        />
+      </form>
+    </div >
   );
 }
 

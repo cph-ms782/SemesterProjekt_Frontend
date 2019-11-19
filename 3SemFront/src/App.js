@@ -16,6 +16,13 @@ function App() {
   console.log("App");
   const [teamName, setTeamName] = useState("");
 
+
+  const updateTeamName = (index) => {
+    console.log("index", index);
+    setTeamName(index);
+  }
+
+  console.log("teamName", teamName);
   return (
     <div>
       <Router >
@@ -23,16 +30,17 @@ function App() {
           <Header />
           <Switch>
             <Route exact path="/"><Home /></Route>
-            <Route path="/team"><Team /></Route>
             <Route path="/allaboutteam"><AllAboutTeam /></Route>
-            <Route path="/search" ><Search teamName={{ teamName: [teamName, setTeamName] }} /></Route>
-            <Route path="/userinfo"><UserInfo /></Route>
             <Route component={NoMatch} />
           </Switch>
+          <Search
+            teamName={teamName}
+            updateTeamName={updateTeamName}
+          />
+          <Team />
+          <UserInfo teamName={teamName} />
         </div>
       </Router>
-      <p>teamnumber </p>
-      <p>{teamName}</p>
     </div>
   );
 }
@@ -43,8 +51,6 @@ function Header() {
     <div>
       <ul className="header">
         <li><NavLink exact activeClassName="active" to="/">Home</NavLink></li>
-        <li><NavLink activeClassName="active" to="/team">Team</NavLink></li>
-        <li><NavLink activeClassName="active" to="/search">Search</NavLink></li>
       </ul>
     </div>
   )
