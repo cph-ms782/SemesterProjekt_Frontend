@@ -6,11 +6,13 @@ function Team() {
   return (
     <div>
       <p>Teeeaaaam</p>
-      <select name="Teams">
-        {teams.map(team => {
-          return <option>{team}</option>;
-        })}
-      </select>
+      <div class="dropdown-content" id="myDropdown">
+        {
+            teams.map() => (team) {
+            <a href="#">team.value</a>
+            }
+        }
+      </div>
     </div>
   );
 }

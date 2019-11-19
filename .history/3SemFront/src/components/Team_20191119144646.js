@@ -8,7 +8,7 @@ function Team() {
       <p>Teeeaaaam</p>
       <select name="Teams">
         {teams.map(team => {
-          return <option>{team}</option>;
+          return <a href="#">{team}</a>;
         })}
       </select>
     </div>
