@@ -12,7 +12,7 @@ ul.header {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: #333;
+  /* background-color: #333; */
 }
 
 ul.header li {
@@ -23,14 +23,30 @@ ul.header li a {
   display: block;
   color: white;
   text-align: center;
-  padding: 14px 16px;
+  padding: 5px 7px;
   text-decoration: none;
+  font-size: calc(8px + 1vmin);
 }
 
 ul.header li a:hover:not(.active) {
-  background-color: #111;
+  /* background-color: #111; */
 }
 
 .active {
   background-color: #4caf50;
+}
+
+.userinfo {
+  text-decoration: none;
+  font-size: calc(8px + 1vmin);
+}
+
+.team {
+  text-decoration: none;
+  font-size: calc(8px + 1vmin);
+}
+
+.news {
+  text-decoration: none;
+  font-size: calc(8px + 1vmin);
 }

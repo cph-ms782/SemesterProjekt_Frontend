@@ -1,20 +1,21 @@
 import React from "react";
+import uuid from "uuid/v1";
 
 function UserInfo({ teamName }) {
-    const dummyList = [{"name":"John", "age":"122"},{"name":"Birger", "age":"27"},{"name":"Ib", "age":"22"}, ];
+    const dummyList = [{ "name": "John", "age": "122" }, { "name": "Birger", "age": "27" }, { "name": "Ib", "age": "22" },];
     console.log("UserInfo");
     console.log("teamName", teamName.teamName);
     return (
-        <div>
-            <p>UserInfo</p>
-            You're now following {teamName.teamName}
+        <div className="userinfo">
+            <p>You're now following {teamName.teamName}</p>
+
             <table>
                 <thead>
-                <th>Name</th><th>Age</th>
+                    <tr><th>Name</th><th>Age</th></tr>
                 </thead>
                 <tbody>
                     {dummyList.map((team) => (
-                        <tr><td>{team.name}</td><td>{team.age}</td></tr>
+                        <tr key={uuid()}><td>{team.name}</td><td>{team.age}</td></tr>
                     ))}
                 </tbody>
             </table>

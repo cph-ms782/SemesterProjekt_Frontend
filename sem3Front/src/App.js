@@ -7,13 +7,11 @@ import {
 } from "react-router-dom";
 // import loginFacade from "./components/loginFacade";
 import facade from "./components/ApiFacade";
-import Home from "./components/Home";
 import Team from "./components/Team";
-import AllAboutTeam from "./components/AllAboutTeam";
+import News from "./components/News";
 import Search from "./components/Search";
 import UserInfo from "./components/UserInfo";
 import Api from "./components/Api";
-import FileForTesting from "./components/FileForTesting";
 
 function App() {
   console.log("App");
@@ -33,27 +31,71 @@ function App() {
   return (
     <div>
       <Router >
+        <Switch>
+          <Route exact path="/api"><Api /></Route>
+        </Switch>
         <div>
-          <Header />
-          <Switch>
-            <Route exact path="/"><Home /></Route>
-            <Route exact path="/api"><Api /></Route>
-          </Switch>
-          <FileForTesting />
-          <AllAboutTeam />
-          <Search
-            teamName={teamName}
-            updateTeamName={updateTeamName}
-            crestURL={crestURL}
-            updateCrestURL={updateCrestURL}
-            facade={facade}
-          />
-          <Team teamName={teamName} crestURL={crestURL} />
-          <UserInfo teamName={teamName} />
-          <Route component={NoMatch} />
+
+          <div className="container">
+            <button type="button" name="daynight" id="daynight">
+              <i className="fa fa-sun-o" aria-hidden="true" id="sun"></i>
+              <i className="fa fa-moon-o" aria-hidden="true" id="moon"></i>
+            </button>
+            <div id="top-content">
+              {/* <form action="#"> */}
+              <Search
+                teamName={teamName}
+                updateTeamName={updateTeamName}
+                crestURL={crestURL}
+                updateCrestURL={updateCrestURL}
+                facade={facade}
+              />
+              {/* <button type="submit"><i class="fa fa-search"></i></button>
+                <input type="text" placeholder="Search.." name="search" /> */}
+              {/* </form> */}
+            </div>
+          </div>
+
+          <div className="container">
+            <div id="header">
+              <div id="logo">logo</div>
+              <div id="banner">banner</div>
+            </div>
+          </div>
+          <div className="container">
+            <div id="menubar"><Header /></div>
+          </div>
+          <div className="container">
+            <div id="newsticker">newsticker</div>
+          </div>
+
+          <div className="container">
+            <div id="cont-1">
+              <div id="team"><Team teamName={teamName} crestURL={crestURL} /></div>
+              <div id="userinfo"><UserInfo teamName={teamName} /></div>
+            </div>
+            <div id="cont-2">
+              <div id="part-1">
+                <div id="map">map</div>
+                <div id="nextmatch">nextmatch</div>
+                <div id="buy">buy</div>
+              </div>
+              <div id="news">
+                <News />
+              </div>
+            </div>
+            <div id="cont-3">
+              <div id="leaderboard">leaderboard</div>
+            </div>
+          </div>
+
         </div>
+
       </Router>
+
     </div>
+
+
   );
 }
 
@@ -69,13 +111,5 @@ function Header() {
   )
 }
 
-function NoMatch() {
-  console.log("NoMatch");
-  return (
-    <div>
-      Hello NoMatch
-    </div>
-  )
-}
 
 export default App;

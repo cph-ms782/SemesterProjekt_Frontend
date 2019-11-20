@@ -10,3 +10,12 @@ function Home() {
 }
 
 export default Home;
+
+function NoMatch() {
+    console.log("NoMatch");
+    return (
+        <div>
+            Hello NoMatch
+    </div>
+    )
+}
