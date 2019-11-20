@@ -14,7 +14,7 @@ function UserInfo({ teamName }) {
                 </thead>
                 <tbody>
                     {dummyList.map((team) => (
-                        <tr><td>{team.name}</td><td>{team.age}</td></tr>
+                    <td>{team.name}</td><td>{team.age}</td>
                     ))}
                 </tbody>
             </table>
