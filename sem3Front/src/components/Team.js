@@ -7,10 +7,12 @@ function Team({ teamName }) {
       <p>Teeeaaaam</p>
       <p>Chosen Team = {teamName.teamName}</p>
       <img
+        alt={teamName.teamName}
         src="https://upload.wikimedia.org/wikipedia/en/5/53/Arsenal_FC.svg"
         className="thumbnail"
       ></img>
       <img
+        alt="icon2"
         src="https://upload.wikimedia.org/wikipedia/en/5/53/Arsenal_FC.svg"
         className="img"
       ></img>

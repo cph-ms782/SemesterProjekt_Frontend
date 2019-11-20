@@ -18,10 +18,15 @@ import FileForTesting from "./components/FileForTesting";
 function App() {
   console.log("App");
   const [teamName, setTeamName] = useState("");
+  const [crestURL, setCrestURL] = useState("");
 
   const updateTeamName = (index) => {
     console.log("index", index);
     setTeamName(index);
+  }
+  const updateCrestURL = (index) => {
+    console.log("index", index);
+    setCrestURL(index);
   }
 
   console.log("teamName", teamName);

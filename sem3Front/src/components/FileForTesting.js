@@ -6,6 +6,7 @@ function getCities() {
 }
 
 const FileForTesting = () => {
+  console.log("FileForTesting");
   const [cityList, setCityList] = useState([]);
 
   useEffect(() => {
@@ -21,22 +22,6 @@ const FileForTesting = () => {
       .catch(err => { throw err });
   }, []);
 
-  console.log("FileForTesting");
-  // const [teamName, setTeamName] = useState("");
-
-  // const updateTeamName = (index) => {
-  //   console.log("index", index);
-  //   setTeamName(index);
-  // }
-
-  // const handleChange = (evt) => {
-  //   console.log("handleChange");
-  //   const target = evt.target;
-  //   const id = evt.target.id;
-  //   console.log("target.value", target.value);
-  //   updateTeamName({ ...teamName, [id]: target.value });
-  //   console.log("teamName", teamName);
-  // }
 
   return (
     <div>

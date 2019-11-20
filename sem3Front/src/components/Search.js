@@ -1,10 +1,25 @@
-import React, { } from "react";
+import React, {
+  useState, useEffect
+} from "react";
 import uuid from "uuid/v1";
 
-const Search = ({ teamName, updateTeamName, facade }) => {
+const Search = ({ teamName, updateTeamName, crestURL, updateCrestURL, facade }) => {
   console.log("Search");
   console.log("teamName", teamName);
-  const teams = ["team1", "team2", "team3"];
+  const [cityList, setCityList] = useState([]);
+
+  useEffect(() => {
+    console.log("useEffect");
+    console.log("cities");
+    let url = "https://sandersolutions.dk/sem3_backend/api/fb/teams";
+    fetch(url)
+      .then(res => res.json())
+      .then(data => {
+        setCityList(data);
+        console.log("cityList", cityList);
+      })
+      .catch(err => { throw err });
+  }, []);
 
   const handleChange = (evt) => {
     console.log("handleChange");
@@ -15,17 +30,13 @@ const Search = ({ teamName, updateTeamName, facade }) => {
     console.log("teamName", teamName);
   }
 
-  // const getTeams = () => {
-  //   console.log("getTeams");
-  // }
-
   return (
     <div>
       <p>Searching </p>
       <select onChange={handleChange} id="teamName">
         <option disabled value> - select a team - </option>
-        {teams.map(team => {
-          return <option key={uuid()}>{team}</option>;
+        {cityList.map(team => {
+          return <option key={uuid()}>{team.name}</option>;
         })};
         </select>
     </div >
