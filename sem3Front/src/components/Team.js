@@ -1,21 +1,21 @@
-import React, { useState } from "react";
+import React, { } from "react";
 import "../App.css";
-function Team({ teamName }) {
+function Team({ teamName, crestURL }) {
   console.log("Team");
+  console.log("crestURL", crestURL);
+  console.log("teamName", teamName);
   return (
     <div>
-      <p>Teeeaaaam</p>
-      <p>Chosen Team = {teamName.teamName}</p>
-      <img
-        alt={teamName.teamName}
-        src="https://upload.wikimedia.org/wikipedia/en/5/53/Arsenal_FC.svg"
-        className="thumbnail"
-      ></img>
-      <img
-        alt="icon2"
-        src="https://upload.wikimedia.org/wikipedia/en/5/53/Arsenal_FC.svg"
-        className="img"
-      ></img>
+      {!teamName ?
+        <div><p>choose team</p></div> :
+        <div><p>{teamName.teamName}</p>
+          <img
+            alt={teamName.teamName}
+            src={crestURL.crestURL}
+            className="thumbnail"
+          />
+        </div>
+      }
     </div>
   );
 }

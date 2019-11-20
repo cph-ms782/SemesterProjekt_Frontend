@@ -16,27 +16,31 @@ const Search = ({ teamName, updateTeamName, crestURL, updateCrestURL, facade }) 
       .then(res => res.json())
       .then(data => {
         setCityList(data);
-        console.log("cityList", cityList);
       })
       .catch(err => { throw err });
   }, []);
 
   const handleChange = (evt) => {
     console.log("handleChange");
+    console.log("cityList", cityList);
     const target = evt.target;
     const id = evt.target.id;
     console.log("target.value", target.value);
-    updateTeamName({ ...teamName, [id]: target.value });
-    console.log("teamName", teamName);
+    const c1 = target.value.split(" - ")[1];
+    const c2 = cityList[target.value.split(" - ")[0]].crestUrl;
+    console.log("c1", c1);
+    console.log("c2", c2);
+    updateTeamName({ ...teamName, [id]: c1 });
+    updateCrestURL({ ...crestURL, ["crestURL"]: c2 });
   }
 
   return (
     <div>
       <p>Searching </p>
       <select onChange={handleChange} id="teamName">
-        <option disabled value> - select a team - </option>
-        {cityList.map(team => {
-          return <option key={uuid()}>{team.name}</option>;
+        <option disabled defaultValue> - select a team - </option>
+        {cityList.map((team, index) => {
+          return <option key={uuid()}>{index} - {team.name}</option>;
         })};
         </select>
     </div >

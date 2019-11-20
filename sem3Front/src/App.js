@@ -44,9 +44,11 @@ function App() {
           <Search
             teamName={teamName}
             updateTeamName={updateTeamName}
+            crestURL={crestURL}
+            updateCrestURL={updateCrestURL}
             facade={facade}
           />
-          <Team teamName={teamName} />
+          <Team teamName={teamName} crestURL={crestURL} />
           <UserInfo teamName={teamName} />
           <Route component={NoMatch} />
         </div>

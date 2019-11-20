@@ -1,10 +1,6 @@
 import React, { useState, useEffect } from "react";
 import uuid from "uuid/v1";
 
-function getCities() {
-
-}
-
 const FileForTesting = () => {
   console.log("FileForTesting");
   const [cityList, setCityList] = useState([]);
@@ -17,7 +13,6 @@ const FileForTesting = () => {
       .then(res => res.json())
       .then(data => {
         setCityList(data);
-        console.log("cityList", cityList);
       })
       .catch(err => { throw err });
   }, []);
