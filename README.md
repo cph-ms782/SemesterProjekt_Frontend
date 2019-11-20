@@ -26,7 +26,7 @@ When all is ready to deploy:
 #### `npm run build`
 
 ## Deploy via tomcat
-Put files from build inside backend's webapp folde (so that index.html is at the root of the folder.
+Put files from build inside backend's web pages folder (so that index.html is at the root of the folder. Remember to use HashRouter as router and to add homepage to package.json (see above)
 
 ## Deploy via Surge
 
