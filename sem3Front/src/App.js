@@ -11,6 +11,7 @@ import Team from "./components/Team";
 import AllAboutTeam from "./components/AllAboutTeam";
 import Search from "./components/Search";
 import UserInfo from "./components/UserInfo";
+import Api from "./components/Api";
 
 function App() {
   console.log("App");
@@ -30,15 +31,16 @@ function App() {
           <Header />
           <Switch>
             <Route exact path="/"><Home /></Route>
-            <Route path="/allaboutteam"><AllAboutTeam /></Route>
-            <Route component={NoMatch} />
+            <Route exact path="/api"><Api /></Route>
           </Switch>
+          <AllAboutTeam />
           <Search
             teamName={teamName}
             updateTeamName={updateTeamName}
           />
           <Team teamName={teamName} />
           <UserInfo teamName={teamName} />
+          <Route component={NoMatch} />
         </div>
       </Router>
     </div>
@@ -51,6 +53,7 @@ function Header() {
     <div>
       <ul className="header">
         <li><NavLink exact activeClassName="active" to="/">Home</NavLink></li>
+        <li><NavLink exact activeClassName="active" to="/api">Api</NavLink></li>
       </ul>
     </div>
   )
