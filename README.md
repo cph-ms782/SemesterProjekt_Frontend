@@ -11,12 +11,24 @@ and
 #### `npm install react-router-dom`  
 to install prerequisites
 
+
+If you want to deploy in tomcat or nginx add the following to package.json:  
+#### `"homepage": ".",`
+
+ie. the first four lines could look like this:  
+`"name": "react_security",`  
+  `"version": "0.1.0",`  
+  `"private": true,`  
+  `"homepage": ".",`  
+
 When all is ready to deploy:
 
 #### `npm run build`
 
+## Deploy via tomcat
+Put files from build inside backend's webapp folde (so that index.html is at the root of the folder.
 
-##Deploy via Surge
+## Deploy via Surge
 
 1)
 I et færdigt react projekt kan man vælge at deploye via surge. Det foregår alt sammen via terminalen(git bash). For at komme i gang, skal man navigere til roden af selve ens projekt. Højre klik i din projektfolder og find "git bash here". I terminalen skal du skrive "npm run build" (uden citationstegn), hvilket opretter en build mappe, lidt ligesom når man i Java får en target folder, efter man har builded. 
