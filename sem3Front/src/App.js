@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import {
   HashRouter as Router,
-  Route,
-  NavLink,
-  Switch
+  NavLink
 } from "react-router-dom";
 // import loginFacade from "./components/loginFacade";
 import facade from "./components/ApiFacade";
@@ -11,11 +9,12 @@ import Team from "./components/Team";
 import News from "./components/News";
 import Search from "./components/Search";
 import UserInfo from "./components/UserInfo";
-import Api from "./components/Api";
 
 function App() {
   console.log("App");
-  const [teamName, setTeamName] = useState("");
+
+  const chosenTeam = localStorage.getItem("chosenTeam");
+  const [teamName, setTeamName] = useState(chosenTeam ? chosenTeam : "");
   const [crestURL, setCrestURL] = useState("");
 
   const updateTeamName = (index) => {
@@ -31,9 +30,6 @@ function App() {
   return (
     <div>
       <Router >
-        <Switch>
-          <Route exact path="/api"><Api /></Route>
-        </Switch>
         <div>
 
           <div className="container">
@@ -42,7 +38,6 @@ function App() {
               <i className="fa fa-moon-o" aria-hidden="true" id="moon"></i>
             </button>
             <div id="top-content">
-              {/* <form action="#"> */}
               <Search
                 teamName={teamName}
                 updateTeamName={updateTeamName}
@@ -50,16 +45,18 @@ function App() {
                 updateCrestURL={updateCrestURL}
                 facade={facade}
               />
-              {/* <button type="submit"><i class="fa fa-search"></i></button>
-                <input type="text" placeholder="Search.." name="search" /> */}
-              {/* </form> */}
             </div>
           </div>
 
           <div className="container">
             <div id="header">
-              <div id="logo">logo</div>
-              <div id="banner">banner</div>
+              <div id="logo">
+                <img
+                  alt="icon"
+                  src={require('./images/BDlogo_150px.png')}
+                />
+              </div>
+              <div id="banner">Biggus Tickets</div>
             </div>
           </div>
           <div className="container">
@@ -72,7 +69,7 @@ function App() {
           <div className="container">
             <div id="cont-1">
               <div id="team"><Team teamName={teamName} crestURL={crestURL} /></div>
-              <div id="userinfo"><UserInfo teamName={teamName} /></div>
+              <div id="userinfo"><UserInfo teamName={teamName} crestURL={crestURL} /></div>
             </div>
             <div id="cont-2">
               <div id="part-1">

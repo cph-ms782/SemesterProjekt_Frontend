@@ -20,10 +20,12 @@
 .App-link {
   /* color: #09d3ac; */
 }
+
 img {
   /* max-width: 100%; */
 }
+
 img.thumbnail {
-  width: 70px;
-  height: 40px;
+  /* width: 70px; */
+  height: 60px;
 }

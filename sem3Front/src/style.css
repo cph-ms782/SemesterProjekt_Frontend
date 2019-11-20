@@ -8,7 +8,11 @@ body {
   width: 100%;
   height: 100vh;
   background: white;
-  padding-top: 5px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .container {
@@ -62,19 +66,19 @@ body {
   left: 10px;
 }
 
-#top-content form {
+#top-content select {
   width: 545px;
+  height: 35px;
   background: white;
   outline: 1px solid black;
 }
 
-#top-content form input {
-  height: 40px;
+#top-content select input {
   width: 91.9%;
   border: 0px
 }
 
-#top-content form button {
+#top-content select button {
   width: 40px;
   background: white;
   border: 0px;
@@ -82,11 +86,11 @@ body {
   font-size: 1.4em;
 }
 
-#top-content form button:focus {
+#top-content select button:focus {
   outline: 0;
 }
 
-#top-content form input:focus {
+#top-content select input:focus {
   outline: 0;
 }
 
@@ -98,11 +102,40 @@ body {
 }
 
 #header #logo {
-  background: #FF0000;
+  /* background: #FF0000; */
+  background: #B5B1AA;
   /* These lines will order the items inside the section, at the center. */
   display: grid;
   justify-items: center;
   align-items: center;
+  position: relative;
+  -moz-box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
+  box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
+  padding: 10px;
+  /* background: white; */
+}
+
+/* Make the image fit the box */
+#header img {
+  width: 100%;
+  /* border: 1px solid #8a4419; */
+  border-style: inset;
+}
+
+#header::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  /* hide shadow behind image */
+  -webkit-box-shadow: 0 15px 20px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 0 15px 20px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 15px 20px rgba(0, 0, 0, 0.3);
+  width: 70%;
+  left: 15%;
+  /* one half of the remaining 30% */
+  height: 100px;
+  bottom: 0;
 }
 
 #header #banner {
@@ -110,13 +143,16 @@ body {
   display: grid;
   justify-items: center;
   align-items: center;
+  font-size: calc(60px + 6vmin);
+  /* text-shadow: 3px 3px 18px red; */
+  text-shadow: 0 0 3px rgb(3, 1, 10), 0 0 9px #0000FF;
 }
 
 #menubar {
   background: #FB9C06;
-  height: 29px;
+  height: 30px;
   font-size: 1.4em;
-  padding-left: 220px;
+  padding-left: 112px;
   margin-top: 1px;
 }
 
@@ -124,7 +160,7 @@ body {
   background: #72EA29;
   height: 24px;
   font-size: 1.2em;
-  padding-left: 220px;
+  padding-left: 112px;
   margin: 5px 0px;
 }
 
@@ -146,14 +182,16 @@ body {
   display: grid;
   justify-items: center;
   align-items: center;
+  font-size: calc(0.2px + 0.9vmin);
 }
 
 #userinfo {
   background: #E8EF1C;
   font-size: 2.5em;
   height: 100%;
-  padding-top: 50px;
+  padding-top: 10px;
   text-align: center;
+  font-size: calc(5px + 1vmin);
 }
 
 #cont-2 {
@@ -197,9 +235,11 @@ body {
 #news {
   background: #FF00FF;
   display: grid;
-  justify-items: center;
-  align-items: center;
-  font-size: 4em;
+  justify-items: left;
+  align-items: baseline;
+  padding: 15px;
+  /* font-size: 4em; */
+  font-size: calc(4px + 1vmin);
   min-height: calc(100vh - 515px);
 }
 

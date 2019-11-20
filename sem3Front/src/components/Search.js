@@ -36,9 +36,8 @@ const Search = ({ teamName, updateTeamName, crestURL, updateCrestURL, facade }) 
 
   return (
     <div>
-      <p>Searching </p>
       <select onChange={handleChange} id="teamName">
-        <option disabled defaultValue> - select a team - </option>
+        <option> - select a team - </option>
         {cityList.map((team, index) => {
           return <option key={uuid()}>{index} - {team.name}</option>;
         })};
