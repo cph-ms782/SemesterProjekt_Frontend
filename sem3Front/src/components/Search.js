@@ -1,6 +1,7 @@
 import React, { } from "react";
+import uuid from "uuid/v1";
 
-const Search = ({ teamName, updateTeamName }) => {
+const Search = ({ teamName, updateTeamName, facade }) => {
   console.log("Search");
   console.log("teamName", teamName);
   const teams = ["team1", "team2", "team3"];
@@ -14,13 +15,17 @@ const Search = ({ teamName, updateTeamName }) => {
     console.log("teamName", teamName);
   }
 
+  // const getTeams = () => {
+  //   console.log("getTeams");
+  // }
+
   return (
     <div>
       <p>Searching </p>
       <select onChange={handleChange} id="teamName">
-        <option disabled selected value> - select a team - </option>
+        <option disabled value> - select a team - </option>
         {teams.map(team => {
-          return <option>{team}</option>;
+          return <option key={uuid()}>{team}</option>;
         })};
         </select>
     </div >

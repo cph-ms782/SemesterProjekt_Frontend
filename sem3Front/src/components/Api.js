@@ -16,6 +16,7 @@ function Api() {
             <ul>
                 <li>/api/city </li>
                 <li>/api/city/cities </li>
+                <li>/api/fb/teams </li>
             </ul>
             <p><strong>Match</strong> </p>
             <ul>

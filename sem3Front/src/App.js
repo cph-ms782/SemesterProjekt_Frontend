@@ -5,18 +5,19 @@ import {
   NavLink,
   Switch
 } from "react-router-dom";
-import facade from "./components/loginFacade";
+// import loginFacade from "./components/loginFacade";
+import facade from "./components/ApiFacade";
 import Home from "./components/Home";
 import Team from "./components/Team";
 import AllAboutTeam from "./components/AllAboutTeam";
 import Search from "./components/Search";
 import UserInfo from "./components/UserInfo";
 import Api from "./components/Api";
+import FileForTesting from "./components/FileForTesting";
 
 function App() {
   console.log("App");
   const [teamName, setTeamName] = useState("");
-
 
   const updateTeamName = (index) => {
     console.log("index", index);
@@ -33,10 +34,12 @@ function App() {
             <Route exact path="/"><Home /></Route>
             <Route exact path="/api"><Api /></Route>
           </Switch>
+          <FileForTesting />
           <AllAboutTeam />
           <Search
             teamName={teamName}
             updateTeamName={updateTeamName}
+            facade={facade}
           />
           <Team teamName={teamName} />
           <UserInfo teamName={teamName} />
