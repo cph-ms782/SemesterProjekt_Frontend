@@ -2,8 +2,9 @@ import React, {
   useState, useEffect
 } from "react";
 import uuid from "uuid/v1";
+import URL from "../settings";
 
-const Search = ({ teamName, updateTeamName, crestURL, updateCrestURL, facade }) => {
+const Search = ({ teamName, updateTeamName, crestURL, updateCrestURL, teamID, updateTeamID, facade }) => {
   console.log("Search");
   console.log("teamName", teamName);
   const [cityList, setCityList] = useState([]);
@@ -11,7 +12,7 @@ const Search = ({ teamName, updateTeamName, crestURL, updateCrestURL, facade }) 
   useEffect(() => {
     console.log("useEffect");
     console.log("cities");
-    let url = "https://sandersolutions.dk/sem3_backend/api/fb/teams";
+    let url = URL + "/api/fb/teams";
     fetch(url)
       .then(res => res.json())
       .then(data => {
@@ -26,10 +27,15 @@ const Search = ({ teamName, updateTeamName, crestURL, updateCrestURL, facade }) 
     const target = evt.target;
     const id = evt.target.id;
     console.log("target.value", target.value);
-    const c1 = target.value.split(" - ")[1];
-    const c2 = cityList[target.value.split(" - ")[0]].crestUrl;
+    const splitting = target.value.split(" - ");
+    console.log("splitting", splitting);
+    const c1 = splitting[1];
+    const c2 = cityList[splitting[0]].crestUrl;
+    const c3 = Number(splitting[2]);
     console.log("c1", c1);
     console.log("c2", c2);
+    console.log("c3", c3);
+    updateTeamID({ ...teamID, ["teamID"]: c3 });
     updateTeamName({ ...teamName, [id]: c1 });
     updateCrestURL({ ...crestURL, ["crestURL"]: c2 });
   }
@@ -39,7 +45,7 @@ const Search = ({ teamName, updateTeamName, crestURL, updateCrestURL, facade }) 
       <select onChange={handleChange} id="teamName">
         <option> - select a team - </option>
         {cityList.map((team, index) => {
-          return <option key={uuid()}>{index} - {team.name}</option>;
+          return <option key={uuid()}>{index} - {team.name} - {team.teamID}</option>;
         })};
         </select>
     </div >

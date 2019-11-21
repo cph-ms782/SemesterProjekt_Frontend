@@ -16,6 +16,7 @@ function App() {
   const chosenTeam = localStorage.getItem("chosenTeam");
   const [teamName, setTeamName] = useState(chosenTeam ? chosenTeam : "");
   const [crestURL, setCrestURL] = useState("");
+  const [teamID, setTeamID] = useState(0);
 
   const updateTeamName = (index) => {
     console.log("index", index);
@@ -24,6 +25,10 @@ function App() {
   const updateCrestURL = (index) => {
     console.log("index", index);
     setCrestURL(index);
+  }
+  const updateTeamID = (index) => {
+    console.log("index", index);
+    setTeamID(index);
   }
 
   console.log("teamName", teamName);
@@ -43,6 +48,8 @@ function App() {
                 updateTeamName={updateTeamName}
                 crestURL={crestURL}
                 updateCrestURL={updateCrestURL}
+                teamID={teamID}
+                updateTeamID={updateTeamID}
                 facade={facade}
               />
             </div>
