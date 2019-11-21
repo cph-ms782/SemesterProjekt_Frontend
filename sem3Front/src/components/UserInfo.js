@@ -3,9 +3,9 @@ import uuid from "uuid/v1";
 
 function UserInfo({ teamName, crestURL, teamMatches, teamDates }) {
     console.log(" TEAM MATCHES " + teamMatches);
-    const dummyList = [{ "name": "John", "age": "122" }, { "name": "Birger", "age": "27" }, { "name": "Ib", "age": "22" },];
     console.log("UserInfo");
     console.log("teamName", teamName.teamName);
+    console.log("teamDates", teamDates);
     const chosenTeam = localStorage.getItem("chosenTeam");
     const [followTeam, setFollowTeam] = useState(chosenTeam ? true : false);
     console.log("chosenTeam", chosenTeam);
@@ -26,6 +26,17 @@ function UserInfo({ teamName, crestURL, teamMatches, teamDates }) {
         }
     };
 
+
+    let newTeamDates = [];
+
+    let adjustTeamDates = () => {
+        for (let index = 0; index < 4; index++) {
+            newTeamDates.push(teamDates[index]);
+        }
+    }
+
+    adjustTeamDates();
+    console.log("newTeamDates", newTeamDates);
 
     return (
         <div>
@@ -48,19 +59,16 @@ function UserInfo({ teamName, crestURL, teamMatches, teamDates }) {
                     }
                 </div>
             }
-
-
-            <table>
-                <thead>
-                    <tr><th>Last 3 games played</th></tr>
-                </thead>
-                <tbody>
-                    <tr><th>Home Team</th></tr>
-                        <tr><td>{teamMatches/*.teamName*/}</td></tr>
-                        <tr><th>Away Team</th></tr>
-                        <tr><td>{teamDates/*.teamName*/}</td></tr>
-                </tbody>
-            </table>
+            <hr />
+            <b><p>Matchdates</p></b>
+            {teamDates.slice(0, 3).map((team) => (
+                <div>
+                    <b><p key={uuid()}>{team.utcDate}</p></b>
+                    <p key={uuid()}>{team.homeCity}</p>
+                    <p key={uuid()}>{team.awayCity}</p>
+                    <hr />
+                </div>
+            ))}
         </div >
     )
 }

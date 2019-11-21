@@ -4,7 +4,7 @@ import React, {
 import uuid from "uuid/v1";
 import URL from "../settings";
 
-const Search = ({ teamName, updateTeamName, crestURL, updateCrestURL, teamID, updateTeamID, facade }) => {
+const Search = ({ teamName, updateTeamName, crestURL, updateCrestURL, teamID, updateTeamID, teamDates, updateTeamDates, facade }) => {
   console.log("Search");
   console.log("teamName", teamName);
   const [cityList, setCityList] = useState([]);
@@ -20,6 +20,21 @@ const Search = ({ teamName, updateTeamName, crestURL, updateCrestURL, teamID, up
       })
       .catch(err => { throw err });
   }, []);
+
+
+  const updateTeamData = (teamID) => {
+
+    console.log("updateTeamData");
+    console.log("teamID", teamID);
+    console.log("newURL", URL + "/api/fb/allmatches/" + teamID);
+    fetch(URL + "/api/fb/allmatches/" + teamID)
+      .then(res => res.json())
+      .then(data => {
+        console.log("data--------------------------------------------_>", data);
+        updateTeamDates(data);
+      })
+      .catch(err => { throw err });
+  }
 
   const handleChange = (evt) => {
     console.log("handleChange");
@@ -38,6 +53,7 @@ const Search = ({ teamName, updateTeamName, crestURL, updateCrestURL, teamID, up
     updateTeamID({ ...teamID, ["teamID"]: c3 });
     updateTeamName({ ...teamName, [id]: c1 });
     updateCrestURL({ ...crestURL, ["crestURL"]: c2 });
+    updateTeamData(c3);
   }
 
   return (
