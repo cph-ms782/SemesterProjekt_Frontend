@@ -1,15 +1,12 @@
 import React, { useState } from "react";
 import uuid from "uuid/v1";
 
-function UserInfo({ teamName, crestURL, teamMatches, teamDates }) {
+function UserInfo({ teamName, crestURL, teamMatches, teamDates, chosenTeam, updateChosenTeam }) {
     console.log(" TEAM MATCHES " + teamMatches);
     console.log("UserInfo");
     console.log("teamName", teamName.teamName);
     console.log("teamDates", teamDates);
-    const chosenTeam = localStorage.getItem("chosenTeam");
-    const [followTeam, setFollowTeam] = useState(chosenTeam ? true : false);
     console.log("chosenTeam", chosenTeam);
-    console.log("followTeam", followTeam);
 
     const willFollowTeam = (evt) => {
         console.log("willFollowTeam");
@@ -19,10 +16,10 @@ function UserInfo({ teamName, crestURL, teamMatches, teamDates }) {
         if (target) {
             localStorage.setItem("chosenTeam", teamName.teamName);
             localStorage.setItem("chosenTeamCrestUrl", crestURL.crestURL);
-            setFollowTeam(true);
+            updateChosenTeam(teamName.teamName);
         } else {
             localStorage.clear();
-            setFollowTeam(false);
+            updateChosenTeam("");
         }
     };
 
@@ -47,13 +44,13 @@ function UserInfo({ teamName, crestURL, teamMatches, teamDates }) {
                 <div>
                     {chosenTeam ?
                         <div>
-                            <input onChange={willFollowTeam} type="checkbox" name="chosenOne" value="true" /> <br />
-                            Follow {chosenTeam}
+                            <input onChange={willFollowTeam} type="checkbox" name="chosenOne" checked="true" value="true" /> <br />
+                            Follow1 {chosenTeam}
                         </div>
                         :
                         <div>
                             <input onChange={willFollowTeam} type="checkbox" name="chosenOne" value="false" /> <br />
-                            Follow {teamName.teamName}
+                            Follow2 {teamName.teamName}
                         </div>
 
                     }

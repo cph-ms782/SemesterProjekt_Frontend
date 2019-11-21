@@ -4,7 +4,7 @@ import React, {
 import uuid from "uuid/v1";
 import URL from "../settings";
 
-const Search = ({ teamName, updateTeamName, crestURL, updateCrestURL, teamID, updateTeamID, teamDates, updateTeamDates, facade }) => {
+const Search = ({ teamName, updateTeamName, crestURL, updateCrestURL, teamID, updateTeamID, teamDates, updateTeamDates, chosenTeam, facade }) => {
   console.log("Search");
   console.log("teamName", teamName);
   const [cityList, setCityList] = useState([]);
@@ -58,12 +58,18 @@ const Search = ({ teamName, updateTeamName, crestURL, updateCrestURL, teamID, up
 
   return (
     <div>
-      <select onChange={handleChange} id="teamName">
-        <option> - select a team - </option>
-        {cityList.map((team, index) => {
-          return <option key={uuid()}>{index} - {team.name} - {team.teamID}</option>;
-        })};
+      {
+        chosenTeam
+          ?
+          <select></select>
+          :
+          <select onChange={handleChange} id="teamName">
+            <option> - select a team - </option>
+            {cityList.map((team, index) => {
+              return <option key={uuid()}>{index} - {team.name} - {team.teamID}</option>;
+            })};
         </select>
+      }
     </div >
   );
 }

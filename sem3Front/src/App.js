@@ -13,7 +13,7 @@ import UserInfo from "./components/UserInfo";
 function App() {
   console.log("App");
 
-  const chosenTeam = localStorage.getItem("chosenTeam");
+  const [chosenTeam, setChosenTeam] = useState(localStorage.getItem("chosenTeam") ? true : false);
   const [teamName, setTeamName] = useState(chosenTeam ? chosenTeam : "");
   const [crestURL, setCrestURL] = useState("");
   const [teamID, setTeamID] = useState(0);
@@ -22,24 +22,28 @@ function App() {
 
 
   const updateTeamName = (index) => {
-    console.log("index", index);
+    console.log("updateTeamName - index", index);
     setTeamName(index);
   }
   const updateCrestURL = (index) => {
-    console.log("index", index);
+    console.log("updateCrestURL - index", index);
     setCrestURL(index);
   }
   const updateTeamID = (index) => {
-    console.log("index", index);
+    console.log("updateTeamID - index", index);
     setTeamID(index);
   }
   const updateTeamDates = (index) => {
-    console.log("index", index);
+    console.log("updateTeamDates - index", index);
     setTeamDates(index);
   }
   const updateTeamMatches = (index) => {
-    console.log("index", index);
+    console.log("updateTeamMatches - index", index);
     setTeamMatches(index);
+  }
+  const updateChosenTeam = (index) => {
+    console.log("updateChosenTeam - index", index);
+    setChosenTeam(index);
   }
 
   console.log("teamName", teamName);
@@ -63,6 +67,7 @@ function App() {
                 updateTeamID={updateTeamID}
                 teamDates={teamDates}
                 updateTeamDates={updateTeamDates}
+                chosenTeam={chosenTeam}
                 facade={facade}
               />
             </div>
@@ -89,7 +94,15 @@ function App() {
           <div className="container">
             <div id="cont-1">
               <div id="team"><Team teamName={teamName} crestURL={crestURL} /></div>
-              <div id="userinfo"><UserInfo teamName={teamName} crestURL={crestURL} teamMatches={teamMatches} teamDates={teamDates} /></div>
+              <div id="userinfo">
+                <UserInfo
+                  teamName={teamName}
+                  crestURL={crestURL}
+                  teamMatches={teamMatches}
+                  teamDates={teamDates}
+                  chosenTeam={chosenTeam}
+                  updateChosenTeam={updateChosenTeam}
+                /></div>
             </div>
             <div id="cont-2">
               <div id="part-1">
