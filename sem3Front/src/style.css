@@ -70,6 +70,7 @@ body {
   width: 545px;
   height: 35px;
   background: white;
+  box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
   outline: 1px solid black;
 }
 
@@ -98,6 +99,7 @@ body {
   display: grid;
   grid-template-columns: 160px 1fr;
   height: 160px;
+  box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
   font-size: 4em;
 }
 
@@ -124,15 +126,15 @@ body {
 }
 
 #header::after {
-  content: '';
+  /* content: '';
   position: absolute;
-  z-index: -1;
+  z-index: -1; */
   /* hide shadow behind image */
-  -webkit-box-shadow: 0 15px 20px rgba(0, 0, 0, 0.3);
+  /* -webkit-box-shadow: 0 15px 20px rgba(0, 0, 0, 0.3);
   -moz-box-shadow: 0 15px 20px rgba(0, 0, 0, 0.3);
   box-shadow: 0 15px 20px rgba(0, 0, 0, 0.3);
   width: 70%;
-  left: 15%;
+  left: 15%; */
   /* one half of the remaining 30% */
   height: 100px;
   bottom: 0;
@@ -149,19 +151,23 @@ body {
 }
 
 #menubar {
-  background: #FB9C06;
+  /* background: #FB9C06; */
+  background: rgb(247, 245, 243);
   height: 30px;
   font-size: 1.4em;
   padding-left: 112px;
+  box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
   margin-top: 1px;
 }
 
 #newsticker {
-  background: #72EA29;
+  /* background: #72EA29; */
+  background: rgb(247, 245, 243);
   height: 24px;
   font-size: 1.2em;
   padding-left: 112px;
   margin: 5px 0px;
+  box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
 }
 
 #cont-1 {
@@ -177,21 +183,27 @@ body {
 
 #team {
   height: 60px;
-  background: #FB9C06;
+  /* background: #FB9C06; */
+  background: rgb(247, 245, 243);
   font-size: 2.5em;
   display: grid;
   justify-items: center;
   align-items: center;
   font-size: calc(0.2px + 0.9vmin);
+  /* border: 1px solid; */
+  box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
 }
 
 #userinfo {
-  background: #E8EF1C;
+  /* background: #E8EF1C; */
+  background: rgb(247, 245, 243);
   font-size: 2.5em;
   height: 100%;
-  padding-top: 10px;
+  padding-top: 5px;
   text-align: center;
   font-size: calc(5px + 1vmin);
+  /* border: 1px solid; */
+  box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
 }
 
 #cont-2 {
@@ -217,23 +229,30 @@ body {
 }
 
 #map {
-  background: #29EAE3;
+  /* background: #29EAE3; */
+  background: rgb(247, 245, 243);
   grid-row: 1/3;
   font-size: 3em;
+  box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
 }
 
 #nextmatch {
-  background: white;
+  /* background: white; */
+  background: rgb(247, 245, 243);
+  box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
 }
 
 #buy {
-  background: #007F00;
+  /* background: #007F00; */
+  background: rgb(247, 245, 243);
   grid-column: 2/3;
   font-size: 2.5em;
+  box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
 }
 
 #news {
-  background: #FF00FF;
+  /* background: #FF00FF; */
+  background: rgb(247, 245, 243);
   display: grid;
   justify-items: left;
   align-items: baseline;
@@ -241,10 +260,12 @@ body {
   /* font-size: 4em; */
   font-size: calc(4px + 1vmin);
   min-height: calc(100vh - 515px);
+  box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
 }
 
 #cont-3 {
-  background: #ED1049;
+  /* background: #ED1049; */
+  background: rgb(247, 245, 243);
   display: grid;
   justify-items: center;
   align-items: center;
@@ -253,4 +274,5 @@ body {
   float: right;
   margin-left: 5px;
   min-height: calc(100vh - 290px);
+  box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
 }
