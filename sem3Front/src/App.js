@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   HashRouter as Router,
   NavLink
@@ -9,6 +9,7 @@ import Team from "./components/Team";
 import News from "./components/News";
 import Search from "./components/Search";
 import UserInfo from "./components/UserInfo";
+import URL from "./settings";
 
 function App() {
   console.log("App");
@@ -17,6 +18,20 @@ function App() {
   const [teamName, setTeamName] = useState(chosenTeam ? chosenTeam : "");
   const [crestURL, setCrestURL] = useState("");
   const [teamID, setTeamID] = useState(0);
+  const [teamMatches, setTeamMatches] = useState(["Bob"]);
+  const [teamDates, setTeamDates] = useState(["Betina"]);
+
+  useEffect(() => {
+    console.log("useEffect");
+    console.log("dates");
+    fetch(URL + "/api/fb/allmatches/" + teamID)
+      .then(res => res.json())
+      .then(data => {
+        setTeamMatches(data);
+      })
+      .catch(err => { throw err });
+  }, []);
+
 
   const updateTeamName = (index) => {
     console.log("index", index);
@@ -76,7 +91,7 @@ function App() {
           <div className="container">
             <div id="cont-1">
               <div id="team"><Team teamName={teamName} crestURL={crestURL} /></div>
-              <div id="userinfo"><UserInfo teamName={teamName} crestURL={crestURL} /></div>
+              <div id="userinfo"><UserInfo teamName={teamName} crestURL={crestURL} teamMatches={teamMatches} teamDates={teamDates}/></div>
             </div>
             <div id="cont-2">
               <div id="part-1">

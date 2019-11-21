@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import uuid from "uuid/v1";
 
-function UserInfo({ teamName, crestURL }) {
+function UserInfo({ teamName, crestURL, teamMatches, teamDates }) {
+    console.log(" TEAM MATCHES " + teamMatches);
     const dummyList = [{ "name": "John", "age": "122" }, { "name": "Birger", "age": "27" }, { "name": "Ib", "age": "22" },];
     console.log("UserInfo");
     console.log("teamName", teamName.teamName);
@@ -51,12 +52,13 @@ function UserInfo({ teamName, crestURL }) {
 
             <table>
                 <thead>
-                    <tr><th>Name</th><th>Age</th></tr>
+                    <tr><th>Last 3 games played</th></tr>
                 </thead>
                 <tbody>
-                    {dummyList.map((team) => (
-                        <tr key={uuid()}><td>{team.name}</td><td>{team.age}</td></tr>
-                    ))}
+                    <tr><th>Home Team</th></tr>
+                        <tr><td>{teamMatches/*.teamName*/}</td></tr>
+                        <tr><th>Away Team</th></tr>
+                        <tr><td>{teamDates/*.teamName*/}</td></tr>
                 </tbody>
             </table>
         </div >
