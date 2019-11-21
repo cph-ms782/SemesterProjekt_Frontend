@@ -4,7 +4,20 @@ import React, {
 import uuid from "uuid/v1";
 import URL from "../settings";
 
-const Search = ({ teamName, updateTeamName, crestURL, updateCrestURL, teamID, updateTeamID, teamDates, updateTeamDates, chosenTeam, facade }) => {
+const Search = ({
+  teamName,
+  updateTeamName,
+  crestURL,
+  updateCrestURL,
+  teamID,
+  updateTeamID,
+  teamDates,
+  updateTeamDates,
+  teamMatches,
+  updateTeamMatches,
+  chosenTeam,
+  facade
+}) => {
   console.log("Search");
   console.log("teamName", teamName);
   const [cityList, setCityList] = useState([]);
@@ -13,6 +26,7 @@ const Search = ({ teamName, updateTeamName, crestURL, updateCrestURL, teamID, up
     console.log("useEffect");
     console.log("cities");
     let url = URL + "/api/fb/teams";
+    console.log("Search - useEffect - url", url)
     fetch(url)
       .then(res => res.json())
       .then(data => {
@@ -21,17 +35,25 @@ const Search = ({ teamName, updateTeamName, crestURL, updateCrestURL, teamID, up
       .catch(err => { throw err });
   }, []);
 
-
   const updateTeamData = (teamID) => {
-
     console.log("updateTeamData");
     console.log("teamID", teamID);
-    console.log("newURL", URL + "/api/fb/allmatches/" + teamID);
-    fetch(URL + "/api/fb/allmatches/" + teamID)
+    let url = URL + "/api/fb/allteammatchdates/" + teamID;
+    console.log("updateTeamData - dates-url", url);
+    fetch(url)
       .then(res => res.json())
       .then(data => {
-        console.log("data--------------------------------------------_>", data);
+        console.log("data---allteammatchdates--------_>", data);
         updateTeamDates(data);
+      })
+      .catch(err => { throw err });
+    url = URL + "/api/fb/allteammatchresults/" + teamID;
+    console.log("updateTeamData - result-url", url);
+    fetch(url)
+      .then(res => res.json())
+      .then(data => {
+        console.log("data--allteammatchresults---_>", data);
+        updateTeamMatches(data);
       })
       .catch(err => { throw err });
   }

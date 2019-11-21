@@ -206,6 +206,10 @@ body {
   box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
 }
 
+#userinfo p {
+  font-size: calc(2px + 1vmin);
+}
+
 #cont-2 {
   display: grid;
   grid-template-rows: 220px 1fr;

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { } from "react";
 import uuid from "uuid/v1";
 
 function UserInfo({ teamName, crestURL, teamMatches, teamDates, chosenTeam, updateChosenTeam }) {
@@ -6,6 +6,7 @@ function UserInfo({ teamName, crestURL, teamMatches, teamDates, chosenTeam, upda
     console.log("UserInfo");
     console.log("teamName", teamName.teamName);
     console.log("teamDates", teamDates);
+    console.log("teamMatches", teamMatches);
     console.log("chosenTeam", chosenTeam);
 
     const willFollowTeam = (evt) => {
@@ -23,18 +24,6 @@ function UserInfo({ teamName, crestURL, teamMatches, teamDates, chosenTeam, upda
         }
     };
 
-
-    let newTeamDates = [];
-
-    let adjustTeamDates = () => {
-        for (let index = 0; index < 4; index++) {
-            newTeamDates.push(teamDates[index]);
-        }
-    }
-
-    adjustTeamDates();
-    console.log("newTeamDates", newTeamDates);
-
     return (
         <div>
 
@@ -45,24 +34,34 @@ function UserInfo({ teamName, crestURL, teamMatches, teamDates, chosenTeam, upda
                     {chosenTeam ?
                         <div>
                             <input onChange={willFollowTeam} type="checkbox" name="chosenOne" checked="true" value="true" /> <br />
-                            Follow1 {chosenTeam}
+                            Follow {chosenTeam}
                         </div>
                         :
                         <div>
-                            <input onChange={willFollowTeam} type="checkbox" name="chosenOne" value="false" /> <br />
-                            Follow2 {teamName.teamName}
+                            <input onChange={willFollowTeam} type="checkbox" name="chosenOne" /> <br />
+                            Follow {teamName.teamName}
                         </div>
 
                     }
                 </div>
             }
             <hr />
-            <b><p>Matchdates</p></b>
+            <b><p>Next Match Dates</p></b>
             {teamDates.slice(0, 3).map((team) => (
                 <div>
                     <b><p key={uuid()}>{team.utcDate}</p></b>
                     <p key={uuid()}>{team.homeCity}</p>
                     <p key={uuid()}>{team.awayCity}</p>
+                    <hr />
+                </div>
+            ))}
+            <hr />
+            <b><p>Match Scores</p></b>
+            {teamMatches.slice(0, 3).map((team) => (
+                <div>
+                    <b><p key={uuid()}>{team.utcDate}</p></b>
+                    <p key={uuid()}>{team.homeCity} - {team.homeScore}</p>
+                    <p key={uuid()}>{team.awayCity} - {team.awayScore}</p>
                     <hr />
                 </div>
             ))}

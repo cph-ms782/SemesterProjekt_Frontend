@@ -12,14 +12,15 @@ import UserInfo from "./components/UserInfo";
 
 function App() {
   console.log("App");
-
-  const [chosenTeam, setChosenTeam] = useState(localStorage.getItem("chosenTeam") ? true : false);
+  const savedChosenTeam = localStorage.getItem("chosenTeam");
+  const [chosenTeam, setChosenTeam] = useState(savedChosenTeam ? savedChosenTeam : "");
   const [teamName, setTeamName] = useState(chosenTeam ? chosenTeam : "");
   const [crestURL, setCrestURL] = useState("");
   const [teamID, setTeamID] = useState(0);
-  const [teamMatches, setTeamMatches] = useState(["Bob"]);
+  const [teamMatches, setTeamMatches] = useState([]);
   const [teamDates, setTeamDates] = useState([]);
-
+  console.log("teamMatches", teamMatches);
+  console.log("teamDates", teamDates);
 
   const updateTeamName = (index) => {
     console.log("updateTeamName - index", index);
@@ -67,6 +68,8 @@ function App() {
                 updateTeamID={updateTeamID}
                 teamDates={teamDates}
                 updateTeamDates={updateTeamDates}
+                teamMatches={teamMatches}
+                updateTeamMatches={updateTeamMatches}
                 chosenTeam={chosenTeam}
                 facade={facade}
               />
