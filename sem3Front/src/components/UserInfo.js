@@ -57,7 +57,8 @@ function UserInfo({ teamName, crestURL, teamMatches, teamDates, chosenTeam, upda
             ))}
             <hr />
             <b><p>Match Scores</p></b>
-            {teamMatches.slice(0, 3).map((team) => (
+            
+            {teamMatches.slice(-3).map((team) => (
                 <div>
                     <b><p key={uuid()}>{team.utcDate}</p></b>
                     <p key={uuid()}>{team.homeCity} - {team.homeScore}</p>
