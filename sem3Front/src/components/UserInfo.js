@@ -33,28 +33,39 @@ function UserInfo({ teamName, crestURL, teamMatches, teamDates, chosenTeam, upda
                 <div>
                     {chosenTeam ?
                         <div>
-                            <input onChange={willFollowTeam} type="checkbox" name="chosenOne" checked="true" value="true" /> <br />
-                            Follow {chosenTeam}
+                            <div>
+                                <label htmlFor="checkid">Follow </label>
+                                <input id="checkid" onChange={willFollowTeam} type="checkbox" name="chosenOne" checked value="true" /> <br />
+                            </div>
+                            <div>
+                                <b>{chosenTeam}</b>
+                            </div>
                         </div>
                         :
                         <div>
-                            <input onChange={willFollowTeam} type="checkbox" name="chosenOne" /> <br />
-                            Follow {teamName.teamName}
+                            <div>
+                                <label htmlFor="checkid">Follow </label>
+                                <input onChange={willFollowTeam} type="checkbox" name="chosenOne" /> <br />
+                            </div>
+                            <div>
+                                <b>{teamName.teamName}</b>
+                            </div>
                         </div>
-
                     }
                 </div>
             }
             <hr />
             <b><p>Next Match Dates</p></b>
-            {teamDates.slice(0, 3).map((team) => (
-                <div>
-                    <b><p key={uuid()}>{team.utcDate}</p></b>
-                    <p key={uuid()}>{team.homeCity}</p>
-                    <p key={uuid()}>{team.awayCity}</p>
-                    <hr />
-                </div>
-            ))}
+            {
+                teamDates.slice(0, 3).map((team) => (
+                    <div>
+                        <b><p key={uuid()}>{team.utcDate}</p></b>
+                        <p key={uuid()}>{team.homeCity}</p>
+                        <p key={uuid()}>{team.awayCity}</p>
+                        <hr />
+                    </div>
+                ))
+            }
             <hr />
             <b><p>Match Scores</p></b>
             
