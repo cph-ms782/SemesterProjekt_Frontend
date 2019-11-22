@@ -276,7 +276,7 @@ input[type="checkbox"] {
   display: grid;
   justify-items: center;
   align-items: center;
-  font-size: 2em;
+  font-size: 1em;
   width: 160px;
   float: right;
   margin-left: 5px;
