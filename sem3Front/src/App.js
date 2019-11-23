@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   HashRouter as Router,
   NavLink
 } from "react-router-dom";
 // import loginFacade from "./components/loginFacade";
-import facade from "./components/ApiFacade";
+// import facade from "./components/apiFacade";
+import URL from "./settings";
 import Team from "./components/Team";
 import News from "./components/News";
 import Search from "./components/Search";
@@ -17,6 +18,8 @@ function App() {
   const [teamName, setTeamName] = useState(chosenTeam ? chosenTeam : "");
   const [crestURL, setCrestURL] = useState("");
   const [teamID, setTeamID] = useState(0);
+  const [teams, setteams] = useState([]);
+  const [airports, setAirports] = useState([]);
   const [teamMatches, setTeamMatches] = useState([]);
   const [teamDates, setTeamDates] = useState([]);
   console.log("teamMatches", teamMatches);
@@ -47,6 +50,33 @@ function App() {
     setChosenTeam(index);
   }
 
+  useEffect(() => {
+    console.log("useEffect");
+
+    console.log("teams");
+    let urlTeam = URL + "/api/fb/teams";
+    console.log("App - useEffect - urlTeam", urlTeam);
+    fetch(urlTeam)
+      .then(res => res.json())
+      .then(data => {
+        console.log("inside fetch ---teams-- data", data);
+        setteams(data.sort((a, b) => a.name.localeCompare(b.name)));
+      })
+      .catch(err => { throw err });
+
+    console.log("airports");
+    let urlAir = URL + "/api/air/airports";
+    console.log("App - useEffect - urlAir", urlAir);
+    fetch(urlAir)
+      .then(res => res.json())
+      .then(data => {
+        console.log("inside fetch --airports--- data", data);
+        setAirports(data.airports);
+      })
+      .catch(err => { throw err });
+
+  }, []);
+
   console.log("teamName", teamName);
   return (
     <div>
@@ -60,18 +90,17 @@ function App() {
             </button>
             <div id="top-content">
               <Search
+                URL={URL}
                 teamName={teamName}
                 updateTeamName={updateTeamName}
                 crestURL={crestURL}
                 updateCrestURL={updateCrestURL}
                 teamID={teamID}
+                teams={teams}
                 updateTeamID={updateTeamID}
-                teamDates={teamDates}
                 updateTeamDates={updateTeamDates}
-                teamMatches={teamMatches}
                 updateTeamMatches={updateTeamMatches}
                 chosenTeam={chosenTeam}
-                facade={facade}
               />
             </div>
           </div>
@@ -114,7 +143,10 @@ function App() {
                 <div id="buy">buy</div>
               </div>
               <div id="news">
-                <News />
+                <News
+                  teams={teams}
+                  airports={airports}
+                />
               </div>
             </div>
             <div id="cont-3">

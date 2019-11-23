@@ -37,11 +37,30 @@ function handleHttpErrors(res) {
 function apiFacade() {
 
   //OBSERVE This returns a promise, NOT the actual data, you must handle asynchronicity by the client
-  async function getData() {
-    const options = makeOptionsCORS("OPTIONS");
-    const data = await fetch(URL, options).then(handleHttpErrors);
+  // async function getData() {
+  //   const options = makeOptionsCORS("OPTIONS");
+  //   const data = await fetch(URL, options).then(handleHttpErrors);
+  //   return data;
+  // }
+
+  function getData(url) {
+    console.log("apiFacade - getData");
+    const data = fetch(url)
+      .then(res => res.json())
+      .then(dat => {
+        console.log("apiFacade - getData - dat", dat);
+        return dat;
+      });
+    console.log("apiFacade - getData - data", data);
     return data;
   }
+
+  async function getDataAsync(url) {
+    console.log("apiFacade - getData");
+    const data = await fetch(URL).then(handleHttpErrors);
+    return data;
+  }
+
 
   async function addEditPerson(person) {
     //Complete me. A smart version will handle both Add and Edit, but focus on Add (POST) only first
@@ -65,6 +84,7 @@ function apiFacade() {
 
   return {
     getData,
+    getDataAsync,
     addEditPerson,
     deletePerson
   };

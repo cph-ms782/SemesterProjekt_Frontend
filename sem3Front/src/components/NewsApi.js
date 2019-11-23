@@ -23,8 +23,7 @@ function NewsApi() {
             <br />
             <p><strong>Match</strong> </p>
             <p>/api/match </p>
-            <p>/api/match/<b>city</b> --&gt; ie. for Liverpool: <b>city = Liverpool </b></p>
-            <p>/api/match/<b>city</b> --&gt; ie. for Liverpool: <b>city = Liverpool </b></p>
+            <p>/api/match/<b>city</b> --&gt; ie. for Liverpool: <b>city = Liverpool </b> - dummy data</p>
             <p>/api/fb/teams </p>
             <p>/api/fb/allteammatchdates/<b>id</b> --&gt; ie. for Arsenal: <b>id = 57 </b></p>
             <p>/api/fb/allteammatchresults/<b>id</b> --&gt; ie. for Arsenal: <b>id = 57  </b></p>
