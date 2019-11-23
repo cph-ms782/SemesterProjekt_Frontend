@@ -5,7 +5,7 @@ import {
   Switch
 } from "react-router-dom";
 import AllAboutTeam from "./AllAboutTeam";
-import FileForTesting from "./FileForTesting";
+import NewsFileForTesting from "./NewsFileForTesting";
 import NoMatch from "./NoMatch";
 import NewsApi from "./NewsApi";
 import NewsTeams from "./NewsTeams";
@@ -20,7 +20,7 @@ function News() {
           <Route exact path="/api"><NewsApi /></Route>
           <Route exact path="/airports"><NewsAirports /></Route>
           <Route exact path="/teams"><NewsTeams /></Route>
-          <Route exact path="/"><FileForTesting /></Route>
+          <Route exact path="/"><NewsFileForTesting /></Route>
           <Route exact path="/all"><AllAboutTeam /></Route>
           <Route ><NoMatch /></Route>
         </Switch>
