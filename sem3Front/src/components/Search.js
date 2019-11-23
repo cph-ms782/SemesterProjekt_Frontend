@@ -30,7 +30,8 @@ const Search = ({
     fetch(url)
       .then(res => res.json())
       .then(data => {
-        setCityList(data);
+        console.log("inside fetch ----- data", data);
+        setCityList(data.sort((a, b) => a.name.localeCompare(b.name)));
       })
       .catch(err => { throw err });
   }, []);
