@@ -138,7 +138,9 @@ function Header() {
     <div>
       <ul className="header">
         <li><NavLink exact activeClassName="active" to="/">Home</NavLink></li>
-        <li><NavLink exact activeClassName="active" to="/api">Api</NavLink></li>
+        <li><NavLink exact activeClassName="active" to="/teams">Teams</NavLink></li>
+        <li><NavLink exact activeClassName="active" to="/airports">Airports</NavLink></li>
+        <li><NavLink exact activeClassName="active" to="/api">API</NavLink></li>
       </ul>
     </div>
   )

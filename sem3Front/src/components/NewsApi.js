@@ -1,7 +1,7 @@
 import React from "react";
 
-function Api() {
-    console.log("Api");
+function NewsApi() {
+    console.log("NewsApi");
     return (
         <div>
 
@@ -44,4 +44,4 @@ function Api() {
     )
 }
 
-export default Api;
+export default NewsApi;

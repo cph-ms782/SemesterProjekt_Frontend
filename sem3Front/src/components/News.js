@@ -7,7 +7,9 @@ import {
 import AllAboutTeam from "./AllAboutTeam";
 import FileForTesting from "./FileForTesting";
 import NoMatch from "./NoMatch";
-import Api from "./Api";
+import NewsApi from "./NewsApi";
+import NewsTeams from "./NewsTeams";
+import NewsAirports from "./NewsAirports";
 
 function News() {
   console.log("News");
@@ -15,7 +17,9 @@ function News() {
     <div>
       <Router >
         <Switch>
-          <Route exact path="/api"><Api /></Route>
+          <Route exact path="/api"><NewsApi /></Route>
+          <Route exact path="/airports"><NewsAirports /></Route>
+          <Route exact path="/teams"><NewsTeams /></Route>
           <Route exact path="/"><FileForTesting /></Route>
           <Route exact path="/all"><AllAboutTeam /></Route>
           <Route ><NoMatch /></Route>
