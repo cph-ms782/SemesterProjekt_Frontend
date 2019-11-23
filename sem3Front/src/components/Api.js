@@ -8,29 +8,28 @@ function Api() {
             <h2>Endpoints</h2>
             <br />
             {/* <p><strong>All</strong> </p>
-            <ul>
-                <li>/api/info </li>
-                <li>/api/info/all </li>
-                <li>/api/login </li>
-                <li>/api/info/fill </li>
-            </ul>
+                <p>/api/info </p>
+                <p>/api/info/all </p>
+                <p>/api/login </p>
+                <p>/api/info/fill </p>
             <br /> */}
+
             <p><strong>City</strong> </p>
-            <ul>
-                <li>/api/city - dummy data</li>
-                <li>/api/city/cities - dummy data</li>
-            </ul>
+            <p>/api/city - dummy data</p>
+            <p>/api/city/cities - dummy data</p>
+            <p>/api/air/airports</p>
+            <p>/api/air/nearestairport/<b>team</b> --&gt; ie. for Wolverhampton: <b>team = Wolverhampton Wanderers FC </b></p>
+            <p>/api/air/nearestteam/<b>airport</b> --&gt; ie. for London Gatwick: <b>airport = LGW </b></p>
             <br />
             <p><strong>Match</strong> </p>
-            <ul>
-                <li>/api/match </li>
-                <li>/api/match/<b>city</b> --&gt; ie. for Liverpool: <b>city = Liverpool </b></li>
-                <li>/api/match/<b>city</b> --&gt; ie. for Liverpool: <b>city = Liverpool </b></li>
-                <li>/api/fb/teams </li>
-                <li>/api/fb/allteammatchdates/<b>id</b> --&gt; ie. for Arsenal: <b>id = 57 </b></li>
-                <li>/api/fb/allteammatchresults/<b>id</b> --&gt; ie. for Arsenal: <b>id = 57  </b></li>
-            </ul>
+            <p>/api/match </p>
+            <p>/api/match/<b>city</b> --&gt; ie. for Liverpool: <b>city = Liverpool </b></p>
+            <p>/api/match/<b>city</b> --&gt; ie. for Liverpool: <b>city = Liverpool </b></p>
+            <p>/api/fb/teams </p>
+            <p>/api/fb/allteammatchdates/<b>id</b> --&gt; ie. for Arsenal: <b>id = 57 </b></p>
+            <p>/api/fb/allteammatchresults/<b>id</b> --&gt; ie. for Arsenal: <b>id = 57  </b></p>
             <br />
+
             {/* <p><strong>User</strong> </p>
             <ul>
                 <li>/api/info/user </li>
@@ -38,8 +37,8 @@ function Api() {
             <br />
             <p><strong>Admin</strong> </p>
             <ul>
-                <li>/api/info/user </li>
-                <li>/api/info/admin </li>
+                <p>/api/info/user </p>
+                <p>/api/info/admin </p>
             </ul> */}
         </div>
     )
