@@ -105,7 +105,9 @@ body {
 
 #header #logo {
   /* background: #FF0000; */
-  background: #b5b1aa;
+  /* background: #b5b1aa; */
+  /* background: white; */
+  background: rgba(221, 218, 215, 0.877);
   /* These lines will order the items inside the section, at the center. */
   display: grid;
   justify-items: center;
@@ -115,7 +117,6 @@ body {
   -webkit-box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.5);
   box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.5);
   padding: 10px;
-  /* background: white; */
 }
 
 /* Make the image fit the box */
@@ -141,13 +142,14 @@ body {
 }
 
 #header #banner {
-  background: #b5b1aa;
+  /* background: #b5b1aa; */
+  background: rgba(221, 218, 215, 0.877);
   display: grid;
   justify-items: center;
   align-items: center;
   font-size: calc(60px + 6vmin);
   /* text-shadow: 3px 3px 18px red; */
-  text-shadow: 0 0 3px rgb(3, 1, 10), 0 0 9px #0000ff;
+  text-shadow: 0 0 3px rgb(3, 1, 10), 0 0 3px #0000ff;
 }
 
 #menubar {
@@ -205,6 +207,7 @@ body {
   /* border: 1px solid; */
   box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.5);
 }
+
 input[type="checkbox"] {
   vertical-align: middle;
 }
@@ -228,7 +231,7 @@ input[type="checkbox"] {
   grid-gap: 5px;
 }
 
-#part-1 > * {
+#part-1>* {
   display: grid;
   justify-items: center;
   align-items: center;
