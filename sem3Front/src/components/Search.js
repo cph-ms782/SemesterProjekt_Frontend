@@ -60,6 +60,7 @@ const Search = ({
     updateTeamData(c3);
   }
 
+  console.log("teams", teams, "lklk");
   return (
     <div>
       {
@@ -77,5 +78,4 @@ const Search = ({
     </div >
   );
 }
-
 export default Search;

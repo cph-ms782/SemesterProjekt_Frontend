@@ -10,6 +10,7 @@ import NoMatch from "./NoMatch";
 import NewsApi from "./NewsApi";
 import NewsTeams from "./NewsTeams";
 import NewsAirports from "./NewsAirports";
+import NewsNodes from "./NewsNodes";
 
 function News({ airports, teams }) {
   console.log("News");
@@ -20,6 +21,7 @@ function News({ airports, teams }) {
           <Route exact path="/api"><NewsApi /></Route>
           <Route exact path="/airports"><NewsAirports airports={airports} /></Route>
           <Route exact path="/teams"><NewsTeams teams={teams} /></Route>
+          <Route exact path="/nodes"><NewsNodes /></Route>
           <Route exact path="/"><NewsFileForTesting teams={teams} /></Route>
           <Route exact path="/all"><AllAboutTeam /></Route>
           <Route ><NoMatch /></Route>

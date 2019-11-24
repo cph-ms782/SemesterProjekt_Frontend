@@ -1,5 +1,5 @@
 import React, { } from "react";
-import uuid from "uuid/v1";
+import NewsAirportsRender from "./NewsAirportsRender";
 
 function NewsAirports({ airports }) {
     console.log("NewsAirports");
@@ -8,12 +8,10 @@ function NewsAirports({ airports }) {
     return (
         <div>
             <h2>Airports</h2>
-            <br />
-            {airports.map((airport) => {
-                return <p key={uuid()}>{airport}</p>
-            })}
+            {airports && <NewsAirportsRender airports={airports} />}
         </div>
     )
+
 }
 
 export default NewsAirports;

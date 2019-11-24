@@ -1,20 +1,13 @@
-import React, { useState, useEffect } from "react";
-import uuid from "uuid/v1";
+import React, { } from "react";
 
-const NewsFileForTesting = ({ teams }) => {
+const NewsFileForTesting = ({ isLoaded, teams }) => {
   console.log("NewsFileForTesting");
-
+  console.log("NewsFileForTesting isLoaded", isLoaded);
   return (
     <div>
       <p>TESTING </p>
-      <select>
-        <option disabled value> - select a team - </option>
-        {teams.map((team) => (
-          <option key={uuid()}>{team.name}</option>
-        ))}
-      </select>
+      {/* {isLoaded && <NewsFileForTestingRender teams={teams} />} */}
     </div >
   );
 }
-
 export default NewsFileForTesting;

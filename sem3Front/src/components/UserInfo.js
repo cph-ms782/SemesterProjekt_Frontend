@@ -25,10 +25,10 @@ function UserInfo({ teamName, crestURL, teamMatches, teamDates, chosenTeam, upda
     };
     console.log("teamDates.code", teamDates.code);
     console.log("teamMatches.code", teamMatches.code);
-    if (teamDates.code == 500 || teamMatches.code == 500) {
+    if (teamDates.code === 500 || teamMatches.code === 500) {
         return (
             <div>
-                <p>Couldn't find data</p>
+                <p>Server not respoding</p>
             </div>
         )
     } else {

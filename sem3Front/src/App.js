@@ -4,21 +4,20 @@ import {
   NavLink
 } from "react-router-dom";
 // import loginFacade from "./components/loginFacade";
-// import facade from "./components/apiFacade";
 import URL from "./settings";
-import Team from "./components/Team";
+import TeamCrest from "./components/TeamCrest";
 import News from "./components/News";
 import Search from "./components/Search";
 import UserInfo from "./components/UserInfo";
 
-function App() {
+function App({ apiFacade }) {
   console.log("App");
   const savedChosenTeam = localStorage.getItem("chosenTeam");
   const [chosenTeam, setChosenTeam] = useState(savedChosenTeam ? savedChosenTeam : "");
   const [teamName, setTeamName] = useState(chosenTeam ? chosenTeam : "");
   const [crestURL, setCrestURL] = useState("");
   const [teamID, setTeamID] = useState(0);
-  const [teams, setteams] = useState([]);
+  const [teams, setTeams] = useState([]);
   const [airports, setAirports] = useState([]);
   const [teamMatches, setTeamMatches] = useState([]);
   const [teamDates, setTeamDates] = useState([]);
@@ -50,32 +49,33 @@ function App() {
     setChosenTeam(index);
   }
 
+  function handleHttpErrors(res) {
+    if (!res.ok) {
+      return Promise.reject({ status: res.status, fullError: res.json() });
+    }
+    return res.json();
+  }
+
   useEffect(() => {
     console.log("useEffect");
 
     console.log("teams");
     let urlTeam = URL + "/api/fb/teams";
     console.log("App - useEffect - urlTeam", urlTeam);
-    fetch(urlTeam)
-      .then(res => res.json())
-      .then(data => {
-        console.log("inside fetch ---teams-- data", data);
-        setteams(data.sort((a, b) => a.name.localeCompare(b.name)));
-      })
-      .catch(err => { throw err });
+    fetch(urlTeam).then(handleHttpErrors).then(data => {
+      console.log("apiFacade - getDataAsync - data", data);
+      setTeams(data.sort((a, b) => a.name.localeCompare(b.name)));
+    }).catch(console.log.bind(console));
 
     console.log("airports");
     let urlAir = URL + "/api/air/airports";
     console.log("App - useEffect - urlAir", urlAir);
-    fetch(urlAir)
-      .then(res => res.json())
-      .then(data => {
-        console.log("inside fetch --airports--- data", data);
-        setAirports(data.airports);
-      })
-      .catch(err => { throw err });
+    fetch(urlAir).then(handleHttpErrors).then(data => {
+      console.log("apiFacade - getDataAsync - data", data);
+      setAirports(data.airports.sort((a, b) => a.localeCompare(b)));
+    }).catch(console.log.bind(console));
 
-  }, []);
+  }, [], apiFacade);
 
   console.log("teamName", teamName);
   return (
@@ -125,7 +125,7 @@ function App() {
 
           <div className="container">
             <div id="cont-1">
-              <div id="team"><Team teamName={teamName} crestURL={crestURL} /></div>
+              <div id="team"><TeamCrest teamName={teamName} crestURL={crestURL} /></div>
               <div id="userinfo">
                 <UserInfo
                   teamName={teamName}
@@ -172,6 +172,7 @@ function Header() {
         <li><NavLink exact activeClassName="active" to="/">Home</NavLink></li>
         <li><NavLink exact activeClassName="active" to="/teams">Teams</NavLink></li>
         <li><NavLink exact activeClassName="active" to="/airports">Airports</NavLink></li>
+        <li><NavLink exact activeClassName="active" to="/nodes">React</NavLink></li>
         <li><NavLink exact activeClassName="active" to="/api">API</NavLink></li>
       </ul>
     </div>
