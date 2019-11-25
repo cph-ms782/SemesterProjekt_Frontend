@@ -1,6 +1,7 @@
 import React, { } from "react";
-function Team({ teamName, crestURL }) {
-  console.log("Team");
+
+function TeamCrest({ teamName, crestURL }) {
+  console.log("TeamCrest");
   console.log("crestURL", crestURL);
   console.log("teamName", teamName);
   const chosenTeam = localStorage.getItem("chosenTeam");
@@ -20,4 +21,4 @@ function Team({ teamName, crestURL }) {
   );
 }
 
-export default Team;
+export default TeamCrest;

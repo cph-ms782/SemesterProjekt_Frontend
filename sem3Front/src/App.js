@@ -1,22 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   HashRouter as Router,
   NavLink
 } from "react-router-dom";
 // import loginFacade from "./components/loginFacade";
-import facade from "./components/ApiFacade";
-import Team from "./components/Team";
+import URL from "./settings";
+import TeamCrest from "./components/TeamCrest";
 import News from "./components/News";
 import Search from "./components/Search";
 import UserInfo from "./components/UserInfo";
 
-function App() {
+function App({ apiFacade }) {
   console.log("App");
   const savedChosenTeam = localStorage.getItem("chosenTeam");
   const [chosenTeam, setChosenTeam] = useState(savedChosenTeam ? savedChosenTeam : "");
   const [teamName, setTeamName] = useState(chosenTeam ? chosenTeam : "");
   const [crestURL, setCrestURL] = useState("");
   const [teamID, setTeamID] = useState(0);
+  const [teams, setTeams] = useState([]);
+  const [airports, setAirports] = useState([]);
   const [teamMatches, setTeamMatches] = useState([]);
   const [teamDates, setTeamDates] = useState([]);
   console.log("teamMatches", teamMatches);
@@ -47,6 +49,34 @@ function App() {
     setChosenTeam(index);
   }
 
+  function handleHttpErrors(res) {
+    if (!res.ok) {
+      return Promise.reject({ status: res.status, fullError: res.json() });
+    }
+    return res.json();
+  }
+
+  useEffect(() => {
+    console.log("useEffect");
+
+    console.log("teams");
+    let urlTeam = URL + "/api/fb/teams";
+    console.log("App - useEffect - urlTeam", urlTeam);
+    fetch(urlTeam).then(handleHttpErrors).then(data => {
+      console.log("apiFacade - getDataAsync - data", data);
+      setTeams(data.sort((a, b) => a.name.localeCompare(b.name)));
+    }).catch(console.log.bind(console));
+
+    console.log("airports");
+    let urlAir = URL + "/api/air/airports";
+    console.log("App - useEffect - urlAir", urlAir);
+    fetch(urlAir).then(handleHttpErrors).then(data => {
+      console.log("apiFacade - getDataAsync - data", data);
+      setAirports(data.airports.sort((a, b) => a.localeCompare(b)));
+    }).catch(console.log.bind(console));
+
+  }, [], apiFacade);
+
   console.log("teamName", teamName);
   return (
     <div>
@@ -60,18 +90,17 @@ function App() {
             </button>
             <div id="top-content">
               <Search
+                URL={URL}
                 teamName={teamName}
                 updateTeamName={updateTeamName}
                 crestURL={crestURL}
                 updateCrestURL={updateCrestURL}
                 teamID={teamID}
+                teams={teams}
                 updateTeamID={updateTeamID}
-                teamDates={teamDates}
                 updateTeamDates={updateTeamDates}
-                teamMatches={teamMatches}
                 updateTeamMatches={updateTeamMatches}
                 chosenTeam={chosenTeam}
-                facade={facade}
               />
             </div>
           </div>
@@ -96,7 +125,7 @@ function App() {
 
           <div className="container">
             <div id="cont-1">
-              <div id="team"><Team teamName={teamName} crestURL={crestURL} /></div>
+              <div id="team"><TeamCrest teamName={teamName} crestURL={crestURL} /></div>
               <div id="userinfo">
                 <UserInfo
                   teamName={teamName}
@@ -114,7 +143,10 @@ function App() {
                 <div id="buy">buy</div>
               </div>
               <div id="news">
-                <News />
+                <News
+                  teams={teams}
+                  airports={airports}
+                />
               </div>
             </div>
             <div id="cont-3">
@@ -138,7 +170,10 @@ function Header() {
     <div>
       <ul className="header">
         <li><NavLink exact activeClassName="active" to="/">Home</NavLink></li>
-        <li><NavLink exact activeClassName="active" to="/api">Api</NavLink></li>
+        <li><NavLink exact activeClassName="active" to="/teams">Teams</NavLink></li>
+        <li><NavLink exact activeClassName="active" to="/airports">Airports</NavLink></li>
+        <li><NavLink exact activeClassName="active" to="/nodes">React</NavLink></li>
+        <li><NavLink exact activeClassName="active" to="/api">API</NavLink></li>
       </ul>
     </div>
   )

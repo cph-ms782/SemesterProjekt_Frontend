@@ -23,50 +23,71 @@ function UserInfo({ teamName, crestURL, teamMatches, teamDates, chosenTeam, upda
             updateChosenTeam("");
         }
     };
+    console.log("teamDates.code", teamDates.code);
+    console.log("teamMatches.code", teamMatches.code);
+    if (teamDates.code === 500 || teamMatches.code === 500) {
+        return (
+            <div>
+                <p>Server not respoding</p>
+            </div>
+        )
+    } else {
+        return (
+            <div>
 
-    return (
-        <div>
-
-            {!teamName ?
-                <div></div>
-                :
-                <div>
-                    {chosenTeam ?
+                {!teamName ?
+                    <div></div>
+                    :
+                    <div>
+                        {chosenTeam ?
+                            <div>
+                                <div>
+                                    <label htmlFor="checkid">Follow </label>
+                                    <input id="checkid" onChange={willFollowTeam} type="checkbox" name="chosenOne" checked value="true" /> <br />
+                                </div>
+                                <div>
+                                    <b>{chosenTeam}</b>
+                                </div>
+                            </div>
+                            :
+                            <div>
+                                <div>
+                                    <label htmlFor="checkid">Follow </label>
+                                    <input onChange={willFollowTeam} type="checkbox" name="chosenOne" /> <br />
+                                </div>
+                                <div>
+                                    <b>{teamName.teamName}</b>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                }
+                <hr />
+                <b><p>Next Match Dates</p></b>
+                {
+                    teamDates.slice(0, 3).map((team) => (
                         <div>
-                            <input onChange={willFollowTeam} type="checkbox" name="chosenOne" checked="true" value="true" /> <br />
-                            Follow {chosenTeam}
+                            <b><p key={uuid()}>{team.utcDate}</p></b>
+                            <p key={uuid()}>{team.homeCity}</p>
+                            <p key={uuid()}>{team.awayCity}</p>
+                            <hr />
                         </div>
-                        :
-                        <div>
-                            <input onChange={willFollowTeam} type="checkbox" name="chosenOne" /> <br />
-                            Follow {teamName.teamName}
-                        </div>
+                    ))
+                }
+                <hr />
+                <b><p>Match Scores</p></b>
 
-                    }
-                </div>
-            }
-            <hr />
-            <b><p>Next Match Dates</p></b>
-            {teamDates.slice(0, 3).map((team) => (
-                <div>
-                    <b><p key={uuid()}>{team.utcDate}</p></b>
-                    <p key={uuid()}>{team.homeCity}</p>
-                    <p key={uuid()}>{team.awayCity}</p>
-                    <hr />
-                </div>
-            ))}
-            <hr />
-            <b><p>Match Scores</p></b>
-            {teamMatches.slice(0, 3).map((team) => (
-                <div>
-                    <b><p key={uuid()}>{team.utcDate}</p></b>
-                    <p key={uuid()}>{team.homeCity} - {team.homeScore}</p>
-                    <p key={uuid()}>{team.awayCity} - {team.awayScore}</p>
-                    <hr />
-                </div>
-            ))}
-        </div >
-    )
+                {teamMatches.slice(-3).map((team) => (
+                    <div>
+                        <b><p key={uuid()}>{team.utcDate}</p></b>
+                        <p key={uuid()}>{team.homeCity} - {team.homeScore}</p>
+                        <p key={uuid()}>{team.awayCity} - {team.awayScore}</p>
+                        <hr />
+                    </div>
+                ))}
+            </div >
+        )
+    }
 }
 
 export default UserInfo;
