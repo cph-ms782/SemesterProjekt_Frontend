@@ -19,7 +19,8 @@ function NewsApi() {
             <p>/api/city/cities - dummy data</p>
             <p>/api/air/airports</p>
             <p>/api/air/nearestairport/<b>team</b> --&gt; ie. for Wolverhampton: <b>team = Wolverhampton Wanderers FC </b></p>
-            <p>/api/air/nearestteam/<b>airport</b> --&gt; ie. for London Gatwick: <b>airport = LGW </b></p>
+            <p>/api/air/nearestteam/<b>airport-code</b> --&gt; ie. for London Gatwick: <b>airport = LGW </b></p>
+            <p>/api/air/nearestmatch/<b>airport-code</b> --&gt; ie. 10 days forward for London Gatwick: <b>airport = LGW </b></p>
             <br />
             <p><strong>Match</strong> </p>
             <p>/api/match </p>

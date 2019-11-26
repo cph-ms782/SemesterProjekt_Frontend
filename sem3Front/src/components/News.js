@@ -4,13 +4,13 @@ import {
   Route,
   Switch
 } from "react-router-dom";
-import AllAboutTeam from "./AllAboutTeam";
-import NewsFileForTesting from "./NewsFileForTesting";
-import NoMatch from "./NoMatch";
-import NewsApi from "./NewsApi";
-import NewsTeams from "./NewsTeams";
-import NewsAirports from "./NewsAirports";
-import NewsNodes from "./NewsNodes";
+import AllAboutTeam from "./news/AllAboutTeam";
+import NewsFileForTesting from "./news/NewsFileForTesting";
+import NoMatch from "./news/NoMatch";
+import NewsApi from "./news/NewsApi";
+import NewsTeams from "./news/NewsTeams";
+import NewsAirports from "./news/NewsAirports";
+import NewsNodes from "./news/NewsNodes";
 
 function News({ airports, teams }) {
   console.log("News");
