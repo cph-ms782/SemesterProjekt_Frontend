@@ -9,7 +9,7 @@ function NewsNodes() {
             {/* <img src={require("../images/ReactNodes.png")} alt="nodes png" /> */}
             <hr />
             <img
-                src={require('../images/ReactNodes.svg')}
+                src={require('../../images/ReactNodes.svg')}
                 alt="nodes svg" />
         </div>
     )
