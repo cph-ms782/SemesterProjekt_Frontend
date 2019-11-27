@@ -1,13 +1,49 @@
 import React, { } from "react";
+import { Link } from "react-router-dom";
 import uuid from "uuid/v1";
 
-function UserInfo({ teamName, crestURL, teamMatches, teamDates, chosenTeam, updateChosenTeam }) {
+function UserInfo({
+    teamName,
+    crestURL,
+    teamMatches,
+    teamDates,
+    chosenTeam,
+    updateChosenTeam,
+    flightDate,
+    updateFlightDate,
+    flightTime,
+    updateFlightTime,
+    flightHomeCity,
+    updateFlightHomeCity
+}) {
     console.log(" TEAM MATCHES " + teamMatches);
     console.log("UserInfo");
     console.log("teamName", teamName.teamName);
     console.log("teamDates", teamDates);
     console.log("teamMatches", teamMatches);
     console.log("chosenTeam", chosenTeam);
+    console.log("flightDate", flightDate);
+
+    const findFlights = (evt) => {
+        console.log("findFlights");
+        const target = evt.target;
+        console.log("target", target);
+        const parentElement = target.parentElement;
+        console.log("parentElement", parentElement);
+        const firstChild = target.parentElement.innerText;
+        console.log("firstChild", firstChild);
+        const flightData = firstChild.split("\n\n");
+        console.log("flightData", flightData);
+        const time = flightData[0].split(" ")[0];
+        console.log("time", time);
+        const date = flightData[0].split(" ")[1];
+        console.log("date", date);
+        const hCity = flightData[1];
+        console.log("hCity", hCity);
+        updateFlightTime(time);
+        updateFlightDate(date);
+        updateFlightHomeCity(hCity);
+    }
 
     const willFollowTeam = (evt) => {
         console.log("willFollowTeam");
@@ -28,7 +64,7 @@ function UserInfo({ teamName, crestURL, teamMatches, teamDates, chosenTeam, upda
     if (teamDates.code === 500 || teamMatches.code === 500) {
         return (
             <div>
-                <p>Server not respoding</p>
+                <p>Server not responding</p>
             </div>
         )
     } else {
@@ -63,28 +99,33 @@ function UserInfo({ teamName, crestURL, teamMatches, teamDates, chosenTeam, upda
                     </div>
                 }
                 <hr />
+
                 <b><p>Next Match Dates</p></b>
                 {
                     teamDates.slice(0, 3).map((team) => (
-                        <div>
-                            <b><p key={uuid()}>{team.utcDate}</p></b>
-                            <p key={uuid()}>{team.homeCity}</p>
-                            <p key={uuid()}>{team.awayCity}</p>
-                            <hr />
+                        <div onClick={findFlights}>
+                            <Link exact to="/flights" style={{ 'text-decoration': 'none', 'color': 'black' }}>
+                                <b><p id={team.utcDate} key={uuid()}>{team.utcDate}</p></b>
+                                <p id={team.homeCity} key={uuid()}>{team.homeCity}</p>
+                                <p key={uuid()}>{team.awayCity}</p>
+                                <hr />
+                            </Link>
                         </div>
                     ))
                 }
                 <hr />
-                <b><p>Match Scores</p></b>
 
-                {teamMatches.slice(-3).map((team) => (
-                    <div>
-                        <b><p key={uuid()}>{team.utcDate}</p></b>
-                        <p key={uuid()}>{team.homeCity} - {team.homeScore}</p>
-                        <p key={uuid()}>{team.awayCity} - {team.awayScore}</p>
-                        <hr />
-                    </div>
-                ))}
+                <b><p>Match Scores</p></b>
+                {
+                    teamMatches.slice(-3).map((team) => (
+                        <div>
+                            <b><p key={uuid()}>{team.utcDate}</p></b>
+                            <p key={uuid()}>{team.homeCity} - {team.homeScore}</p>
+                            <p key={uuid()}>{team.awayCity} - {team.awayScore}</p>
+                            <hr />
+                        </div>
+                    ))
+                }
             </div >
         )
     }

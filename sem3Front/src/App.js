@@ -19,6 +19,9 @@ function App({ apiFacade }) {
   const [teamID, setTeamID] = useState(0);
   const [teams, setTeams] = useState([]);
   const [airports, setAirports] = useState([]);
+  const [flightDate, setFlightDate] = useState("12/02/2019");
+  const [flightTime, setFlightTime] = useState("15:00");
+  const [flightHomeCity, setFlightHomeCity] = useState("Norwich City FC");
   const [teamMatches, setTeamMatches] = useState([]);
   const [teamDates, setTeamDates] = useState([]);
   console.log("teamMatches", teamMatches);
@@ -48,6 +51,18 @@ function App({ apiFacade }) {
     console.log("updateChosenTeam - index", index);
     setChosenTeam(index);
   }
+  const updateFlightHomeCity = (index) => {
+    console.log("updateFlightHomeCity - index", index);
+    setFlightHomeCity(index);
+  }
+  const updateFlightDate = (index) => {
+    console.log("updateFlightDate - index", index);
+    setFlightDate(index);
+  }
+  const updateFlightTime = (index) => {
+    console.log("updateFlightTime - index", index);
+    setFlightTime(index);
+  }
 
   function handleHttpErrors(res) {
     if (!res.ok) {
@@ -74,7 +89,6 @@ function App({ apiFacade }) {
       console.log("apiFacade - getDataAsync - data", data);
       setAirports(data.airports.sort((a, b) => a.localeCompare(b)));
     }).catch(console.log.bind(console));
-
   }, [], apiFacade);
 
   console.log("teamName", teamName);
@@ -117,7 +131,7 @@ function App({ apiFacade }) {
             </div>
           </div>
           <div className="container">
-            <div id="menubar"><Header /></div>
+            <div id="menubar"><MenuBar /></div>
           </div>
           <div className="container">
             <div id="newsticker">newsticker</div>
@@ -134,6 +148,12 @@ function App({ apiFacade }) {
                   teamDates={teamDates}
                   chosenTeam={chosenTeam}
                   updateChosenTeam={updateChosenTeam}
+                  flightDate={flightDate}
+                  updateFlightDate={updateFlightDate}
+                  flightTime={flightTime}
+                  updateFlightTime={updateFlightTime}
+                  flightHomeCity={flightHomeCity}
+                  updateFlightHomeCity={updateFlightHomeCity}
                 /></div>
             </div>
             <div id="cont-2">
@@ -144,8 +164,11 @@ function App({ apiFacade }) {
               </div>
               <div id="news">
                 <News
-                  teams={teams}
                   airports={airports}
+                  teams={teams}
+                  flightHomeCity={flightHomeCity}
+                  flightTime={flightTime}
+                  flightDate={flightDate}
                 />
               </div>
             </div>
@@ -164,8 +187,8 @@ function App({ apiFacade }) {
   );
 }
 
-function Header() {
-  console.log("Header");
+function MenuBar() {
+  console.log("MenuBar");
   return (
     <div>
       <ul className="header">
@@ -174,6 +197,7 @@ function Header() {
         <li><NavLink exact activeClassName="active" to="/airports">Airports</NavLink></li>
         <li><NavLink exact activeClassName="active" to="/nodes">React</NavLink></li>
         <li><NavLink exact activeClassName="active" to="/api">API</NavLink></li>
+        <li><NavLink exact activeClassName="active" to="/flights">Flights</NavLink></li>
       </ul>
     </div>
   )
