@@ -30,7 +30,7 @@ function NewsFlightsRender({ airports, flightHomeCity, flightTime, flightDate })
 
 
 
-    if (flights.code >= 404) {
+    if (flights.length == 0) {
         return (
             <div>
                 <p>Server pending</p>
