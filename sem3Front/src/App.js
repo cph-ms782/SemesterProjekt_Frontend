@@ -1,19 +1,19 @@
 import React, { useState, useEffect } from "react";
-import {
-  HashRouter as Router,
-  NavLink
-} from "react-router-dom";
+import { HashRouter as Router, NavLink } from "react-router-dom";
 // import loginFacade from "./components/loginFacade";
 import URL from "./settings";
 import TeamCrest from "./components/TeamCrest";
 import News from "./components/News";
 import Search from "./components/Search";
 import UserInfo from "./components/UserInfo";
+import Leaderboard from "./components/Leaderboard";
 
 function App({ apiFacade }) {
   console.log("App");
   const savedChosenTeam = localStorage.getItem("chosenTeam");
-  const [chosenTeam, setChosenTeam] = useState(savedChosenTeam ? savedChosenTeam : "");
+  const [chosenTeam, setChosenTeam] = useState(
+    savedChosenTeam ? savedChosenTeam : ""
+  );
   const [teamName, setTeamName] = useState(chosenTeam ? chosenTeam : "");
   const [crestURL, setCrestURL] = useState("");
   const [teamID, setTeamID] = useState(0);
@@ -27,27 +27,27 @@ function App({ apiFacade }) {
   console.log("teamMatches", teamMatches);
   console.log("teamDates", teamDates);
 
-  const updateTeamName = (index) => {
+  const updateTeamName = index => {
     console.log("updateTeamName - index", index);
     setTeamName(index);
-  }
-  const updateCrestURL = (index) => {
+  };
+  const updateCrestURL = index => {
     console.log("updateCrestURL - index", index);
     setCrestURL(index);
-  }
-  const updateTeamID = (index) => {
+  };
+  const updateTeamID = index => {
     console.log("updateTeamID - index", index);
     setTeamID(index);
-  }
-  const updateTeamDates = (index) => {
+  };
+  const updateTeamDates = index => {
     console.log("updateTeamDates - index", index);
     setTeamDates(index);
-  }
-  const updateTeamMatches = (index) => {
+  };
+  const updateTeamMatches = index => {
     console.log("updateTeamMatches - index", index);
     setTeamMatches(index);
-  }
-  const updateChosenTeam = (index) => {
+  };
+  const updateChosenTeam = index => {
     console.log("updateChosenTeam - index", index);
     setChosenTeam(index);
   }
@@ -71,16 +71,20 @@ function App({ apiFacade }) {
     return res.json();
   }
 
-  useEffect(() => {
-    console.log("useEffect");
+  useEffect(
+    () => {
+      console.log("useEffect");
 
-    console.log("teams");
-    let urlTeam = URL + "/api/fb/teams";
-    console.log("App - useEffect - urlTeam", urlTeam);
-    fetch(urlTeam).then(handleHttpErrors).then(data => {
-      console.log("apiFacade - getDataAsync - data", data);
-      setTeams(data.sort((a, b) => a.name.localeCompare(b.name)));
-    }).catch(console.log.bind(console));
+      console.log("teams");
+      let urlTeam = URL + "/api/fb/teams";
+      console.log("App - useEffect - urlTeam", urlTeam);
+      fetch(urlTeam)
+        .then(handleHttpErrors)
+        .then(data => {
+          console.log("apiFacade - getDataAsync - data", data);
+          setTeams(data.sort((a, b) => a.name.localeCompare(b.name)));
+        })
+        .catch(console.log.bind(console));
 
     console.log("airports");
     let urlAir = URL + "/api/air/airports";
@@ -94,9 +98,8 @@ function App({ apiFacade }) {
   console.log("teamName", teamName);
   return (
     <div>
-      <Router >
+      <Router>
         <div>
-
           <div className="container">
             <button type="button" name="daynight" id="daynight">
               <i className="fa fa-sun-o" aria-hidden="true" id="sun"></i>
@@ -122,10 +125,7 @@ function App({ apiFacade }) {
           <div className="container">
             <div id="header">
               <div id="logo">
-                <img
-                  alt="icon"
-                  src={require('./images/BDlogo_150px.png')}
-                />
+                <img alt="icon" src={require("./images/BDlogo_150px.png")} />
               </div>
               <div id="banner">Biggus Tickets</div>
             </div>
@@ -139,7 +139,9 @@ function App({ apiFacade }) {
 
           <div className="container">
             <div id="cont-1">
-              <div id="team"><TeamCrest teamName={teamName} crestURL={crestURL} /></div>
+              <div id="team">
+                <TeamCrest teamName={teamName} crestURL={crestURL} />
+              </div>
               <div id="userinfo">
                 <UserInfo
                   teamName={teamName}
@@ -173,17 +175,14 @@ function App({ apiFacade }) {
               </div>
             </div>
             <div id="cont-3">
-              <div id="leaderboard">leaderboard</div>
+              <div id="leaderboard">
+                <Leaderboard teams={teams} />
+              </div>
             </div>
           </div>
-
         </div>
-
       </Router>
-
     </div>
-
-
   );
 }
 
@@ -200,8 +199,7 @@ function MenuBar() {
         <li><NavLink exact activeClassName="active" to="/flights">Flights</NavLink></li>
       </ul>
     </div>
-  )
+  );
 }
-
 
 export default App;
