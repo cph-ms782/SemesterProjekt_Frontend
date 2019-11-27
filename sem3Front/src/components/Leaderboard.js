@@ -59,7 +59,7 @@ function Leaderboard(props) {
           </thead>
           <tbody>
             {board.map((element, index) => (
-              <tr key={uuid()} style={{ 'color': (index === 0 || index === 16) && "red" }}>
+              <tr key={uuid()} style={{ 'color': ((index === 0 && "blue") || (index > 16 && "red")) }}>
                 <td>{element.position}</td>
                 <td>{element.tla}</td>
                 <td>{element.playedGames}</td>
