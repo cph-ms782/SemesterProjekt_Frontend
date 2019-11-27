@@ -30,25 +30,20 @@ function Leaderboard(props) {
 
   if (props.teams.length == 0) {
     return (
-    <p>Server pending</p>
+      <p>Server pending</p>
     )
   } else {
     let board = standings.map(standing => {
-      console.log("standing.teamID", standing.teamID);
       const teamWithSameID = props.teams.find(team => {
-        console.log("team.tla", team.tla);
-        console.log("team.teamID", team.teamID);
         return team.teamID == standing.teamID;
       });
-      console.log("teamWithSameID.tla", teamWithSameID);
       standing.tla = teamWithSameID.tla;
-      console.log("standing", standing);
       return standing;
     });
     console.log("board", board);
     return (
-      <table className="table">
-        <div>
+      <div style={{ textAlign: "center" }}>
+        <table className="table">
           <thead>
             <tr>
               <th>Pos.</th>
@@ -64,7 +59,7 @@ function Leaderboard(props) {
           </thead>
           <tbody>
             {board.map((element, index) => (
-              <tr key={uuid()}>
+              <tr key={uuid()} style={{ 'color': (index === 0 || index === 16) && "red" }}>
                 <td>{element.position}</td>
                 <td>{element.tla}</td>
                 <td>{element.playedGames}</td>
@@ -77,8 +72,8 @@ function Leaderboard(props) {
               </tr>
             ))}
           </tbody>
-        </div>
-      </table>
+        </table >
+      </div >
     );
   }
 }

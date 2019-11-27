@@ -100,7 +100,7 @@ function UserInfo({
                 }
                 <hr />
 
-                <b><p>Next Match Dates</p></b>
+                {teamName && <b><p>Next Match Dates</p></b>}
                 {
                     teamDates.slice(0, 3).map((team) => (
                         <div onClick={findFlights}>
@@ -115,7 +115,7 @@ function UserInfo({
                 }
                 <hr />
 
-                <b><p>Match Scores</p></b>
+                {teamName && <b><p>Match Scores</p></b>}
                 {
                     teamMatches.slice(-3).map((team) => (
                         <div>
