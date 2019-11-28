@@ -14,7 +14,9 @@ function UserInfo({
     flightTime,
     updateFlightTime,
     flightHomeCity,
-    updateFlightHomeCity
+    updateFlightHomeCity,
+    flightAwayCity,
+    updateFlightAwayCity
 }) {
     console.log(" TEAM MATCHES " + teamMatches);
     console.log("UserInfo");
@@ -40,9 +42,12 @@ function UserInfo({
         console.log("date", date);
         const hCity = flightData[1];
         console.log("hCity", hCity);
+        const aCity = flightData[2];
+        console.log("aCity", aCity);
         updateFlightTime(time);
         updateFlightDate(date);
         updateFlightHomeCity(hCity);
+        updateFlightAwayCity(aCity);
     }
 
     const willFollowTeam = (evt) => {

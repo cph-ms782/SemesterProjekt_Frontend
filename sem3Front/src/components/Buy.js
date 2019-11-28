@@ -7,7 +7,7 @@ function Buy(props) {
   const [buyImage, setBuyImage] = useState(false);
   // const buyButton = '../images/buy.png';
   const buyButtonGreyed = '../images/buy_background.png';
-  console.log("image-----------------------------", image);
+ // console.log("image-----------------------------", image);
   return (
     <div>
       {/* <img

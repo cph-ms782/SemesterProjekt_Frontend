@@ -23,6 +23,7 @@ function App({ apiFacade }) {
   const [flightDate, setFlightDate] = useState("12/02/2019");
   const [flightTime, setFlightTime] = useState("15:00");
   const [flightHomeCity, setFlightHomeCity] = useState("Norwich City FC");
+  const [flightAwayCity, setFlightAwayCity] = useState("Arsenal FC");
   const [teamMatches, setTeamMatches] = useState([]);
   const [teamDates, setTeamDates] = useState([]);
   console.log("teamMatches", teamMatches);
@@ -55,6 +56,10 @@ function App({ apiFacade }) {
   const updateFlightHomeCity = (index) => {
     console.log("updateFlightHomeCity - index", index);
     setFlightHomeCity(index);
+  }
+  const updateFlightAwayCity = (index) => {
+    console.log("updateFlightAwayCity - index", index);
+    setFlightAwayCity(index);
   }
   const updateFlightDate = (index) => {
     console.log("updateFlightDate - index", index);
@@ -157,6 +162,8 @@ function App({ apiFacade }) {
                   updateFlightTime={updateFlightTime}
                   flightHomeCity={flightHomeCity}
                   updateFlightHomeCity={updateFlightHomeCity}
+                  flightAwayCity={flightAwayCity}
+                  updateFlightAwayCity={updateFlightAwayCity}
                 /></div>
             </div>
             <div id="cont-2">
