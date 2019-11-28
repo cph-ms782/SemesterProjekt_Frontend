@@ -7,10 +7,10 @@ function Buy({ showBuyImage }) {
   console.log("showBuyImage", showBuyImage);
 
   return (
-    <div>
+    <div style={{ textAlign: "center" }}>
       <img
         src={showBuyImage ? require("../images/buy.png") : require("../images/buy_background.png")}
-        style={{ 'maxHeight': '100%' }}
+        style={{ 'width': "65%" }}
         alt="buybutton" />
     </div>
   )
