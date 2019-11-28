@@ -26,6 +26,7 @@ function App({ apiFacade }) {
   const [flightAwayCity, setFlightAwayCity] = useState("Arsenal FC");
   const [teamMatches, setTeamMatches] = useState([]);
   const [teamDates, setTeamDates] = useState([]);
+  const [showBuyImage, setShowBuyImage] = useState(false);
   console.log("teamMatches", teamMatches);
   console.log("teamDates", teamDates);
 
@@ -68,6 +69,10 @@ function App({ apiFacade }) {
   const updateFlightTime = (index) => {
     console.log("updateFlightTime - index", index);
     setFlightTime(index);
+  }
+  const updateShowBuyImage = (index) => {
+    console.log("updateShowBuyImage - index", index);
+    setShowBuyImage(index);
   }
 
   function handleHttpErrors(res) {
@@ -164,13 +169,14 @@ function App({ apiFacade }) {
                   updateFlightHomeCity={updateFlightHomeCity}
                   flightAwayCity={flightAwayCity}
                   updateFlightAwayCity={updateFlightAwayCity}
+                  updateShowBuyImage={updateShowBuyImage}
                 /></div>
             </div>
             <div id="cont-2">
               <div id="part-1">
                 <div id="map">map</div>
                 <div id="nextmatch">nextmatch</div>
-                <div id="buy"><Buy /></div>
+                <div id="buy"><Buy showBuyImage={showBuyImage} /></div>
               </div>
               <div id="news">
                 <News

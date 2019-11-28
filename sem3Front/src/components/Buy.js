@@ -2,18 +2,16 @@ import React, { useState, useEffect } from "react";
 import URL from "../settings";
 import uuid from "uuid/v1";
 
-function Buy(props) {
+function Buy({ showBuyImage }) {
   console.log("Buy");
-  const [buyImage, setBuyImage] = useState(false);
-  // const buyButton = '../images/buy.png';
-  const buyButtonGreyed = '../images/buy_background.png';
- // console.log("image-----------------------------", image);
+  console.log("showBuyImage", showBuyImage);
+
   return (
     <div>
-      {/* <img
-        {src = buyImage ? { require("../images/buy.png") } : { require("../images/buy_background.png") }}
-        style={{ 'maxHeight': '100' }}
-        alt="buybutton" /> */}
+      <img
+        src={showBuyImage ? require("../images/buy.png") : require("../images/buy_background.png")}
+        style={{ 'maxHeight': '100%' }}
+        alt="buybutton" />
     </div>
   )
 }

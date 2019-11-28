@@ -11,12 +11,13 @@ function UserInfo({
     updateChosenTeam,
     flightDate,
     updateFlightDate,
-    flightTime,
     updateFlightTime,
     flightHomeCity,
     updateFlightHomeCity,
     flightAwayCity,
     updateFlightAwayCity
+    updateFlightHomeCity,
+    updateShowBuyImage
 }) {
     console.log(" TEAM MATCHES " + teamMatches);
     console.log("UserInfo");
@@ -48,6 +49,7 @@ function UserInfo({
         updateFlightDate(date);
         updateFlightHomeCity(hCity);
         updateFlightAwayCity(aCity);
+        updateShowBuyImage(true);
     }
 
     const willFollowTeam = (evt) => {
