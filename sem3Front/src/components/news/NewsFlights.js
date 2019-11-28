@@ -8,10 +8,10 @@ function NewsFlights({ teams, airports, flightHomeCity, flightTime, flightDate }
         <div>
             <h2>Flights</h2>
             <div id="matchinfo">
-                <MatchInfo teams={teams} />
+                {/* <MatchInfo teams={teams} /> */}
             </div>
             <div id="flightinfo">
-                <NewsFlightsRender airports={airports} flightHomeCity={flightHomeCity} flightTime={flightTime} flightDate={flightDate} />
+                {/* <NewsFlightsRender airports={airports} flightHomeCity={flightHomeCity} flightTime={flightTime} flightDate={flightDate} /> */}
             </div>
         </div>
     )
