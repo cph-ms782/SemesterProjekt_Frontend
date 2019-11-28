@@ -183,6 +183,7 @@ function App({ apiFacade }) {
                   airports={airports}
                   teams={teams}
                   flightHomeCity={flightHomeCity}
+                  flightAwayCity={flightAwayCity}
                   flightTime={flightTime}
                   flightDate={flightDate}
                 />

@@ -15,8 +15,7 @@ function UserInfo({
     flightHomeCity,
     updateFlightHomeCity,
     flightAwayCity,
-    updateFlightAwayCity
-    updateFlightHomeCity,
+    updateFlightAwayCity,
     updateShowBuyImage
 }) {
     console.log(" TEAM MATCHES " + teamMatches);
