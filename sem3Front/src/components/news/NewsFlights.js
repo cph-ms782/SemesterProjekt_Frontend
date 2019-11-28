@@ -1,13 +1,18 @@
 import React, { } from "react";
 import NewsFlightsRender from "./NewsFlightsRender";
 
-function NewsFlights({ airports, flightHomeCity, flightTime, flightDate }) {
+function NewsFlights({ teams, airports, flightHomeCity, flightTime, flightDate }) {
     console.log("NewsFlights");
 
     return (
         <div>
             <h2>Flights</h2>
-            {<NewsFlightsRender airports={airports} flightHomeCity={flightHomeCity} flightTime={flightTime} flightDate={flightDate} />}
+            <div id="matchinfo">
+                <MatchInfo teams={teams} />
+            </div>
+            <div id="flightinfo">
+                <NewsFlightsRender airports={airports} flightHomeCity={flightHomeCity} flightTime={flightTime} flightDate={flightDate} />
+            </div>
         </div>
     )
 

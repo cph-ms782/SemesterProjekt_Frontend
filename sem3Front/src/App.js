@@ -7,6 +7,7 @@ import News from "./components/News";
 import Search from "./components/Search";
 import UserInfo from "./components/UserInfo";
 import Leaderboard from "./components/Leaderboard";
+import Buy from "./components/Buy";
 
 function App({ apiFacade }) {
   console.log("App");
@@ -86,14 +87,14 @@ function App({ apiFacade }) {
         })
         .catch(console.log.bind(console));
 
-    console.log("airports");
-    let urlAir = URL + "/api/air/airports";
-    console.log("App - useEffect - urlAir", urlAir);
-    fetch(urlAir).then(handleHttpErrors).then(data => {
-      console.log("apiFacade - getDataAsync - data", data);
-      setAirports(data.airports.sort((a, b) => a.localeCompare(b)));
-    }).catch(console.log.bind(console));
-  }, [], apiFacade);
+      console.log("airports");
+      let urlAir = URL + "/api/air/airports";
+      console.log("App - useEffect - urlAir", urlAir);
+      fetch(urlAir).then(handleHttpErrors).then(data => {
+        console.log("apiFacade - getDataAsync - data", data);
+        setAirports(data.airports.sort((a, b) => a.localeCompare(b)));
+      }).catch(console.log.bind(console));
+    }, [], apiFacade);
 
   console.log("teamName", teamName);
   return (
@@ -162,7 +163,7 @@ function App({ apiFacade }) {
               <div id="part-1">
                 <div id="map">map</div>
                 <div id="nextmatch">nextmatch</div>
-                <div id="buy">buy</div>
+                <div id="buy"><Buy /></div>
               </div>
               <div id="news">
                 <News
