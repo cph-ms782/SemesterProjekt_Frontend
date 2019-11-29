@@ -22,19 +22,20 @@ function MatchInfo({
       <h2>
         - Upcomming matches - <br></br>
       </h2>
-      <h4>
-        {teamDates.map(date => (
+      <h3>
+        Home Team --- Away Team <br></br>
+      </h3>
+      <h5>
+        {teamDates.splice(0,10).map(date => (
           <div>
-            <b>
               <p key={uuid()}>{date.utcDate}</p>
-            </b>
             <p key={uuid()}>
               {date.homeCity} - {date.awayCity}
             </p>
             <hr />
           </div>
         ))}
-      </h4>
+      </h5>
     </div>
   );
     // console.log("TEAMDATES ======= " + JSON.stringify(teamDates));
