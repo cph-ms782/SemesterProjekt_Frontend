@@ -9,6 +9,7 @@ import Search from "./components/Search";
 import UserInfo from "./components/UserInfo";
 import Leaderboard from "./components/Leaderboard";
 import Buy from "./components/Buy";
+import AllAboutTeam from "./components/news/AllAboutTeam";
 
 function App({ apiFacade }) {
   console.log("App");
@@ -29,9 +30,17 @@ function App({ apiFacade }) {
   const [teamDates, setTeamDates] = useState([]);
   const [showBuyImage, setShowBuyImage] = useState(false);
   const [ticketURL, setTicketURL] = useState();
+  const [teamPlayers, setTeamPlayers] = useState([]);
+
   console.log("teamMatches", teamMatches);
   console.log("teamDates", teamDates);
   console.log("dummyAir", dummyAir);
+  console.log("teamPlayers" + teamPlayers);
+
+  const updateTeamPlayers = index => {
+    console.log("updateTeamPlayers - index", index);
+    setTeamPlayers(index);
+  };
 
   const updateTeamName = index => {
     console.log("updateTeamName - index", index);
@@ -56,8 +65,8 @@ function App({ apiFacade }) {
   const updateChosenTeam = index => {
     console.log("updateChosenTeam - index", index);
     setChosenTeam(index);
-  }
-  const updateFlightHomeCity = (index) => {
+  };
+  const updateFlightHomeCity = index => {
     console.log("updateFlightHomeCity - index", index);
     setFlightHomeCity(index);
   }
@@ -68,8 +77,8 @@ function App({ apiFacade }) {
   const updateFlightDate = (index) => {
     console.log("updateFlightDate - index", index);
     setFlightDate(index);
-  }
-  const updateFlightTime = (index) => {
+  };
+  const updateFlightTime = index => {
     console.log("updateFlightTime - index", index);
     setFlightTime(index);
   }
@@ -149,7 +158,9 @@ function App({ apiFacade }) {
             </div>
           </div>
           <div className="container">
-            <div id="menubar"><MenuBar /></div>
+            <div id="menubar">
+              <MenuBar />
+            </div>
           </div>
           <div className="container">
             <div id="newsticker">newsticker</div>
@@ -213,12 +224,36 @@ function MenuBar() {
   return (
     <div>
       <ul className="header">
-        <li><NavLink exact activeClassName="active" to="/">Home</NavLink></li>
-        <li><NavLink exact activeClassName="active" to="/teams">Teams</NavLink></li>
-        <li><NavLink exact activeClassName="active" to="/airports">Airports</NavLink></li>
-        <li><NavLink exact activeClassName="active" to="/nodes">React</NavLink></li>
-        <li><NavLink exact activeClassName="active" to="/api">API</NavLink></li>
-        <li><NavLink exact activeClassName="active" to="/flights">Flights</NavLink></li>
+        <li>
+          <NavLink exact activeClassName="active" to="/">
+            Home
+          </NavLink>
+        </li>
+        <li>
+          <NavLink exact activeClassName="active" to="/teams">
+            Teams
+          </NavLink>
+        </li>
+        <li>
+          <NavLink exact activeClassName="active" to="/airports">
+            Airports
+          </NavLink>
+        </li>
+        <li>
+          <NavLink exact activeClassName="active" to="/nodes">
+            React
+          </NavLink>
+        </li>
+        <li>
+          <NavLink exact activeClassName="active" to="/api">
+            API
+          </NavLink>
+        </li>
+        <li>
+          <NavLink exact activeClassName="active" to="/flights">
+            Flights
+          </NavLink>
+        </li>
       </ul>
     </div>
   );
