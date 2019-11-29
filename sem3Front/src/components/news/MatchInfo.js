@@ -20,7 +20,7 @@ function MatchInfo({
       </h3>
       <br></br>
       <h2>
-        - Upcomming matches - <br></br>
+        - Upcoming matches - <br></br>
       </h2>
       <h3>
         Home Team --- Away Team <br></br>
