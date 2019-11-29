@@ -9,7 +9,6 @@ import Search from "./components/Search";
 import UserInfo from "./components/UserInfo";
 import Leaderboard from "./components/Leaderboard";
 import Buy from "./components/Buy";
-import AllAboutTeam from "./components/news/AllAboutTeam";
 
 function App({ apiFacade }) {
   console.log("App");
@@ -78,27 +77,27 @@ function App({ apiFacade }) {
   const updateFlightHomeCity = index => {
     console.log("updateFlightHomeCity - index", index);
     setFlightHomeCity(index);
-  }
-  const updateFlightAwayCity = (index) => {
+  };
+  const updateFlightAwayCity = index => {
     console.log("updateFlightAwayCity - index", index);
     setFlightAwayCity(index);
-  }
-  const updateFlightDate = (index) => {
+  };
+  const updateFlightDate = index => {
     console.log("updateFlightDate - index", index);
     setFlightDate(index);
   };
   const updateFlightTime = index => {
     console.log("updateFlightTime - index", index);
     setFlightTime(index);
-  }
-  const updateShowBuyImage = (index) => {
+  };
+  const updateShowBuyImage = index => {
     console.log("updateShowBuyImage - index", index);
     setShowBuyImage(index);
-  }
-  const updateTicketURL = (index) => {
+  };
+  const updateTicketURL = index => {
     console.log("updateTicketURL - index", index);
     setTicketURL(index);
-  }
+  };
 
   function handleHttpErrors(res) {
     if (!res.ok) {
@@ -125,11 +124,17 @@ function App({ apiFacade }) {
       console.log("airports");
       let urlAir = URL + "/api/air/airports";
       console.log("App - useEffect - urlAir", urlAir);
-      fetch(urlAir).then(handleHttpErrors).then(data => {
-        console.log("apiFacade - getDataAsync - data", data);
-        setAirports(data.airports.sort((a, b) => a.localeCompare(b)));
-      }).catch(console.log.bind(console));
-    }, [], apiFacade);
+      fetch(urlAir)
+        .then(handleHttpErrors)
+        .then(data => {
+          console.log("apiFacade - getDataAsync - data", data);
+          setAirports(data.airports.sort((a, b) => a.localeCompare(b)));
+        })
+        .catch(console.log.bind(console));
+    },
+    [],
+    apiFacade
+  );
 
   console.log("teamName", teamName);
   return (
@@ -194,13 +199,16 @@ function App({ apiFacade }) {
                   updateFlightTime={updateFlightTime}
                   updateFlightHomeCity={updateFlightHomeCity}
                   updateFlightAwayCity={updateFlightAwayCity}
-                /></div>
+                />
+              </div>
             </div>
             <div id="cont-2">
               <div id="part-1">
                 <div id="map">map</div>
                 <div id="nextmatch">nextmatch</div>
-                <div id="buy"><Buy showBuyImage={showBuyImage} ticketURL={ticketURL} /></div>
+                <div id="buy">
+                  <Buy showBuyImage={showBuyImage} ticketURL={ticketURL} />
+                </div>
               </div>
               <div id="news">
                 <News
@@ -215,6 +223,7 @@ function App({ apiFacade }) {
                   updateTicketURL={updateTicketURL}
                   updateShowBuyImage={updateShowBuyImage}
                   dummyAir={dummyAir}
+                  updateTeamPlayers={updateTeamPlayers} teamID={teamID}
                 />
               </div>
             </div>
