@@ -12,11 +12,8 @@ function UserInfo({
     flightDate,
     updateFlightDate,
     updateFlightTime,
-    flightHomeCity,
     updateFlightHomeCity,
-    flightAwayCity,
     updateFlightAwayCity,
-    updateShowBuyImage
 }) {
     console.log(" TEAM MATCHES " + teamMatches);
     console.log("UserInfo");
@@ -48,7 +45,6 @@ function UserInfo({
         updateFlightDate(date);
         updateFlightHomeCity(hCity);
         updateFlightAwayCity(aCity);
-        updateShowBuyImage(true);
     }
 
     const willFollowTeam = (evt) => {
@@ -110,9 +106,9 @@ function UserInfo({
                 {
                     teamDates.slice(0, 3).map((team) => (
                         <div onClick={findFlights}>
-                            <Link exact to="/flights" style={{ 'text-decoration': 'none', 'color': 'black' }}>
-                                <b><p id={team.utcDate} key={uuid()}>{team.utcDate}</p></b>
-                                <p id={team.homeCity} key={uuid()}>{team.homeCity}</p>
+                            <Link exact to="/flights" style={{ 'textDecoration': 'none', 'color': 'black' }}>
+                                <b><p key={uuid()}>{team.utcDate}</p></b>
+                                <p key={uuid()}>{team.homeCity}</p>
                                 <p key={uuid()}>{team.awayCity}</p>
                                 <hr />
                             </Link>

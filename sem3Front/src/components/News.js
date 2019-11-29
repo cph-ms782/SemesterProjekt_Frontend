@@ -13,7 +13,7 @@ import NewsAirports from "./news/NewsAirports";
 import NewsNodes from "./news/NewsNodes";
 import NewsFlights from "./news/NewsFlights";
 
-function News({ airports, teams, flightHomeCity, flightTime, flightDate }) {
+function News({ airports, teams, flightHomeCity, flightTime, flightDate, updateTicketURL, updateShowBuyImage, dummyAir }) {
   console.log("News");
   return (
     <div>
@@ -23,7 +23,16 @@ function News({ airports, teams, flightHomeCity, flightTime, flightDate }) {
           <Route exact path="/airports"><NewsAirports airports={airports} /></Route>
           <Route exact path="/teams"><NewsTeams teams={teams} /></Route>
           <Route exact path="/nodes"><NewsNodes /></Route>
-          <Route exact path="/flights"><NewsFlights teams={teams} airports={airports} flightHomeCity={flightHomeCity} flightTime={flightTime} flightDate={flightDate} /></Route>
+          <Route exact path="/flights"><NewsFlights
+            teams={teams}
+            airports={airports}
+            flightHomeCity={flightHomeCity}
+            flightTime={flightTime}
+            flightDate={flightDate}
+            updateTicketURL={updateTicketURL}
+            updateShowBuyImage={updateShowBuyImage}
+            dummyAir={dummyAir}
+          /></Route>
           <Route exact path="/"><NewsFileForTesting teams={teams} /></Route>
           <Route exact path="/all"><AllAboutTeam /></Route>
           <Route ><NoMatch /></Route>

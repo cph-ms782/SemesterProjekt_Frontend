@@ -1,34 +1,41 @@
 import React, { useState, useEffect } from "react";
 import uuid from "uuid/v1";
 
-function NewsFlightsRender({ airports, flightHomeCity, flightTime, flightDate }) {
+function NewsFlightsRender({ airports, flightHomeCity, flightTime, flightDate, updateTicketURL, updateShowBuyImage, dummyAir }) {
     console.log("NewsFlightsRender");
     console.log("NewsFlightsRender flightHomeCity", flightHomeCity);
     console.log("NewsFlightsRender flightTime", flightTime);
     console.log("NewsFlightsRender flightDate", flightDate);
     console.log("NewsFlightsRender airports", airports);
+    console.log("NewsFlightsRender dummyAir", dummyAir);
     const [numberOfTickets, SetNumberOfTickets] = useState(1);
-    const [flights, setFlights] = useState([]);
+    const [flights, setFlights] = useState(dummyAir);
     const [flightDestination, setFlightDestination] = useState("LHR");
     // const arrival = "2019-12-02T15:35:00";
     const latestFlightArrival = reverseDateOrder(flightDate) + "T" + removeHours(flightTime, 5) + ":00";
     console.log("NewsFlightsRender latestFlightArrival", latestFlightArrival);
 
-    useEffect(() => {
-        console.log("NewsFlightsRender useEffect");
-        console.log("flightDate", flightDate);
-        console.log("flightDestination", flightDestination);
-        console.log("numberOfTickets", numberOfTickets);
-        let urlFlight = "https://www.leafmight.dk/security/api/info/flightdata2/" + reverseDateOrder(flightDate) + "/economy/" + flightDestination + "-sky/" + numberOfTickets;
-        console.log("NewsFlights - useEffect - flights-urlFlight", urlFlight);
-        fetch(urlFlight).then(handleHttpErrors).then(data => {
-            console.log("NewsFlights - useEffect - flights-data", data);
-            setFlights(data); //.sort((a, b) => a.name.localeCompare(b.name)));
-        }).catch(console.log.bind(console));
+    // useEffect(() => {
+    //     console.log("NewsFlightsRender useEffect");
+    //     console.log("flightDate", flightDate);
+    //     console.log("flightDestination", flightDestination);
+    //     console.log("numberOfTickets", numberOfTickets);
+    //     let urlFlight = "https://www.leafmight.dk/security/api/info/flightdata2/" + reverseDateOrder(flightDate) + "/economy/" + flightDestination + "-sky/" + numberOfTickets;
+    //     console.log("NewsFlights - useEffect - flights-urlFlight", urlFlight);
+    //     fetch(urlFlight).then(handleHttpErrors).then(data => {
+    //         console.log("NewsFlights - useEffect - flights-data", data);
+    //         setFlights(data); //.sort((a, b) => a.name.localeCompare(b.name)));
+    //     }).catch(console.log.bind(console));
 
-    }, [], flightDate, flightDestination, numberOfTickets);
+    // }, [], flightDate, flightDestination, numberOfTickets);
 
-
+    const updateURL = (evt) => {
+        console.log("NewsFlightsRender updateURL");
+        const id = evt.target.parentElement.lastChild.children[0]; // id should contains tickets URL - the deeplink
+        console.log("NewsFlightsRender evt.target", id);
+        updateShowBuyImage(true);
+        // updateTicketURL(id);
+    };
 
     if (flights.length == 0) {
         return (
@@ -43,7 +50,8 @@ function NewsFlightsRender({ airports, flightHomeCity, flightTime, flightDate })
         console.log("flightsBeforeTime", flightsBeforeTime);
         console.log("flights.code", flights.code);
         return (
-            <div>
+            <div onClick={updateURL} className="centring">
+                <h2>Flights</h2>
                 <br />
                 <table>
                     <thead>
@@ -55,12 +63,13 @@ function NewsFlightsRender({ airports, flightHomeCity, flightTime, flightDate })
                         </tr>
                     </thead>
                     <tbody>
-                        {flights.map((flight) => (
+                        {flights.slice(-17).map((flight) => (
                             <tr key={uuid()}>
                                 <td>{flight.arrival}</td>
                                 <td>{flight.endDestination}</td>
                                 <td>{flight.agentsName}</td>
                                 <td>kr. {flight.price}</td>
+                                <td><a src={flight.deeplinkUrl}></a></td>
                             </tr>
                         ))}
                     </tbody>

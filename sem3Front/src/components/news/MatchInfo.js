@@ -1,7 +1,7 @@
 import React from "react";
 
 function MatchInfo({ teams, flightHomeCity }) {
-console.log("teams data =========" + teams);
+    console.log("teams data =========" + teams);
 
     return (
         <div>

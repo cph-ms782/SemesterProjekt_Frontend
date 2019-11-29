@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { HashRouter as Router, NavLink } from "react-router-dom";
 // import loginFacade from "./components/loginFacade";
 import URL from "./settings";
+import dummyAir from "./dummyAir.js";
 import TeamCrest from "./components/TeamCrest";
 import News from "./components/News";
 import Search from "./components/Search";
@@ -20,15 +21,17 @@ function App({ apiFacade }) {
   const [teamID, setTeamID] = useState(0);
   const [teams, setTeams] = useState([]);
   const [airports, setAirports] = useState([]);
-  const [flightDate, setFlightDate] = useState("12/02/2019");
-  const [flightTime, setFlightTime] = useState("15:00");
-  const [flightHomeCity, setFlightHomeCity] = useState("Norwich City FC");
-  const [flightAwayCity, setFlightAwayCity] = useState("Arsenal FC");
+  const [flightDate, setFlightDate] = useState("");               //useState("12/02/2019");
+  const [flightTime, setFlightTime] = useState("");               //useState("15:00");
+  const [flightHomeCity, setFlightHomeCity] = useState("");       //useState("Norwich City FC");
+  const [flightAwayCity, setFlightAwayCity] = useState("");       //useState("Arsenal FC");
   const [teamMatches, setTeamMatches] = useState([]);
   const [teamDates, setTeamDates] = useState([]);
   const [showBuyImage, setShowBuyImage] = useState(false);
+  const [ticketURL, setTicketURL] = useState();
   console.log("teamMatches", teamMatches);
   console.log("teamDates", teamDates);
+  console.log("dummyAir", dummyAir);
 
   const updateTeamName = index => {
     console.log("updateTeamName - index", index);
@@ -73,6 +76,10 @@ function App({ apiFacade }) {
   const updateShowBuyImage = (index) => {
     console.log("updateShowBuyImage - index", index);
     setShowBuyImage(index);
+  }
+  const updateTicketURL = (index) => {
+    console.log("updateTicketURL - index", index);
+    setTicketURL(index);
   }
 
   function handleHttpErrors(res) {
@@ -165,18 +172,15 @@ function App({ apiFacade }) {
                   updateFlightDate={updateFlightDate}
                   flightTime={flightTime}
                   updateFlightTime={updateFlightTime}
-                  flightHomeCity={flightHomeCity}
                   updateFlightHomeCity={updateFlightHomeCity}
-                  flightAwayCity={flightAwayCity}
                   updateFlightAwayCity={updateFlightAwayCity}
-                  updateShowBuyImage={updateShowBuyImage}
                 /></div>
             </div>
             <div id="cont-2">
               <div id="part-1">
                 <div id="map">map</div>
                 <div id="nextmatch">nextmatch</div>
-                <div id="buy"><Buy showBuyImage={showBuyImage} /></div>
+                <div id="buy"><Buy showBuyImage={showBuyImage} ticketURL={ticketURL} /></div>
               </div>
               <div id="news">
                 <News
@@ -186,6 +190,9 @@ function App({ apiFacade }) {
                   flightAwayCity={flightAwayCity}
                   flightTime={flightTime}
                   flightDate={flightDate}
+                  updateTicketURL={updateTicketURL}
+                  updateShowBuyImage={updateShowBuyImage}
+                  dummyAir={dummyAir}
                 />
               </div>
             </div>

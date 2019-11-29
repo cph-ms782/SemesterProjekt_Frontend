@@ -20,6 +20,7 @@ const Search = ({
   const updateTeamData = (teamID) => {
     console.log("updateTeamData");
     console.log("teamID", teamID);
+
     const url = URL + "/api/fb/allteammatchdates/" + teamID;
     console.log("updateTeamData - dates-url", url);
     fetch(url)
@@ -29,6 +30,7 @@ const Search = ({
         updateTeamDates(data);
       })
       .catch(err => { throw err });
+
     const url2 = URL + "/api/fb/allteammatchresults/" + teamID;
     console.log("updateTeamData - result-url2", url2);
     fetch(url2)

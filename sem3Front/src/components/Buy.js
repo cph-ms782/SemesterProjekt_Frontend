@@ -2,9 +2,10 @@ import React, { useState, useEffect } from "react";
 import URL from "../settings";
 import uuid from "uuid/v1";
 
-function Buy({ showBuyImage }) {
+function Buy({ showBuyImage, ticketURL }) {
   console.log("Buy");
-  console.log("showBuyImage", showBuyImage);
+  console.log("Buy showBuyImage", showBuyImage);
+  console.log("Buy ticketURL", ticketURL);
 
   return (
     <div style={{ textAlign: "center" }}>
