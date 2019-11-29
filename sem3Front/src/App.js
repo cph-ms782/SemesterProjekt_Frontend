@@ -223,7 +223,8 @@ function App({ apiFacade }) {
                   updateTicketURL={updateTicketURL}
                   updateShowBuyImage={updateShowBuyImage}
                   dummyAir={dummyAir}
-                  updateTeamPlayers={updateTeamPlayers} teamID={teamID}
+                  updateTeamPlayers={updateTeamPlayers} 
+                  teamID={teamID}
                 />
               </div>
             </div>

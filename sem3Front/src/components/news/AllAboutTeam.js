@@ -12,18 +12,26 @@ function AllAboutTeam(props) {
     console.log("AllAboutTeam - useEffect");
 
     console.log("AllAboutTeam - teams");
+    if (
+      typeof props.teamID.teamID !== "undefined" ||
+      props.teamID.teamID != null
+    ) {
+      console.log(props.teamID.teamID)
+      console.log("Hvis du er her, så er props.teamID.teamID IKKE undefined");
+      let urlPlayers = URL + "/api/fb/teammembers/" + props.teamID.teamID;
+      console.log("AllAboutTeam - useEffect - urlPlayers", urlPlayers);
 
-    let urlPlayers = URL + "/api/fb/teammembers/" + props.teamID.teamID;
-    console.log("AllAboutTeam - useEffect - urlPlayers", urlPlayers);
-
-    fetch(urlPlayers)
-      .then(handleHttpErrors)
-      .then(data => {
-        console.log("AllAboutTeam - fetch - data", data);
-        console.log(JSON.stringify(data))
-        setPlayers(data);
-      })
-      .catch(console.log.bind(console));
+      fetch(urlPlayers)
+        .then(handleHttpErrors)
+        .then(data => {
+          console.log("AllAboutTeam - fetch - data", data);
+          console.log(JSON.stringify(data));
+          setPlayers(data);
+        })
+        .catch(console.log.bind(console));
+    } else {
+      console.log("Undefined or Null");
+    }
   }, [props.teamID.teamID]);
   console.log("TeamID AllAboutTeam " + JSON.stringify(props.teamID.teamID));
   return (
