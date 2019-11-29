@@ -12,14 +12,15 @@ function AllAboutTeam(props) {
     console.log("AllAboutTeam - useEffect");
 
     console.log("AllAboutTeam - teams");
-    let urlPlayers = URL + "/api/fb/teammembers/" + props.teamID.teamID;
 
+    let urlPlayers = URL + "/api/fb/teammembers/" + props.teamID.teamID;
     console.log("AllAboutTeam - useEffect - urlPlayers", urlPlayers);
 
     fetch(urlPlayers)
       .then(handleHttpErrors)
       .then(data => {
         console.log("AllAboutTeam - fetch - data", data);
+        console.log(JSON.stringify(data))
         setPlayers(data);
       })
       .catch(console.log.bind(console));

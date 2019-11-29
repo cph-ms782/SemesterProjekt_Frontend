@@ -2,7 +2,8 @@ import React, { } from "react";
 import {
   HashRouter as Router,
   Route,
-  Switch
+  Switch,
+  NavLink
 } from "react-router-dom";
 import AllAboutTeam from "./news/AllAboutTeam";
 import NewsFileForTesting from "./news/NewsFileForTesting";
@@ -18,6 +19,15 @@ function News({ airports, teams, flightHomeCity, flightAwayCity, teamMatches,tea
   return (
     <div>
       <Router >
+    <div>
+        <ul className="header">
+          <li>
+          <NavLink exact activeClassName="active" to="/all">
+            Players
+          </NavLink>
+          </li>
+        </ul>
+    </div>
         <Switch>
           <Route exact path="/api"><NewsApi /></Route>
           <Route exact path="/airports"><NewsAirports airports={airports} /></Route>
@@ -40,6 +50,7 @@ function News({ airports, teams, flightHomeCity, flightAwayCity, teamMatches,tea
           <Route exact path="/"><NewsFileForTesting teams={teams} /></Route>
           <Route ><NoMatch /></Route>
         </Switch>
+      
       </Router>
     </div>
   );
