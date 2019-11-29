@@ -15,8 +15,8 @@ function UserInfo({
     updateFlightHomeCity,
     updateFlightAwayCity,
 }) {
-    console.log(" TEAM MATCHES " + teamMatches);
     console.log("UserInfo");
+    console.log("UserInfo TEAM MATCHES " + teamMatches);
     console.log("UserInfo teamName.teamName", teamName.teamName);
     // console.log("UserInfo teamDates", teamDates);
     // console.log("UserInfo teamMatches", teamMatches);
@@ -57,21 +57,23 @@ function UserInfo({
     }
 
     const willFollowTeam = (evt) => {
-        console.log("willFollowTeam");
-        console.log("teamName", teamName.teamName);
+        console.log("UserInfo willFollowTeam");
+        console.log("UserInfo teamName", teamName.teamName);
         const target = evt.target.checked;
-        console.log("target", target);
+        console.log("UserInfo target", target);
         if (target) {
             localStorage.setItem("chosenTeam", teamName.teamName);
             localStorage.setItem("chosenTeamCrestUrl", crestURL.crestURL);
+            // localStorage.setItem("chosenTeamMatches", teamMatches);
+            // localStorage.setItem("chosenTeamDates", teamDates);
             updateChosenTeam(teamName.teamName);
         } else {
             localStorage.clear();
             updateChosenTeam("");
         }
     };
-    console.log("teamDates.code", teamDates.code);
-    console.log("teamMatches.code", teamMatches.code);
+    console.log("UserInfo teamDates.code", teamDates.code);
+    console.log("UserInfo teamMatches.code", teamMatches.code);
     if (teamDates.code === 500 || teamMatches.code === 500) {
         return (
             <div>

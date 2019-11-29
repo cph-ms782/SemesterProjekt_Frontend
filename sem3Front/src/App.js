@@ -17,8 +17,11 @@ function App({ apiFacade }) {
   const [chosenTeam, setChosenTeam] = useState(
     savedChosenTeam ? savedChosenTeam : ""
   );
+
   const [teamName, setTeamName] = useState(chosenTeam ? chosenTeam : "");
-  const [crestURL, setCrestURL] = useState("");
+
+  const savedCrestURL = localStorage.getItem("chosenTeamCrestUrl");
+  const [crestURL, setCrestURL] = useState(savedCrestURL ? savedCrestURL : "");
   const [teamID, setTeamID] = useState(0);
   const [teams, setTeams] = useState([]);
   const [airports, setAirports] = useState([]);
@@ -26,7 +29,13 @@ function App({ apiFacade }) {
   const [flightTime, setFlightTime] = useState("");               //useState("15:00");
   const [flightHomeCity, setFlightHomeCity] = useState("");       //useState("Norwich City FC");
   const [flightAwayCity, setFlightAwayCity] = useState("");       //useState("Arsenal FC");
+
+  // const savedTeamMatches = localStorage.getItem("chosenTeamMatches");
+  // const [teamMatches, setTeamMatches] = useState(savedTeamMatches ? savedTeamMatches : []);
   const [teamMatches, setTeamMatches] = useState([]);
+
+  // const savedTeamDates = localStorage.getItem("chosenTeamDates");
+  // const [teamDates, setTeamDates] = useState(savedTeamDates ? savedTeamDates : []);
   const [teamDates, setTeamDates] = useState([]);
   const [showBuyImage, setShowBuyImage] = useState(false);
   const [ticketURL, setTicketURL] = useState();
