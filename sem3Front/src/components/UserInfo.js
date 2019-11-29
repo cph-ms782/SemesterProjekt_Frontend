@@ -1,4 +1,4 @@
-import React, { } from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import uuid from "uuid/v1";
 
@@ -22,6 +22,15 @@ function UserInfo({
     console.log("teamMatches", teamMatches);
     console.log("chosenTeam", chosenTeam);
     console.log("flightDate", flightDate);
+
+    //reset flight data if this is second team selected
+    useEffect(() => {
+        console.log("UserInfo useEffect");
+        updateFlightTime("");
+        updateFlightDate("");
+        updateFlightHomeCity("");
+        updateFlightAwayCity("");
+    }, []);
 
     const findFlights = (evt) => {
         console.log("findFlights");

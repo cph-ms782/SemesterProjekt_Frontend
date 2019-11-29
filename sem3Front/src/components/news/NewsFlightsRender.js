@@ -29,6 +29,14 @@ function NewsFlightsRender({ airports, flightHomeCity, flightTime, flightDate, u
     //     }).catch(console.log.bind(console));
 
     // }, [], flightDate, flightDestination, numberOfTickets);
+    useEffect(() => {
+        console.log("NewsFlightsRender useEffect");
+        console.log("NewsFlightsRender useEffect flightTime", flightTime);
+        console.log("NewsFlightsRender useEffect flightDate", flightDate);
+        console.log("NewsFlightsRender useEffect flightHomeCity", flightHomeCity);
+        updateShowBuyImage(false);
+        updateTicketURL("");
+    }, flightTime, flightDate, flightHomeCity);
 
     const updateURL = (evt) => {
         console.log("NewsFlightsRender updateURL");
@@ -44,6 +52,20 @@ function NewsFlightsRender({ airports, flightHomeCity, flightTime, flightDate, u
             newPrice = "" + newPrice + ".00";
         }
         return newPrice;
+    }
+
+    const formatDate = fullDate => {
+        //2019-11-30T10:25:00
+        let newFullDate = fullDate.split("T");
+        const date = newFullDate[0].split("-");
+        const time = newFullDate[1].split(":");
+        return date[2] + "/" + date[1] + "/" + date[0] + " - kl." + time[0] + ":" + time[1];
+    }
+
+    const formatDestination = dest => {
+        //LHR-sky
+        let newDest = dest.split("-sky");
+        return newDest[0];
     }
 
     if (flights.length == 0) {
@@ -76,8 +98,8 @@ function NewsFlightsRender({ airports, flightHomeCity, flightTime, flightDate, u
                     <tbody>
                         {flightsBeforeTime.slice(-17).map((flight) => (
                             <tr key={uuid()}>
-                                <td>{flight.arrival}</td>
-                                <td>{flight.endDestination}</td>
+                                <td>{formatDate(flight.arrival)}</td>
+                                <td>{formatDestination(flight.endDestination)}</td>
                                 <td>{flight.agentsName}</td>
                                 <td>kr. {formatPrice(flight.price)}</td>
                                 <td style={{ 'display': 'none' }}>{flight.deeplinkUrl}</td>
