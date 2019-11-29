@@ -265,9 +265,9 @@ input[type="checkbox"] {
   /* background: #FF00FF; */
   background: rgb(247, 245, 243);
   display: grid;
-  justify-items: center;
-  align-items: baseline;
-  padding: 15px;
+  /* justify-items: center; */
+  /* align-items: baseline; */
+  padding: 5px;
   font-size: 0.8em;
   min-height: calc(100vh - 515px);
   box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.5);
@@ -278,7 +278,7 @@ input[type="checkbox"] {
 }
 
 #cont-3 {
-  background: rgb(241, 236, 237);
+  /* background: rgb(241, 236, 237); */
   background: rgb(247, 245, 243);
   display: grid;
   justify-items: left;
@@ -300,6 +300,7 @@ input[type="checkbox"] {
   margin-right: 105px;
   text-align: center;
 }
-#futureMatches{
+
+#futureMatches {
   text-align: center;
 }

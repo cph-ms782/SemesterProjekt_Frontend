@@ -26,3 +26,41 @@ ul.header li a:hover:not(.active) {
 .active {
   background-color: #4caf50;
 }
+
+.newsContainer {
+  /* width: 80%; */
+  /* height: 200px; */
+  /* background: aqua; */
+  /* margin: auto; */
+  /* padding: 10px; */
+}
+
+.newsHeader {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  float: left;
+}
+
+.newsHeader li {
+  float: left;
+}
+
+.newsHeader li a {
+  display: block;
+  color: white;
+  background-color: #333;
+  text-align: center;
+  padding: 5px 7px;
+  text-decoration: none;
+  font-size: calc(8px + 1vmin);
+}
+
+.newsHeader li a:hover:not(.active) {
+  background-color: #111;
+}
+
+.newsContent {
+  position: relative;
+}
