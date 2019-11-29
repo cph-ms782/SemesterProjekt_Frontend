@@ -182,6 +182,8 @@ function App({ apiFacade }) {
                 <News
                   airports={airports}
                   teams={teams}
+                  teamDates={teamDates}
+                  teamMatches={teamMatches}
                   flightHomeCity={flightHomeCity}
                   flightAwayCity={flightAwayCity}
                   flightTime={flightTime}
