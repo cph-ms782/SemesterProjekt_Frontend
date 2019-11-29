@@ -1,4 +1,4 @@
-import React, { } from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import uuid from "uuid/v1";
 
@@ -12,19 +12,25 @@ function UserInfo({
     flightDate,
     updateFlightDate,
     updateFlightTime,
-    flightHomeCity,
     updateFlightHomeCity,
-    flightAwayCity,
     updateFlightAwayCity,
-    updateShowBuyImage
 }) {
     console.log(" TEAM MATCHES " + teamMatches);
     console.log("UserInfo");
-    console.log("teamName", teamName.teamName);
-    console.log("teamDates", teamDates);
-    console.log("teamMatches", teamMatches);
-    console.log("chosenTeam", chosenTeam);
-    console.log("flightDate", flightDate);
+    console.log("UserInfo teamName.teamName", teamName.teamName);
+    // console.log("UserInfo teamDates", teamDates);
+    // console.log("UserInfo teamMatches", teamMatches);
+    // console.log("UserInfo chosenTeam", chosenTeam);
+    // console.log("UserInfo flightDate", flightDate);
+
+    //reset flight data if this is second team selected
+    useEffect(() => {
+        console.log("UserInfo useEffect");
+        updateFlightTime("");
+        updateFlightDate("");
+        updateFlightHomeCity("");
+        updateFlightAwayCity("");
+    }, []);
 
     const findFlights = (evt) => {
         console.log("findFlights");
@@ -48,7 +54,6 @@ function UserInfo({
         updateFlightDate(date);
         updateFlightHomeCity(hCity);
         updateFlightAwayCity(aCity);
-        updateShowBuyImage(true);
     }
 
     const willFollowTeam = (evt) => {
@@ -110,9 +115,9 @@ function UserInfo({
                 {
                     teamDates.slice(0, 3).map((team) => (
                         <div onClick={findFlights}>
-                            <Link exact to="/flights" style={{ 'text-decoration': 'none', 'color': 'black' }}>
-                                <b><p id={team.utcDate} key={uuid()}>{team.utcDate}</p></b>
-                                <p id={team.homeCity} key={uuid()}>{team.homeCity}</p>
+                            <Link to="/flights" style={{ 'textDecoration': 'none', 'color': 'black' }}>
+                                <b><p key={uuid()}>{team.utcDate}</p></b>
+                                <p key={uuid()}>{team.homeCity}</p>
                                 <p key={uuid()}>{team.awayCity}</p>
                                 <hr />
                             </Link>

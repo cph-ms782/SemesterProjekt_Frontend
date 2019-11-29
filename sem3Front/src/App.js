@@ -2,12 +2,14 @@ import React, { useState, useEffect } from "react";
 import { HashRouter as Router, NavLink } from "react-router-dom";
 // import loginFacade from "./components/loginFacade";
 import URL from "./settings";
+import dummyAir from "./dummyAir.js";
 import TeamCrest from "./components/TeamCrest";
 import News from "./components/News";
 import Search from "./components/Search";
 import UserInfo from "./components/UserInfo";
 import Leaderboard from "./components/Leaderboard";
 import Buy from "./components/Buy";
+import AllAboutTeam from "./components/news/AllAboutTeam";
 
 function App({ apiFacade }) {
   console.log("App");
@@ -20,15 +22,25 @@ function App({ apiFacade }) {
   const [teamID, setTeamID] = useState(0);
   const [teams, setTeams] = useState([]);
   const [airports, setAirports] = useState([]);
-  const [flightDate, setFlightDate] = useState("12/02/2019");
-  const [flightTime, setFlightTime] = useState("15:00");
-  const [flightHomeCity, setFlightHomeCity] = useState("Norwich City FC");
-  const [flightAwayCity, setFlightAwayCity] = useState("Arsenal FC");
+  const [flightDate, setFlightDate] = useState("");               //useState("12/02/2019");
+  const [flightTime, setFlightTime] = useState("");               //useState("15:00");
+  const [flightHomeCity, setFlightHomeCity] = useState("");       //useState("Norwich City FC");
+  const [flightAwayCity, setFlightAwayCity] = useState("");       //useState("Arsenal FC");
   const [teamMatches, setTeamMatches] = useState([]);
   const [teamDates, setTeamDates] = useState([]);
   const [showBuyImage, setShowBuyImage] = useState(false);
+  const [ticketURL, setTicketURL] = useState();
+  const [teamPlayers, setTeamPlayers] = useState([]);
+
   console.log("teamMatches", teamMatches);
   console.log("teamDates", teamDates);
+  console.log("dummyAir", dummyAir);
+  console.log("teamPlayers" + teamPlayers);
+
+  const updateTeamPlayers = index => {
+    console.log("updateTeamPlayers - index", index);
+    setTeamPlayers(index);
+  };
 
   const updateTeamName = index => {
     console.log("updateTeamName - index", index);
@@ -53,8 +65,8 @@ function App({ apiFacade }) {
   const updateChosenTeam = index => {
     console.log("updateChosenTeam - index", index);
     setChosenTeam(index);
-  }
-  const updateFlightHomeCity = (index) => {
+  };
+  const updateFlightHomeCity = index => {
     console.log("updateFlightHomeCity - index", index);
     setFlightHomeCity(index);
   }
@@ -65,14 +77,18 @@ function App({ apiFacade }) {
   const updateFlightDate = (index) => {
     console.log("updateFlightDate - index", index);
     setFlightDate(index);
-  }
-  const updateFlightTime = (index) => {
+  };
+  const updateFlightTime = index => {
     console.log("updateFlightTime - index", index);
     setFlightTime(index);
   }
   const updateShowBuyImage = (index) => {
     console.log("updateShowBuyImage - index", index);
     setShowBuyImage(index);
+  }
+  const updateTicketURL = (index) => {
+    console.log("updateTicketURL - index", index);
+    setTicketURL(index);
   }
 
   function handleHttpErrors(res) {
@@ -142,7 +158,9 @@ function App({ apiFacade }) {
             </div>
           </div>
           <div className="container">
-            <div id="menubar"><MenuBar /></div>
+            <div id="menubar">
+              <MenuBar />
+            </div>
           </div>
           <div className="container">
             <div id="newsticker">newsticker</div>
@@ -165,18 +183,15 @@ function App({ apiFacade }) {
                   updateFlightDate={updateFlightDate}
                   flightTime={flightTime}
                   updateFlightTime={updateFlightTime}
-                  flightHomeCity={flightHomeCity}
                   updateFlightHomeCity={updateFlightHomeCity}
-                  flightAwayCity={flightAwayCity}
                   updateFlightAwayCity={updateFlightAwayCity}
-                  updateShowBuyImage={updateShowBuyImage}
                 /></div>
             </div>
             <div id="cont-2">
               <div id="part-1">
                 <div id="map">map</div>
                 <div id="nextmatch">nextmatch</div>
-                <div id="buy"><Buy showBuyImage={showBuyImage} /></div>
+                <div id="buy"><Buy showBuyImage={showBuyImage} ticketURL={ticketURL} /></div>
               </div>
               <div id="news">
                 <News
@@ -188,6 +203,9 @@ function App({ apiFacade }) {
                   flightAwayCity={flightAwayCity}
                   flightTime={flightTime}
                   flightDate={flightDate}
+                  updateTicketURL={updateTicketURL}
+                  updateShowBuyImage={updateShowBuyImage}
+                  dummyAir={dummyAir}
                 />
               </div>
             </div>
@@ -208,12 +226,36 @@ function MenuBar() {
   return (
     <div>
       <ul className="header">
-        <li><NavLink exact activeClassName="active" to="/">Home</NavLink></li>
-        <li><NavLink exact activeClassName="active" to="/teams">Teams</NavLink></li>
-        <li><NavLink exact activeClassName="active" to="/airports">Airports</NavLink></li>
-        <li><NavLink exact activeClassName="active" to="/nodes">React</NavLink></li>
-        <li><NavLink exact activeClassName="active" to="/api">API</NavLink></li>
-        <li><NavLink exact activeClassName="active" to="/flights">Flights</NavLink></li>
+        <li>
+          <NavLink exact activeClassName="active" to="/">
+            Home
+          </NavLink>
+        </li>
+        <li>
+          <NavLink exact activeClassName="active" to="/teams">
+            Teams
+          </NavLink>
+        </li>
+        <li>
+          <NavLink exact activeClassName="active" to="/airports">
+            Airports
+          </NavLink>
+        </li>
+        <li>
+          <NavLink exact activeClassName="active" to="/nodes">
+            React
+          </NavLink>
+        </li>
+        <li>
+          <NavLink exact activeClassName="active" to="/api">
+            API
+          </NavLink>
+        </li>
+        <li>
+          <NavLink exact activeClassName="active" to="/flights">
+            Flights
+          </NavLink>
+        </li>
       </ul>
     </div>
   );
