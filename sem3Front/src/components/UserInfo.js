@@ -17,11 +17,11 @@ function UserInfo({
 }) {
     console.log(" TEAM MATCHES " + teamMatches);
     console.log("UserInfo");
-    console.log("teamName", teamName.teamName);
-    console.log("teamDates", teamDates);
-    console.log("teamMatches", teamMatches);
-    console.log("chosenTeam", chosenTeam);
-    console.log("flightDate", flightDate);
+    console.log("UserInfo teamName.teamName", teamName.teamName);
+    // console.log("UserInfo teamDates", teamDates);
+    // console.log("UserInfo teamMatches", teamMatches);
+    // console.log("UserInfo chosenTeam", chosenTeam);
+    // console.log("UserInfo flightDate", flightDate);
 
     //reset flight data if this is second team selected
     useEffect(() => {
@@ -115,7 +115,7 @@ function UserInfo({
                 {
                     teamDates.slice(0, 3).map((team) => (
                         <div onClick={findFlights}>
-                            <Link exact to="/flights" style={{ 'textDecoration': 'none', 'color': 'black' }}>
+                            <Link to="/flights" style={{ 'textDecoration': 'none', 'color': 'black' }}>
                                 <b><p key={uuid()}>{team.utcDate}</p></b>
                                 <p key={uuid()}>{team.homeCity}</p>
                                 <p key={uuid()}>{team.awayCity}</p>
