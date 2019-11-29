@@ -232,7 +232,7 @@ input[type="checkbox"] {
   grid-gap: 5px;
 }
 
-#part-1 > * {
+#part-1>* {
   display: grid;
   justify-items: center;
   align-items: center;
@@ -275,7 +275,7 @@ input[type="checkbox"] {
 }
 
 #cont-3 {
-  /* background: #ED1049; */
+  /* background: rgb(204, 199, 200); */
   background: rgb(247, 245, 243);
   display: grid;
   justify-items: left;
@@ -292,8 +292,7 @@ input[type="checkbox"] {
   display: flex;
   flex-direction: row;
 }
-.sidebyside div {
-}
+
 .centring {
   margin-right: 105px;
   text-align: center;

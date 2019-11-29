@@ -1,21 +1,33 @@
-import React, { useState, useEffect } from "react";
-import URL from "../settings";
-import uuid from "uuid/v1";
+import React, { } from "react";
 
 function Buy({ showBuyImage, ticketURL }) {
   console.log("Buy");
   console.log("Buy showBuyImage", showBuyImage);
   console.log("Buy ticketURL", ticketURL);
 
-  return (
-    <div style={{ textAlign: "center" }}>
-      <img
-        src={showBuyImage ? require("../images/buy.png") : require("../images/buy_background.png")}
-        style={{ 'width': "65%" }}
-        alt="buybutton" />
-    </div>
-  )
+  if (ticketURL) {
+    return (
+      <div style={{ textAlign: "center", backgroundColor: "lightblue" }}>
+        <a href={ticketURL.textContent}>
+          <img
+            src={require("../images/buy.png")}
+            style={{ 'height': "100%" }}
+            alt="buybutton" />
+        </a>
+      </div>
+    )
+  } else {
+    return (
+      <div style={{ textAlign: "center", backgroundColor: "rgb(241, 236, 237)" }}>
+        <img
+          src={require("../images/buy_background.png")}
+          style={{ 'height': "100%" }}
+          alt="buybutton" />
+      </div>
+    )
+  }
 }
 
+// src={showBuyImage ? require("../images/buy.png") : require("../images/buy_background.png")}
 
 export default Buy;

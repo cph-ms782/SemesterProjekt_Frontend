@@ -31,10 +31,10 @@ function NewsFlightsRender({ airports, flightHomeCity, flightTime, flightDate, u
 
     const updateURL = (evt) => {
         console.log("NewsFlightsRender updateURL");
-        const id = evt.target.parentElement.lastChild.children[0]; // id should contains tickets URL - the deeplink
-        console.log("NewsFlightsRender evt.target", id);
+        const ticketURL = evt.target.parentElement.lastChild.firstChild; // id should contains tickets URL - the deeplink
+        console.log("NewsFlightsRender ticketURL", ticketURL);
         updateShowBuyImage(true);
-        // updateTicketURL(id);
+        updateTicketURL(ticketURL);
     };
 
     if (flights.length == 0) {
@@ -69,7 +69,7 @@ function NewsFlightsRender({ airports, flightHomeCity, flightTime, flightDate, u
                                 <td>{flight.endDestination}</td>
                                 <td>{flight.agentsName}</td>
                                 <td>kr. {flight.price}</td>
-                                <td><a src={flight.deeplinkUrl}></a></td>
+                                <td style={{ 'display': 'none' }}>{flight.deeplinkUrl}</td>
                             </tr>
                         ))}
                     </tbody>
