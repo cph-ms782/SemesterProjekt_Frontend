@@ -11,10 +11,11 @@ function NewsFlightsRender({ airports, flightHomeCity, flightTime, flightDate, u
     const [numberOfTickets, SetNumberOfTickets] = useState(1);
     const [flights, setFlights] = useState(dummyAir);
     const [flightDestination, setFlightDestination] = useState("LHR");
-    // const arrival = "2019-12-02T15:35:00";
-    const latestFlightArrival = reverseDateOrder(flightDate) + "T" + removeHours(flightTime, 5) + ":00";
+    // const arrival = "2019-11-30T15:35:00";
+    const latestFlightArrival = reverseDateOrder(flightDate) + "T" + removeHours(flightTime, 3) + ":00";
     console.log("NewsFlightsRender latestFlightArrival", latestFlightArrival);
 
+    // Fetching live flight data is suspended and dummy data is used instead
     // useEffect(() => {
     //     console.log("NewsFlightsRender useEffect");
     //     console.log("flightDate", flightDate);
@@ -37,6 +38,14 @@ function NewsFlightsRender({ airports, flightHomeCity, flightTime, flightDate, u
         updateTicketURL(ticketURL);
     };
 
+    const formatPrice = price => {
+        let newPrice = "" + price;
+        if (newPrice.indexOf(".") == -1) {
+            newPrice = "" + newPrice + ".00";
+        }
+        return newPrice;
+    }
+
     if (flights.length == 0) {
         return (
             <div>
@@ -44,7 +53,9 @@ function NewsFlightsRender({ airports, flightHomeCity, flightTime, flightDate, u
             </div>
         )
     } else {
+        console.log("flightsBeforeTime latestFlightArrival", latestFlightArrival);
         const flightsBeforeTime = flights.filter((flight) => {
+            console.log("flightsBeforeTime flight.arrival", flight.arrival);
             return flight.arrival < latestFlightArrival
         })
         console.log("flightsBeforeTime", flightsBeforeTime);
@@ -58,17 +69,17 @@ function NewsFlightsRender({ airports, flightHomeCity, flightTime, flightDate, u
                         <tr>
                             <th>Dato</th>
                             <th>Lufthavn</th>
-                            <th>Flyselskab</th>
+                            <th>Rejse Agent</th>
                             <th>Pris</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {flights.slice(-17).map((flight) => (
+                        {flightsBeforeTime.slice(-17).map((flight) => (
                             <tr key={uuid()}>
                                 <td>{flight.arrival}</td>
                                 <td>{flight.endDestination}</td>
                                 <td>{flight.agentsName}</td>
-                                <td>kr. {flight.price}</td>
+                                <td>kr. {formatPrice(flight.price)}</td>
                                 <td style={{ 'display': 'none' }}>{flight.deeplinkUrl}</td>
                             </tr>
                         ))}
