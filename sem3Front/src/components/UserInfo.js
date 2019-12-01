@@ -1,34 +1,83 @@
-import React, { } from "react";
+import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
 import uuid from "uuid/v1";
 
-function UserInfo({ teamName, crestURL, teamMatches, teamDates, chosenTeam, updateChosenTeam }) {
-    console.log(" TEAM MATCHES " + teamMatches);
+function UserInfo({
+    teamName,
+    crestURL,
+    teamMatches,
+    teamDates,
+    chosenTeam,
+    updateChosenTeam,
+    flightDate,
+    updateFlightDate,
+    updateFlightTime,
+    updateFlightHomeCity,
+    updateFlightAwayCity,
+}) {
     console.log("UserInfo");
-    console.log("teamName", teamName.teamName);
-    console.log("teamDates", teamDates);
-    console.log("teamMatches", teamMatches);
-    console.log("chosenTeam", chosenTeam);
+    console.log("UserInfo TEAM MATCHES " + teamMatches);
+    console.log("UserInfo teamName.teamName", teamName.teamName);
+    // console.log("UserInfo teamDates", teamDates);
+    // console.log("UserInfo teamMatches", teamMatches);
+    // console.log("UserInfo chosenTeam", chosenTeam);
+    // console.log("UserInfo flightDate", flightDate);
+
+    //reset flight data if this is second team selected
+    useEffect(() => {
+        console.log("UserInfo useEffect");
+        updateFlightTime("");
+        updateFlightDate("");
+        updateFlightHomeCity("");
+        updateFlightAwayCity("");
+    }, []);
+
+    const findFlights = (evt) => {
+        console.log("findFlights");
+        const target = evt.target;
+        console.log("target", target);
+        const parentElement = target.parentElement;
+        console.log("parentElement", parentElement);
+        const firstChild = target.parentElement.innerText;
+        console.log("firstChild", firstChild);
+        const flightData = firstChild.split("\n\n");
+        console.log("flightData", flightData);
+        const time = flightData[0].split(" ")[0];
+        console.log("time", time);
+        const date = flightData[0].split(" ")[1];
+        console.log("date", date);
+        const hCity = flightData[1];
+        console.log("hCity", hCity);
+        const aCity = flightData[2];
+        console.log("aCity", aCity);
+        updateFlightTime(time);
+        updateFlightDate(date);
+        updateFlightHomeCity(hCity);
+        updateFlightAwayCity(aCity);
+    }
 
     const willFollowTeam = (evt) => {
-        console.log("willFollowTeam");
-        console.log("teamName", teamName.teamName);
+        console.log("UserInfo willFollowTeam");
+        console.log("UserInfo teamName", teamName.teamName);
         const target = evt.target.checked;
-        console.log("target", target);
+        console.log("UserInfo target", target);
         if (target) {
             localStorage.setItem("chosenTeam", teamName.teamName);
             localStorage.setItem("chosenTeamCrestUrl", crestURL.crestURL);
+            // localStorage.setItem("chosenTeamMatches", teamMatches);
+            // localStorage.setItem("chosenTeamDates", teamDates);
             updateChosenTeam(teamName.teamName);
         } else {
             localStorage.clear();
             updateChosenTeam("");
         }
     };
-    console.log("teamDates.code", teamDates.code);
-    console.log("teamMatches.code", teamMatches.code);
+    console.log("UserInfo teamDates.code", teamDates.code);
+    console.log("UserInfo teamMatches.code", teamMatches.code);
     if (teamDates.code === 500 || teamMatches.code === 500) {
         return (
             <div>
-                <p>Server not respoding</p>
+                <p>Server not responding</p>
             </div>
         )
     } else {
@@ -63,28 +112,33 @@ function UserInfo({ teamName, crestURL, teamMatches, teamDates, chosenTeam, upda
                     </div>
                 }
                 <hr />
-                <b><p>Next Match Dates</p></b>
+
+                {teamName && <b><p>Next Match Dates</p></b>}
                 {
                     teamDates.slice(0, 3).map((team) => (
-                        <div>
-                            <b><p key={uuid()}>{team.utcDate}</p></b>
-                            <p key={uuid()}>{team.homeCity}</p>
-                            <p key={uuid()}>{team.awayCity}</p>
-                            <hr />
+                        <div onClick={findFlights}>
+                            <Link to="/flights" style={{ 'textDecoration': 'none', 'color': 'black' }}>
+                                <b><p key={uuid()}>{team.utcDate}</p></b>
+                                <p key={uuid()}>{team.homeCity}</p>
+                                <p key={uuid()}>{team.awayCity}</p>
+                                <hr />
+                            </Link>
                         </div>
                     ))
                 }
                 <hr />
-                <b><p>Match Scores</p></b>
 
-                {teamMatches.slice(-3).map((team) => (
-                    <div>
-                        <b><p key={uuid()}>{team.utcDate}</p></b>
-                        <p key={uuid()}>{team.homeCity} - {team.homeScore}</p>
-                        <p key={uuid()}>{team.awayCity} - {team.awayScore}</p>
-                        <hr />
-                    </div>
-                ))}
+                {teamName && <b><p>Match Scores</p></b>}
+                {
+                    teamMatches.slice(-3).map((team) => (
+                        <div>
+                            <b><p key={uuid()}>{team.utcDate}</p></b>
+                            <p key={uuid()}>{team.homeCity} - {team.homeScore}</p>
+                            <p key={uuid()}>{team.awayCity} - {team.awayScore}</p>
+                            <hr />
+                        </div>
+                    ))
+                }
             </div >
         )
     }

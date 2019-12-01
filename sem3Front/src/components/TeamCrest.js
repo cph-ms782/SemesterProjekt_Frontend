@@ -9,7 +9,7 @@ function TeamCrest({ teamName, crestURL }) {
   return (
     <div className="team">
       {!teamName ?
-        <p style={{ fontSize: 20 }}>choose team</p> :
+        <p style={{ fontSize: 20 }}>select team</p> :
         <div>
 
           {!chosenTeam ? <div><img alt="teamIcon" src={crestURL.crestURL} className="thumbnail" /></div> :

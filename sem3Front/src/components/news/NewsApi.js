@@ -19,7 +19,8 @@ function NewsApi() {
             <p>/api/city/cities - dummy data</p>
             <p>/api/air/airports</p>
             <p>/api/air/nearestairport/<b>team</b> --&gt; ie. for Wolverhampton: <b>team = Wolverhampton Wanderers FC </b></p>
-            <p>/api/air/nearestteam/<b>airport</b> --&gt; ie. for London Gatwick: <b>airport = LGW </b></p>
+            <p>/api/air/nearestteam/<b>airport-code</b> --&gt; ie. for London Gatwick: <b>airport = LGW </b></p>
+            <p>/api/air/nearestmatch/<b>airport-code</b> --&gt; ie. 10 days forward for London Gatwick: <b>airport = LGW </b></p>
             <br />
             <p><strong>Match</strong> </p>
             <p>/api/match </p>
@@ -27,6 +28,7 @@ function NewsApi() {
             <p>/api/fb/teams </p>
             <p>/api/fb/allteammatchdates/<b>id</b> --&gt; ie. for Arsenal: <b>id = 57 </b></p>
             <p>/api/fb/allteammatchresults/<b>id</b> --&gt; ie. for Arsenal: <b>id = 57  </b></p>
+            <p>/api/fb/teammembers/g<b>id</b> --&gt; ie. for Arsenal: <b>id = 57  </b></p>
             <br />
 
             {/* <p><strong>User</strong> </p>
