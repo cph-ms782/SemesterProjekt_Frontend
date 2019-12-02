@@ -18,15 +18,15 @@ function AllAboutTeam(props) {
       console.log("Hvis du er her, så er props.teamID.teamID IKKE undefined");
       let urlPlayers = URL + "/api/fb/teammembers/" + props.teamID.teamID;
       console.log("AllAboutTeam - useEffect - urlPlayers", urlPlayers);
-      
+
       fetch(urlPlayers)
-      .then(handleHttpErrors)
-      .then(data => {
-        console.log("AllAboutTeam - fetch - data", data);
-        console.log(JSON.stringify(data));
-        setPlayers(data);
-      })
-      .catch(console.log.bind(console));
+        .then(handleHttpErrors)
+        .then(data => {
+          console.log("AllAboutTeam - fetch - data", data);
+          console.log(JSON.stringify(data));
+          setPlayers(data);
+        })
+        .catch(console.log.bind(console));
     }
   }, [props.teamID.teamID]);
   console.log("TeamID AllAboutTeam " + JSON.stringify(props.teamID.teamID));
@@ -52,11 +52,12 @@ function AllAboutTeam(props) {
           <tbody>
             {players.map(element => (
               <tr key={uuid()}>
-              {element.position === "Goalkeeper" ? <img src="https://static.thenounproject.com/png/642581-200.png" className="thumbnailFootball"></img> : ""}
-              {element.position === "Defender" ? <img src="https://www.trzcacak.rs/myfile/full/161-1611930_small-group-training-soccer-defender-icon-png.png" className="thumbnailFootball"></img> : ""}
-              {element.position === "Midfielder" ? <img src="https://icon-library.net/images/soccer-player-icon-png/soccer-player-icon-png-16.jpg" className="thumbnailFootball"></img> : ""}
-              {element.position === "Attacker" ? <img src="https://www.clipartwiki.com/clipimg/detail/22-222269_football-player-attempting-to-kick-ball-svg-png.png" className="thumbnailFootball"></img> : ""}
-              {element.role === "COACH" ? <img src="https://cdn1.iconfinder.com/data/icons/football-solid/32/coach-football-fifa-worldcup-sports-physic-512.png" className="thumbnailFootball"></img> : ""}
+                <td>{element.position === "Goalkeeper" && <img src={require("../../images/goalkeeper.png")} className="thumbnailFootball"></img>}
+                  {element.position === "Defender" ? <img src={require("../../images/defender.png")} className="thumbnailFootball"></img> : ""}
+                  {element.position === "Midfielder" ? <img src={require("../../images/midtfielder.jpg")} className="thumbnailFootball"></img> : ""}
+                  {element.position === "Attacker" ? <img src={require("../../images/attacker.png")} className="thumbnailFootball"></img> : ""}
+                  {element.role === "COACH" ? <img src={require("../../images/coach.png")} className="thumbnailFootball"></img> : ""}
+                </td>
                 <td>{element.role === "COACH" ? "Coach" : element.position}</td>
                 <td>{element.name}</td>
                 <td>{element.dateOfBirth}</td>
