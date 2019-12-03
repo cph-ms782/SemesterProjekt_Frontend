@@ -9,6 +9,7 @@ import Search from "./components/Search";
 import UserInfo from "./components/UserInfo";
 import Leaderboard from "./components/Leaderboard";
 import Buy from "./components/Buy";
+import Map from "./components/Map";
 
 function App({ apiFacade }) {
   console.log("App");
@@ -204,7 +205,7 @@ function App({ apiFacade }) {
             </div>
             <div id="cont-2">
               <div id="part-1">
-                <div id="map">map</div>
+                <div id="map"><Map /></div>
                 <div id="nextmatch">nextmatch</div>
                 <div id="buy">
                   <Buy showBuyImage={showBuyImage} ticketURL={ticketURL} />
@@ -223,7 +224,7 @@ function App({ apiFacade }) {
                   updateTicketURL={updateTicketURL}
                   updateShowBuyImage={updateShowBuyImage}
                   dummyAir={dummyAir}
-                  updateTeamPlayers={updateTeamPlayers} 
+                  updateTeamPlayers={updateTeamPlayers}
                   teamID={teamID}
                 />
               </div>

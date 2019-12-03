@@ -9429,8 +9429,27 @@ jwqwQQAAAABJRU5ErkJggg==
      x="0"
      y="0"
      inkscape:label="england" />
+
+
+     <script type="text/javascript"><![CDATA[
+      var svg = document.getElementById('external-1');
+      console.log(svg);
+      console.log(1 < 2);
+  ]]></script>
+
+
+  <script type="text/javascript"><![CDATA[
+    <function fill(evt){
+
+      console.log("fill");
+        var svgobj=evt.target;
+        svgstyle = svgobj.getStyle();
+        svgstyle.setProperty ('opacity', 100);
+      }
+      ]]></script>
+
   <path
-     id="path94"
+     id="she"
      sodipodi:type="arc"
      sodipodi:cx="168.81914"
      sodipodi:cy="120.55273"
@@ -9442,8 +9461,8 @@ jwqwQQAAAABJRU5ErkJggg==
      d="m 178.56306,120.55273 a 9.7439232,9.5173206 0 0 1 -9.5972,9.51624 9.7439232,9.5173206 0 0 1 -9.88623,-9.22965 9.7439232,9.5173206 0 0 1 9.29946,-9.7942 9.7439232,9.5173206 0 0 1 10.1663,8.93467"
      style="opacity:0"
      inkscape:label="she" />
-  <path
-     id="path94-3"
+  <path onHover="fill()"
+     id="mci"
      sodipodi:type="arc"
      sodipodi:cx="145.47903"
      sodipodi:cy="119.64632"
@@ -9456,7 +9475,7 @@ jwqwQQAAAABJRU5ErkJggg==
      style="opacity:0"
      inkscape:label="mci" />
   <path
-     id="path94-3-6"
+     id="mun"
      sodipodi:type="arc"
      sodipodi:cx="129.16364"
      sodipodi:cy="121.00593"
@@ -9469,7 +9488,7 @@ jwqwQQAAAABJRU5ErkJggg==
      style="opacity:0"
      inkscape:label="mun" />
   <path
-     id="path94-3-7"
+     id="wol"
      sodipodi:type="arc"
      sodipodi:cx="144.02536"
      sodipodi:cy="186.95943"
@@ -9482,7 +9501,7 @@ jwqwQQAAAABJRU5ErkJggg==
      style="opacity:0"
      inkscape:label="wol" />
   <path
-     id="path94-3-7-5"
+     id="lei"
      sodipodi:type="arc"
      sodipodi:cx="184.90794"
      sodipodi:cy="183.54832"
@@ -9495,7 +9514,7 @@ jwqwQQAAAABJRU5ErkJggg==
      style="opacity:0"
      inkscape:label="lei" />
   <path
-     id="path94-3-7-5-3"
+     id="bou"
      sodipodi:type="arc"
      sodipodi:cx="163.15405"
      sodipodi:cy="314.978"
@@ -9508,7 +9527,7 @@ jwqwQQAAAABJRU5ErkJggg==
      style="opacity:0"
      inkscape:label="bou" />
   <path
-     id="path94-3-7-5-5"
+     id="bha"
      sodipodi:type="arc"
      sodipodi:cx="231.58815"
      sodipodi:cy="305.46066"
@@ -9521,7 +9540,7 @@ jwqwQQAAAABJRU5ErkJggg==
      style="opacity:0"
      inkscape:label="bha" />
   <path
-     id="path94-3-7-5-6"
+     id="che"
      sodipodi:type="arc"
      sodipodi:cx="334.01263"
      sodipodi:cy="298.66257"
@@ -9534,7 +9553,7 @@ jwqwQQAAAABJRU5ErkJggg==
      style="opacity:0"
      inkscape:label="che" />
   <path
-     id="path94-3-7-5-2"
+     id="ars"
      sodipodi:type="arc"
      sodipodi:cx="347.51474"
      sodipodi:cy="265.81723"
@@ -9547,7 +9566,7 @@ jwqwQQAAAABJRU5ErkJggg==
      style="opacity:0"
      inkscape:label="ars" />
   <path
-     id="path94-3-7-5-9"
+     id="tot"
      sodipodi:type="arc"
      sodipodi:cx="364.83063"
      sodipodi:cy="260.59332"
@@ -9560,7 +9579,7 @@ jwqwQQAAAABJRU5ErkJggg==
      style="opacity:0"
      inkscape:label="tot" />
   <path
-     id="path94-3-7-5-1"
+     id="cry"
      sodipodi:type="arc"
      sodipodi:cx="362.11139"
      sodipodi:cy="331.2934"
@@ -9573,7 +9592,7 @@ jwqwQQAAAABJRU5ErkJggg==
      style="opacity:0"
      inkscape:label="cry" />
   <path
-     id="path94-3-7-5-27"
+     id="whu"
      sodipodi:type="arc"
      sodipodi:cx="392.92938"
      sodipodi:cy="295.03693"
@@ -9586,7 +9605,7 @@ jwqwQQAAAABJRU5ErkJggg==
      style="opacity:0"
      inkscape:label="whu" />
   <path
-     id="path94-3-7-5-0"
+     id="sou"
      sodipodi:type="arc"
      sodipodi:cx="183.09514"
      sodipodi:cy="304.10104"
@@ -9599,7 +9618,7 @@ jwqwQQAAAABJRU5ErkJggg==
      style="opacity:0"
      inkscape:label="sou" />
   <path
-     id="path94-3-7-5-93"
+     id="nor"
      sodipodi:type="arc"
      sodipodi:cx="285.06641"
      sodipodi:cy="176.29703"
@@ -9612,7 +9631,7 @@ jwqwQQAAAABJRU5ErkJggg==
      style="opacity:0"
      inkscape:label="nor" />
   <path
-     id="path94-3-7-5-60"
+     id="ast"
      sodipodi:type="arc"
      sodipodi:cx="162.70087"
      sodipodi:cy="202.12976"
@@ -9625,7 +9644,7 @@ jwqwQQAAAABJRU5ErkJggg==
      style="opacity:0"
      inkscape:label="ast" />
   <path
-     id="path94-3-7-5-62"
+     id="bur"
      sodipodi:type="arc"
      sodipodi:cx="145.83818"
      sodipodi:cy="86.800957"
@@ -9638,7 +9657,7 @@ jwqwQQAAAABJRU5ErkJggg==
      style="opacity:0"
      inkscape:label="bur" />
   <path
-     id="path94-3-7-5-61"
+     id="new"
      sodipodi:type="arc"
      sodipodi:cx="149.10469"
      sodipodi:cy="21.300667"
