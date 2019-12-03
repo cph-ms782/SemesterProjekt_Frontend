@@ -5,7 +5,6 @@ import uuid from "uuid/v1";
 //   import UserInfo from "./UserInfo";
 function AllAboutTeam(props) {
   console.log("AllAboutTeam");
-  let imageUrl = "";
   const [players, setPlayers] = useState([]);
   console.log("AllAboutTeam - Players", players);
 
@@ -39,6 +38,7 @@ function AllAboutTeam(props) {
   } else {
     return (
       <div>
+        <span>
         <table className="Table">
           <thead>
             <tr>
@@ -52,24 +52,28 @@ function AllAboutTeam(props) {
           <tbody>
             {players.map(element => (
               <tr key={uuid()}>
-                <td>{element.position === "Goalkeeper" && <img src={require("../../images/goalkeeper.png")} className="thumbnailFootball"></img>}
-                  {element.position === "Defender" ? <img src={require("../../images/defender.png")} className="thumbnailFootball"></img> : ""}
-                  {element.position === "Midfielder" ? <img src={require("../../images/midtfielder.jpg")} className="thumbnailFootball"></img> : ""}
-                  {element.position === "Attacker" ? <img src={require("../../images/attacker.png")} className="thumbnailFootball"></img> : ""}
-                  {element.role === "COACH" ? <img src={require("../../images/coach.png")} className="thumbnailFootball"></img> : ""}
+                <td>{element.position === "Goalkeeper" && <img src={require("../../images/goalkeeper.png")} className="thumbnailFootball" alt=""></img>}
+                  {element.position === "Defender" && <img src={require("../../images/defender.png")} className="thumbnailFootball" alt=""></img>}
+                  {element.position === "Midfielder" && <img src={require("../../images/midtfielder.jpg")} className="thumbnailFootball" alt=""></img>}
+                  {element.position === "Attacker" && <img src={require("../../images/attacker.png")} className="thumbnailFootball" alt=""></img>}
+                  {element.role === "COACH" && <img src={require("../../images/coach.png")} className="thumbnailFootball" alt=""></img>}
+                  {element.role === "ASSISTANT_COACH" && <img src={require("../../images/coach.png")} className="thumbnailFootball" alt=""></img>}
                 </td>
-                <td>{element.role === "COACH" ? "Coach" : element.position}</td>
+                {element.role === "ASSISTANT_COACH" && <td> {"Ass. Coach"} </td>}
+                 {element.role === "COACH" ? <td>{"Coach"}</td> : element.position}
                 <td>{element.name}</td>
                 <td>{element.dateOfBirth}</td>
                 <td>{element.nationality}</td>
               </tr>
             ))}
-          </tbody>
-        </table>
+            </tbody>
+          </table>
+        </span>
       </div>
     );
   }
 }
+
 function handleHttpErrors(res) {
   if (!res.ok) {
     return Promise.reject({ status: res.status, fullError: res.json() });
