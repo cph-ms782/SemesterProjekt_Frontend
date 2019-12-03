@@ -53,10 +53,10 @@ function AllAboutTeam(props) {
             {players.map(element => (
               <tr key={uuid()}>
                 <td>{element.position === "Goalkeeper" && <img src={require("../../images/goalkeeper.png")} className="thumbnailFootball"></img>}
-                  {element.position === "Defender" ? <img src={require("../../images/defender.png")} className="thumbnailFootball"></img> : ""}
-                  {element.position === "Midfielder" ? <img src={require("../../images/midtfielder.jpg")} className="thumbnailFootball"></img> : ""}
-                  {element.position === "Attacker" ? <img src={require("../../images/attacker.png")} className="thumbnailFootball"></img> : ""}
-                  {element.role === "COACH" ? <img src={require("../../images/coach.png")} className="thumbnailFootball"></img> : ""}
+                  {element.position === "Defender" && <img src={require("../../images/defender.png")} className="thumbnailFootball"></img>}
+                  {element.position === "Midfielder" && <img src={require("../../images/midtfielder.jpg")} className="thumbnailFootball"></img>}
+                  {element.position === "Attacker" && <img src={require("../../images/attacker.png")} className="thumbnailFootball"></img>}
+                  {element.role === "COACH" && <img src={require("../../images/coach.png")} className="thumbnailFootball"></img>}
                 </td>
                 <td>{element.role === "COACH" ? "Coach" : element.position}</td>
                 <td>{element.name}</td>
