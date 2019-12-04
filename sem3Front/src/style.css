@@ -143,11 +143,11 @@ body {
 
 #header #banner {
   /* background: #b5b1aa; */
-  background: rgba(221, 218, 215, 0.877);
+  /* background: rgba(221, 218, 215, 0.877); */
   display: grid;
   justify-items: center;
   align-items: center;
-  font-size: calc(60px + 6vmin);
+  /* font-size: calc(60px + 6vmin); */
   /* text-shadow: 3px 3px 18px red; */
   text-shadow: 0 0 3px rgb(3, 1, 10), 0 0 3px #0000ff;
 }
