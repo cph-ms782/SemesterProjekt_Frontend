@@ -17,9 +17,10 @@ function NewsTicker({ standings }) {
             />
           </li>
           {standings.slice(0, 1).map(firstPlace => (
-            <li key={uuid()}>{firstPlace.teamID}</li>
+            <li key={uuid()}>
+              <img className="thumbnailFootball" src={firstPlace.crestUrl} alt="firstplace" />
+            </li>
           ))}
-
           <li key={uuid()}>
             <img
               src={require("../images/premier-league-trophy.jpg")}
