@@ -9,6 +9,7 @@ import Search from "./components/Search";
 import UserInfo from "./components/UserInfo";
 import Leaderboard from "./components/Leaderboard";
 import Buy from "./components/Buy";
+import NewsTicker from "./components/news/NewsTicker";
 
 function App({ apiFacade }) {
   console.log("App");
@@ -177,7 +178,9 @@ function App({ apiFacade }) {
             </div>
           </div> */}
           <div className="container">
-            <div id="newsticker">newsticker</div>
+            <div id="newsticker">
+            <NewsTicker />
+            </div>
           </div>
 
           <div className="container">
