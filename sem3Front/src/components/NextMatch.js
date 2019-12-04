@@ -14,8 +14,8 @@ function NextMatch({ teamDates }) {
         <div>
           {
             teamDates.slice(0, 1).map((team) => (
-              <div>
-                <b><p key={uuid()}>{team.utcDate}</p></b>
+              <div key={uuid()}>
+                <b><p>{team.utcDate}</p></b>
                 <p key={uuid()}>{team.homeCity}</p>
                 <p key={uuid()}>{team.awayCity}</p>
               </div>

@@ -115,7 +115,7 @@ function UserInfo({
                 {teamName && <b><p>Next Match Dates</p></b>}
                 {
                     teamDates.slice(0, 3).map((team) => (
-                        <div onClick={findFlights}>
+                        <div onClick={findFlights} key={uuid()}>
                             <Link to="/flights" style={{ 'textDecoration': 'none', 'color': 'black' }}>
                                 <b><p key={uuid()}>{team.utcDate}</p></b>
                                 <p key={uuid()}>{team.homeCity}</p>
@@ -130,7 +130,7 @@ function UserInfo({
                 {teamName && <b><p>Match Scores</p></b>}
                 {
                     teamMatches.slice(-3).map((team) => (
-                        <div>
+                        <div key={uuid()}>
                             <b><p key={uuid()}>{team.utcDate}</p></b>
                             <p key={uuid()}>{team.homeCity} - {team.homeScore}</p>
                             <p key={uuid()}>{team.awayCity} - {team.awayScore}</p>

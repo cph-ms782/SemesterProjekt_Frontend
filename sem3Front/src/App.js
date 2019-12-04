@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { HashRouter as Router, NavLink } from "react-router-dom";
+import { HashRouter as Router } from "react-router-dom";
 // import loginFacade from "./components/loginFacade";
 import URL from "./settings";
 import dummyAir from "./dummyAir.js";
@@ -111,13 +111,25 @@ function App({ apiFacade }) {
     () => {
       console.log("useEffect");
 
+      console.log("App useEffect standings");
+      let urlStandings = URL + "/api/fb/standings";
+      console.log("App useEffect - urlStandings", urlStandings);
+
+      fetch(urlStandings)
+        .then(handleHttpErrors)
+        .then(standingsData => {
+          console.log("App useEffect standings - fetch - urlStandings - standingsData", standingsData);
+          setStandings(standingsData);
+        })
+        .catch(console.log.bind(console));
+
       console.log("App useEffect teams");
       let urlTeam = URL + "/api/fb/teams";
       console.log("App - useEffect - urlTeam", urlTeam);
       fetch(urlTeam)
         .then(handleHttpErrors)
         .then(data => {
-          console.log("apiFacade - getDataAsync - data", data);
+          console.log("App  useEffect - fetch - urlTeam - data", data);
           setTeams(data.sort((a, b) => a.name.localeCompare(b.name)));
         })
         .catch(console.log.bind(console));
@@ -128,22 +140,11 @@ function App({ apiFacade }) {
       fetch(urlAir)
         .then(handleHttpErrors)
         .then(data => {
-          console.log("apiFacade - getDataAsync - data", data);
+          console.log("App - fetch - urlAir - data", data);
           setAirports(data.airports.sort((a, b) => a.localeCompare(b)));
         })
         .catch(console.log.bind(console));
 
-      console.log("App useEffect standings");
-      let urlStandings = URL + "/api/fb/standings";
-      console.log("App useEffect - urlStandings", urlStandings);
-
-      fetch(urlStandings)
-        .then(handleHttpErrors)
-        .then(data => {
-          console.log("App useEffect standings - fetch - data", data);
-          setStandings(data);
-        })
-        .catch(console.log.bind(console));
     },
     [],
     apiFacade

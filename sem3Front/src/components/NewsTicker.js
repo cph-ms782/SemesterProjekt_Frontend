@@ -1,4 +1,5 @@
 import React, { } from "react";
+import uuid from "uuid/v1";
 
 function NewsTicker({ standings }) {
   console.log("NewsTicker");
@@ -7,39 +8,49 @@ function NewsTicker({ standings }) {
   return (
     <div className="marquee">
       <div className="marquee__content">
-        <ul class="list-inline">
-          <img
-            src={require("../images/premier-league-trophy.jpg")}
-            className="thumbnailFootball"
-            alt={"Number one"}
-          />
-            <img className="thumbnailFootball" src={firstPlace.crestUrl} alt={firstPlace.tla} />
+        <ul className="list-inline">
+          <li key={uuid()}>
+            <img
+              src={require("../images/premier-league-trophy.jpg")}
+              className="thumbnailFootball"
+              alt="premier-league-trophy1"
+            />
+          </li>
           {standings.splice(0, 1).map(firstPlace => (
-            <img className="thumbnailFootball" src={firstPlace.crestUrl} alt={firstPlace.tla}/>
+            <li key={uuid()}>{firstPlace.teamID}</li>
           ))}
 
-          <img
-            src={require("../images/premier-league-trophy.jpg")}
-            className="thumbnailFootball"
-            alt={"Number one"}
-          />
-          {crest.splice(1, 16).map(element => (
-            <img className="thumbnailFootball" src={element.crestUrl} />
+          <li key={uuid()}>
+            <img
+              src={require("../images/premier-league-trophy.jpg")}
+              className="thumbnailFootball"
+              alt="premier-league-trophy2"
+            />
+          </li>
+          {standings.splice(1, 16).map(element => (
+            <li key={uuid()}>
+              <img className="thumbnailFootball" src={element.crestUrl} alt="middleplaces" />
+            </li>
           ))}
-
-          <img
-            src={require("../images/down-arrow.jpg")}
-            className="thumbnailFootball"
-            alt={"Moving down -> "}
-          />
+          <li key={uuid()}>
+            <img
+              src={require("../images/down-arrow.jpg")}
+              className="thumbnailFootball"
+              alt="down-arrow1"
+            />
+          </li>
           {standings.splice(-3).map(movingDown => (
-            <img className="thumbnailFootball" src={movingDown.crestUrl} alt={movingDown.tla}/>
+            <li key={uuid()}>
+              <img className="thumbnailFootball" src={movingDown.crestUrl} alt="lastplaces" />
+            </li>
           ))}
-          <img
-            src={require("../images/down-arrow.jpg")}
-            className="thumbnailFootball"
-            alt={" <- Moving down"}
-          />
+          <li key={uuid()}>
+            <img
+              src={require("../images/down-arrow.jpg")}
+              className="thumbnailFootball"
+              alt="down-arrow2"
+            />
+          </li>
         </ul>
       </div>
     </div>

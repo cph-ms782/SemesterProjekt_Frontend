@@ -1,25 +1,26 @@
 import React, { } from "react";
 import uuid from "uuid/v1";
 
-function Leaderboard(props) {
+function Leaderboard({ teams, standings }) {
   console.log("Leaderboard");
-  console.log("props.teams", props.teams);
-  console.log("props.standing", props.standings);
-  console.log("props.teams.length", props.teams.length);
+  console.log("Leaderboard props.teams", teams);
+  console.log("Leaderboard props.teams.length", teams.length);
+  console.log("Leaderboard props.standing", standings);
+  console.log("Leaderboard props.teams.length", standings.length);
 
-  if (props.teams.length == 0) {
+  if (teams.length === 0 && standings.length === 0) {
     return (
       <p>Server pending</p>
     )
   } else {
-    let board = props.standings.map(standing => {
-      const teamWithSameID = props.teams.find(team => {
+    let board = standings.map(standing => {
+      const teamWithSameID = teams.find(team => {
         return team.teamID == standing.teamID;
       });
       standing.tla = teamWithSameID.tla;
       return standing;
     });
-    console.log("board", board);
+    console.log("Leaderboard board", board);
     return (
       <div style={{ textAlign: "center" }}>
         <table className="table">

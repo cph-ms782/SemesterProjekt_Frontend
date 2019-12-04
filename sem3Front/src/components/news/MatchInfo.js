@@ -1,10 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { } from "react";
 import uuid from "uuid/v1";
 
 function MatchInfo({
-  teams,
   teamDates,
-  teamMatches,
   flightDate,
   flightHomeCity,
   flightAwayCity
@@ -14,7 +12,7 @@ function MatchInfo({
     <div id="futureMatches">
       <h2>Match Details</h2>
       <h3>
-      <hr />
+        <hr />
         <br></br>- {flightDate} -<br></br>
         {flightHomeCity} -VS- {flightAwayCity}
       </h3>
@@ -26,9 +24,9 @@ function MatchInfo({
         Home Team --- Away Team <br></br>
       </h3>
       <h5>
-        {teamDates.splice(0,10).map(date => (
+        {teamDates.splice(0, 10).map(date => (
           <div>
-              <p key={uuid()}>{date.utcDate}</p>
+            <p key={uuid()}>{date.utcDate}</p>
             <p key={uuid()}>
               {date.homeCity} - {date.awayCity}
             </p>
@@ -38,20 +36,6 @@ function MatchInfo({
       </h5>
     </div>
   );
-    // console.log("TEAMDATES ======= " + JSON.stringify(teamDates));
-
-  // const [chosenMatch, setChosenMatch] = useState("");
-
-  // useEffect(() => {
-  //   teamDates.filter(date => {
-  //     console.log("trying to set match" + date.homeCity);
-  //     if (date.homeCity == flightHomeCity && date.awayCity == flightAwayCity) {
-  //       console.log("setting match = " + date);
-  //       return (chosenMatch = date);
-  //     }
-  //   });
-  //   console.log("ChosenMatch ==== " + JSON.stringify(chosenMatch));
-  // }, []);
 }
 
 export default MatchInfo;
