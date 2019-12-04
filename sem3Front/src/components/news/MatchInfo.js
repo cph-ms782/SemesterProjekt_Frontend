@@ -24,7 +24,7 @@ function MatchInfo({
         Home Team --- Away Team <br></br>
       </h3>
       <h5>
-        {teamDates.splice(0, 10).map(date => (
+        {teamDates.slice(0, 10).map(date => (
           <div>
             <p key={uuid()}>{date.utcDate}</p>
             <p key={uuid()}>
