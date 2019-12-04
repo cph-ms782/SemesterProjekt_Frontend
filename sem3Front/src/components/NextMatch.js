@@ -11,7 +11,7 @@ function NextMatch({ teamDates }) {
         <div>
           <b><p>Next Match</p></b>
         </div>
-        <div className="">
+        <div>
           {
             teamDates.slice(0, 1).map((team) => (
               <div>

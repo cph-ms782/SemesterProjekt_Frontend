@@ -1,31 +1,10 @@
-import React, { useState, useEffect } from "react";
-import URL from "../settings";
+import React, { } from "react";
 import uuid from "uuid/v1";
 
 function Leaderboard(props) {
   console.log("Leaderboard");
   console.log("props.teams", props.teams);
-  const [standings, setStandings] = useState([]);
-  console.log("Leaderboard - standings", standings);
-
-  useEffect(() => {
-    console.log("useEffect");
-
-    console.log("teams");
-    let urlStandings = URL + "/api/fb/standings";
-    console.log("Leaderboard - useEffect - urlStandings", urlStandings);
-
-    fetch(urlStandings)
-      .then(handleHttpErrors)
-      .then(data => {
-        console.log("Leaderboard - fetch - data", data);
-        setStandings(data);
-      })
-      .catch(console.log.bind(console));
-  }, []);
-
-  console.log("standings", standings);
-  console.log("props.teams", props.teams);
+  console.log("props.standing", props.standings);
   console.log("props.teams.length", props.teams.length);
 
   if (props.teams.length == 0) {
@@ -33,7 +12,7 @@ function Leaderboard(props) {
       <p>Server pending</p>
     )
   } else {
-    let board = standings.map(standing => {
+    let board = props.standings.map(standing => {
       const teamWithSameID = props.teams.find(team => {
         return team.teamID == standing.teamID;
       });

@@ -1,24 +1,8 @@
-import React, { useState, useEffect } from "react";
-import URL from "../settings";
+import React, { } from "react";
 
-function NewsTicker() {
-  const [crest, setCrest] = useState([]);
-
-  useEffect(() => {
-    console.log("useEffect + NEWSTICKER");
-
-    let urlCrest = URL + "/api/fb/standings";
-    console.log("NEEEEWSTICKER - useEffect - urlStandings", urlCrest);
-
-    fetch(urlCrest)
-      .then(handleErrors)
-      .then(data => {
-        console.log("NEWSTICKER - fetch - data", data);
-        console.log(data.crestUrl);
-        setCrest(data);
-      })
-      .catch(console.log.bind(console));
-  }, []);
+function NewsTicker({ standings }) {
+  console.log("NewsTicker");
+  console.log("NewsTicker standings", standings);
 
   return (
     <div className="marquee">
@@ -28,7 +12,7 @@ function NewsTicker() {
             src={require("../images/premier-league-trophy.jpg")}
             className="thumbnailFootball"
           />
-          {crest.splice(0, 1).map(firstPlace => (
+          {standings.splice(0, 1).map(firstPlace => (
             <img className="thumbnailFootball" src={firstPlace.crestUrl} />
           ))}
 
@@ -36,7 +20,7 @@ function NewsTicker() {
             src={require("../images/premier-league-trophy.jpg")}
             className="thumbnailFootball"
           />
-          {crest.splice(1, 16).map(element => (
+          {standings.splice(1, 16).map(element => (
             <img className="thumbnailFootball" src={element.crestUrl} />
           ))}
 
@@ -44,7 +28,7 @@ function NewsTicker() {
             src={require("../images/down-arrow.jpg")}
             className="thumbnailFootball"
           />
-          {crest.splice(-3).map(movingDown => (
+          {standings.splice(-3).map(movingDown => (
             <img className="thumbnailFootball" src={movingDown.crestUrl} />
           ))}
           <img
@@ -55,13 +39,6 @@ function NewsTicker() {
       </div>
     </div>
   );
-
-  function handleErrors(res) {
-    if (!res.ok) {
-      return Promise.reject({ status: res.status, fullError: res.json() });
-    }
-    return res.json();
-  }
 }
 
 export default NewsTicker;

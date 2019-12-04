@@ -26,6 +26,7 @@ function App({ apiFacade }) {
   const [flightAwayCity, setFlightAwayCity] = useState("");       //useState("Arsenal FC");
   const [flightHomeCity, setFlightHomeCity] = useState("");       //useState("Norwich City FC");
   const [showBuyImage, setShowBuyImage] = useState(false);
+  const [standings, setStandings] = useState([]);
   const [teams, setTeams] = useState([]);
   const [teamID, setTeamID] = useState(0);
   const [teamDates, setTeamDates] = useState([]);
@@ -40,10 +41,11 @@ function App({ apiFacade }) {
   // const savedTeamDates = localStorage.getItem("chosenTeamDates");
   // const [teamDates, setTeamDates] = useState(savedTeamDates ? savedTeamDates : []);
 
-  console.log("teamMatches", teamMatches);
-  console.log("teamDates", teamDates);
-  console.log("dummyAir", dummyAir);
-  console.log("teamPlayers" + teamPlayers);
+  console.log("App teamMatches", teamMatches);
+  console.log("App teamDates", teamDates);
+  console.log("App dummyAir", dummyAir);
+  console.log("App teamPlayers" + teamPlayers);
+  console.log("App standings", standings);
 
   const updateChosenTeam = index => {
     console.log("updateChosenTeam - index", index);
@@ -109,7 +111,7 @@ function App({ apiFacade }) {
     () => {
       console.log("useEffect");
 
-      console.log("teams");
+      console.log("App useEffect teams");
       let urlTeam = URL + "/api/fb/teams";
       console.log("App - useEffect - urlTeam", urlTeam);
       fetch(urlTeam)
@@ -120,7 +122,7 @@ function App({ apiFacade }) {
         })
         .catch(console.log.bind(console));
 
-      console.log("airports");
+      console.log("App useEffect airports");
       let urlAir = URL + "/api/air/airports";
       console.log("App - useEffect - urlAir", urlAir);
       fetch(urlAir)
@@ -128,6 +130,18 @@ function App({ apiFacade }) {
         .then(data => {
           console.log("apiFacade - getDataAsync - data", data);
           setAirports(data.airports.sort((a, b) => a.localeCompare(b)));
+        })
+        .catch(console.log.bind(console));
+
+      console.log("App useEffect standings");
+      let urlStandings = URL + "/api/fb/standings";
+      console.log("App useEffect - urlStandings", urlStandings);
+
+      fetch(urlStandings)
+        .then(handleHttpErrors)
+        .then(data => {
+          console.log("App useEffect standings - fetch - data", data);
+          setStandings(data);
         })
         .catch(console.log.bind(console));
     },
@@ -182,7 +196,9 @@ function App({ apiFacade }) {
           </div> */}
           <div className="container">
             <div id="newsticker">
-              <NewsTicker />
+              <NewsTicker
+                standings={standings}
+              />
             </div>
           </div>
 
@@ -243,7 +259,10 @@ function App({ apiFacade }) {
             </div>
             <div id="cont-3">
               <div id="leaderboard">
-                <Leaderboard teams={teams} />
+                <Leaderboard
+                  standings={standings}
+                  teams={teams}
+                />
               </div>
             </div>
           </div>
