@@ -14,43 +14,43 @@ import Map from "./components/Map";
 function App({ apiFacade }) {
   console.log("App");
   const savedChosenTeam = localStorage.getItem("chosenTeam");
-  const [chosenTeam, setChosenTeam] = useState(
-    savedChosenTeam ? savedChosenTeam : ""
-  );
-
-  const [teamName, setTeamName] = useState(chosenTeam ? chosenTeam : "");
-
   const savedCrestURL = localStorage.getItem("chosenTeamCrestUrl");
-  const [crestURL, setCrestURL] = useState(savedCrestURL ? savedCrestURL : "");
-  const [teamID, setTeamID] = useState(0);
-  const [teams, setTeams] = useState([]);
+
   const [airports, setAirports] = useState([]);
+  const [chosenTeam, setChosenTeam] = useState(savedChosenTeam ? savedChosenTeam : "");
+  const [crestURL, setCrestURL] = useState(savedCrestURL ? savedCrestURL : "");
   const [flightDate, setFlightDate] = useState("");               //useState("12/02/2019");
   const [flightTime, setFlightTime] = useState("");               //useState("15:00");
-  const [flightHomeCity, setFlightHomeCity] = useState("");       //useState("Norwich City FC");
   const [flightAwayCity, setFlightAwayCity] = useState("");       //useState("Arsenal FC");
+  const [flightHomeCity, setFlightHomeCity] = useState("");       //useState("Norwich City FC");
+  const [showBuyImage, setShowBuyImage] = useState(false);
+  const [teams, setTeams] = useState([]);
+  const [teamID, setTeamID] = useState(0);
+  const [teamDates, setTeamDates] = useState([]);
+  const [teamMatches, setTeamMatches] = useState([]);
+  const [teamName, setTeamName] = useState(chosenTeam ? chosenTeam : "");
+  const [teamPlayers, setTeamPlayers] = useState([]);
+  const [ticketURL, setTicketURL] = useState();
 
   // const savedTeamMatches = localStorage.getItem("chosenTeamMatches");
   // const [teamMatches, setTeamMatches] = useState(savedTeamMatches ? savedTeamMatches : []);
-  const [teamMatches, setTeamMatches] = useState([]);
 
   // const savedTeamDates = localStorage.getItem("chosenTeamDates");
   // const [teamDates, setTeamDates] = useState(savedTeamDates ? savedTeamDates : []);
-  const [teamDates, setTeamDates] = useState([]);
-  const [showBuyImage, setShowBuyImage] = useState(false);
-  const [ticketURL, setTicketURL] = useState();
-  const [teamPlayers, setTeamPlayers] = useState([]);
 
   console.log("teamMatches", teamMatches);
   console.log("teamDates", teamDates);
   console.log("dummyAir", dummyAir);
   console.log("teamPlayers" + teamPlayers);
 
+  const updateChosenTeam = index => {
+    console.log("updateChosenTeam - index", index);
+    setChosenTeam(index);
+  };
   const updateTeamPlayers = index => {
     console.log("updateTeamPlayers - index", index);
     setTeamPlayers(index);
   };
-
   const updateTeamName = index => {
     console.log("updateTeamName - index", index);
     setTeamName(index);
@@ -70,10 +70,6 @@ function App({ apiFacade }) {
   const updateTeamMatches = index => {
     console.log("updateTeamMatches - index", index);
     setTeamMatches(index);
-  };
-  const updateChosenTeam = index => {
-    console.log("updateChosenTeam - index", index);
-    setChosenTeam(index);
   };
   const updateFlightHomeCity = index => {
     console.log("updateFlightHomeCity - index", index);
@@ -149,17 +145,17 @@ function App({ apiFacade }) {
             </button>
             <div id="top-content">
               <Search
-                URL={URL}
-                teamName={teamName}
-                updateTeamName={updateTeamName}
+                chosenTeam={chosenTeam}
                 crestURL={crestURL}
-                updateCrestURL={updateCrestURL}
                 teamID={teamID}
                 teams={teams}
+                teamName={teamName}
+                URL={URL}
+                updateCrestURL={updateCrestURL}
                 updateTeamID={updateTeamID}
                 updateTeamDates={updateTeamDates}
                 updateTeamMatches={updateTeamMatches}
-                chosenTeam={chosenTeam}
+                updateTeamName={updateTeamName}
               />
             </div>
           </div>
@@ -184,19 +180,20 @@ function App({ apiFacade }) {
           <div className="container">
             <div id="cont-1">
               <div id="team">
-                <TeamCrest teamName={teamName} crestURL={crestURL} />
+                <TeamCrest
+                  crestURL={crestURL}
+                  teamName={teamName}
+                />
               </div>
               <div id="userinfo">
                 <UserInfo
                   teamName={teamName}
+                  chosenTeam={chosenTeam}
                   crestURL={crestURL}
                   teamMatches={teamMatches}
                   teamDates={teamDates}
-                  chosenTeam={chosenTeam}
                   updateChosenTeam={updateChosenTeam}
-                  flightDate={flightDate}
                   updateFlightDate={updateFlightDate}
-                  flightTime={flightTime}
                   updateFlightTime={updateFlightTime}
                   updateFlightHomeCity={updateFlightHomeCity}
                   updateFlightAwayCity={updateFlightAwayCity}
@@ -208,13 +205,18 @@ function App({ apiFacade }) {
                 <div id="map"><Map /></div>
                 <div id="nextmatch">nextmatch</div>
                 <div id="buy">
-                  <Buy showBuyImage={showBuyImage} ticketURL={ticketURL} />
+                  <Buy
+                    showBuyImage={showBuyImage}
+                    ticketURL={ticketURL}
+                  />
                 </div>
               </div>
               <div id="news">
                 <News
                   airports={airports}
+                  dummyAir={dummyAir}
                   teams={teams}
+                  teamID={teamID}
                   teamDates={teamDates}
                   teamMatches={teamMatches}
                   flightHomeCity={flightHomeCity}
@@ -223,9 +225,7 @@ function App({ apiFacade }) {
                   flightDate={flightDate}
                   updateTicketURL={updateTicketURL}
                   updateShowBuyImage={updateShowBuyImage}
-                  dummyAir={dummyAir}
                   updateTeamPlayers={updateTeamPlayers}
-                  teamID={teamID}
                 />
               </div>
             </div>

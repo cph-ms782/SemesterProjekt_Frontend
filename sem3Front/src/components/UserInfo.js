@@ -4,12 +4,11 @@ import uuid from "uuid/v1";
 
 function UserInfo({
     teamName,
+    chosenTeam,
     crestURL,
     teamMatches,
     teamDates,
-    chosenTeam,
     updateChosenTeam,
-    flightDate,
     updateFlightDate,
     updateFlightTime,
     updateFlightHomeCity,
