@@ -1,10 +1,8 @@
 import React from "react";
 import { HashRouter as Router, Route, Switch, NavLink } from "react-router-dom";
 import AllAboutTeam from "./news/AllAboutTeam";
-import NewsFileForTesting from "./news/NewsFileForTesting";
 import NoMatch from "./news/NoMatch";
 import NewsApi from "./news/NewsApi";
-import NewsTeams from "./news/NewsTeams";
 import NewsAirports from "./news/NewsAirports";
 import NewsNodes from "./news/NewsNodes";
 import NewsFlights from "./news/NewsFlights";
@@ -46,23 +44,18 @@ function News({
                 </div>
               }
               <li>
-                <NavLink exact activeClassName="active" to="/api">
-                  API
-                </NavLink>
-              </li>
-              <li>
                 <NavLink exact activeClassName="active" to="/airports">
                   Airports
                 </NavLink>
               </li>
               <li>
-                <NavLink exact activeClassName="active" to="/teams">
-                  Teams
+                <NavLink exact activeClassName="active" to="/nodes">
+                  React
                 </NavLink>
               </li>
               <li>
-                <NavLink exact activeClassName="active" to="/nodes">
-                  React
+                <NavLink exact activeClassName="active" to="/api">
+                  API
                 </NavLink>
               </li>
             </ul>
@@ -74,9 +67,6 @@ function News({
               </Route>
               <Route exact path="/airports">
                 <NewsAirports airports={airports} />
-              </Route>
-              <Route exact path="/teams">
-                <NewsTeams teams={teams} />
               </Route>
               <Route exact path="/nodes">
                 <NewsNodes />
@@ -101,9 +91,6 @@ function News({
                   teamID={teamID}
                   updateTeamPlayers={updateTeamPlayers}
                 />
-              </Route>
-              <Route exact path="/">
-                <NewsFileForTesting teams={teams} />
               </Route>
               <Route>
                 <NoMatch />
