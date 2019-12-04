@@ -248,6 +248,7 @@ input[type="checkbox"] {
 
 #nextmatch {
   background: rgb(247, 245, 243);
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   font-size: 1.3em;
   text-align: center;
   box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.5);
