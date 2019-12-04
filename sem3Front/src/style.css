@@ -167,7 +167,6 @@ body {
   background: rgb(247, 245, 243);
   height: 24px;
   font-size: 1.2em;
-  padding-left: 112px;
   margin: 5px 0px;
   box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.5);
 }
@@ -346,19 +345,19 @@ input[type="checkbox"] {
     content: "";
     z-index: 1;
   }
-  .marquee:before {
+  /* .marquee:before {
     left: 0;
     background: linear-gradient(to right, white 5%, transparent 100%);
   }
   .marquee:after {
     right: 0;
     background: linear-gradient(to left, white 5%, transparent 100%);
-  }
+  } */
 
 .marquee__content {
   width: 80%;
   display: flex;
-  animation: marquee 18s linear infinite forwards;
+  animation: marquee 18s linear infinite;
 }
 .marquee__content:hover {
   animation-play-state: paused;
