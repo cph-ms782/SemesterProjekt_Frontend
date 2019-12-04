@@ -16,7 +16,7 @@ function NewsTicker({ standings }) {
               alt="premier-league-trophy1"
             />
           </li>
-          {standings.splice(0, 1).map(firstPlace => (
+          {standings.slice(0, 1).map(firstPlace => (
             <li key={uuid()}>{firstPlace.teamID}</li>
           ))}
 
@@ -27,7 +27,7 @@ function NewsTicker({ standings }) {
               alt="premier-league-trophy2"
             />
           </li>
-          {standings.splice(1, 16).map(element => (
+          {standings.slice(1, 16).map(element => (
             <li key={uuid()}>
               <img className="thumbnailFootball" src={element.crestUrl} alt="middleplaces" />
             </li>
@@ -39,7 +39,7 @@ function NewsTicker({ standings }) {
               alt="down-arrow1"
             />
           </li>
-          {standings.splice(-3).map(movingDown => (
+          {standings.slice(-3).map(movingDown => (
             <li key={uuid()}>
               <img className="thumbnailFootball" src={movingDown.crestUrl} alt="lastplaces" />
             </li>
