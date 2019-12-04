@@ -11,18 +11,18 @@ import NewsFlights from "./news/NewsFlights";
 
 function News({
   airports,
+  dummyAir,
+  teamID,
   teams,
-  flightHomeCity,
-  flightAwayCity,
-  teamMatches,
   teamDates,
-  flightTime,
+  teamMatches,
   flightDate,
+  flightTime,
+  flightAwayCity,
+  flightHomeCity,
   updateTicketURL,
   updateShowBuyImage,
-  dummyAir,
   updateTeamPlayers,
-  teamID
 }) {
   console.log("News");
   return (
@@ -31,8 +31,8 @@ function News({
         <div className="newsContainer">
           <div>
             <ul className="newsHeader">
-              {teamID.teamID > 0 && 
-              <div>
+              {teamID.teamID > 0 &&
+                <div>
                   <li>
                     <NavLink exact activeClassName="active" to="/flights">
                       Flights
@@ -43,7 +43,7 @@ function News({
                       Players
                     </NavLink>
                   </li>
-              </div>
+                </div>
               }
               <li>
                 <NavLink exact activeClassName="active" to="/api">
@@ -98,8 +98,8 @@ function News({
               </Route>
               <Route exact path="/all">
                 <AllAboutTeam
-                  updateTeamPlayers={updateTeamPlayers}
                   teamID={teamID}
+                  updateTeamPlayers={updateTeamPlayers}
                 />
               </Route>
               <Route exact path="/">
