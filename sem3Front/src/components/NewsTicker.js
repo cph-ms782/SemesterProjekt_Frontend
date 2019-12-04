@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
-import URL from "../../settings";
-import uuid from "uuid/v1";
+import URL from "../settings";
 
 function NewsTicker() {
   const [crest, setCrest] = useState([]);
@@ -22,11 +21,11 @@ function NewsTicker() {
   }, []);
 
   return (
-    <div class="marquee">
-      <div class="marquee__content">
+    <div className="marquee">
+      <div className="marquee__content">
         <ul class="list-inline">
           <img
-            src={require("../../images/premier-league-trophy.jpg")}
+            src={require("../images/premier-league-trophy.jpg")}
             className="thumbnailFootball"
           />
           {crest.splice(0, 1).map(firstPlace => (
@@ -34,7 +33,7 @@ function NewsTicker() {
           ))}
 
           <img
-            src={require("../../images/premier-league-trophy.jpg")}
+            src={require("../images/premier-league-trophy.jpg")}
             className="thumbnailFootball"
           />
           {crest.splice(1, 16).map(element => (
@@ -42,14 +41,14 @@ function NewsTicker() {
           ))}
 
           <img
-            src={require("../../images/down-arrow.jpg")}
+            src={require("../images/down-arrow.jpg")}
             className="thumbnailFootball"
           />
           {crest.splice(-3).map(movingDown => (
             <img className="thumbnailFootball" src={movingDown.crestUrl} />
           ))}
           <img
-            src={require("../../images/down-arrow.jpg")}
+            src={require("../images/down-arrow.jpg")}
             className="thumbnailFootball"
           />
         </ul>

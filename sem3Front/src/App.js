@@ -9,7 +9,7 @@ import Search from "./components/Search";
 import UserInfo from "./components/UserInfo";
 import Leaderboard from "./components/Leaderboard";
 import Buy from "./components/Buy";
-import NewsTicker from "./components/news/NewsTicker";
+import NewsTicker from "./components/NewsTicker";
 import Map from "./components/Map";
 import NextMatch from "./components/NextMatch";
 
@@ -182,7 +182,7 @@ function App({ apiFacade }) {
           </div> */}
           <div className="container">
             <div id="newsticker">
-            <NewsTicker />
+              <NewsTicker />
             </div>
           </div>
 
