@@ -6,7 +6,28 @@ import uuid from "uuid/v1";
 function AllAboutTeam(props) {
   console.log("AllAboutTeam");
   const [players, setPlayers] = useState([]);
+
+  let char;
+  let winnerArray = props.teamMatches.map(element => {
+    if(element.winner == "DRAW"){
+      char = "D"
+      return char
+    }
+    else if(element.awayCity == props.teamName.teamName){
+      return element.winner == "AWAY_TEAM" ? char="W" : char="L"
+    }
+    else if(element.homeCity == props.teamName.teamName){
+      return element.winner == "HOME_TEAM" ? char="W" : char="L"
+    }
+    element.char = char;
+    return element;
+    
+  })
+
+  console.log(winnerArray + "winnerArray er her")
   console.log("AllAboutTeam - Players", players);
+  console.log("AllAboutTeam - teamMatches", props.teamMatches);
+  console.log("props.teamName.teamName" + props.teamName.teamName)
 
   useEffect(() => {
     console.log("AllAboutTeam - useEffect");
@@ -38,7 +59,11 @@ function AllAboutTeam(props) {
   } else {
     return (
       <div>
-        <span>
+        <br/>
+        <b>{props.teamName.teamName}</b>'s latest performance in all competitions.
+        <p>{winnerArray.join("-")}</p>
+        <br/>
+      <div>
         <table className="Table">
           <thead>
             <tr>
@@ -66,9 +91,11 @@ function AllAboutTeam(props) {
                 <td>{element.nationality}</td>
               </tr>
             ))}
+              <div>
+              </div>
             </tbody>
           </table>
-        </span>
+        </div>
       </div>
     );
   }

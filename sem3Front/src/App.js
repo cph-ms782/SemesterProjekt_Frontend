@@ -172,6 +172,7 @@ function App({ apiFacade }) {
                 updateTeamDates={updateTeamDates}
                 updateTeamMatches={updateTeamMatches}
                 updateTeamName={updateTeamName}
+                teamName={teamName}
               />
             </div>
           </div>
@@ -254,6 +255,8 @@ function App({ apiFacade }) {
                   updateTicketURL={updateTicketURL}
                   updateShowBuyImage={updateShowBuyImage}
                   updateTeamPlayers={updateTeamPlayers}
+                  teamName={teamName}
+                  standings={standings}
                 />
               </div>
             </div>

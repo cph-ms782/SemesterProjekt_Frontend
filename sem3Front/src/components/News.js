@@ -21,6 +21,9 @@ function News({
   updateTicketURL,
   updateShowBuyImage,
   updateTeamPlayers,
+  teamName,
+  chosenTeam,
+  crestURL,
 }) {
   console.log("News");
   return (
@@ -89,7 +92,10 @@ function News({
               <Route exact path="/all">
                 <AllAboutTeam
                   teamID={teamID}
-                  updateTeamPlayers={updateTeamPlayers}
+                  teams={teams}
+                  teamDates={teamDates}
+                  teamMatches={teamMatches}
+                  teamName={teamName}
                 />
               </Route>
               <Route>
