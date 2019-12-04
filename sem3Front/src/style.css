@@ -232,7 +232,7 @@ input[type="checkbox"] {
   grid-gap: 5px;
 }
 
-#part-1>* {
+#part-1 > * {
   display: grid;
   justify-items: center;
   align-items: center;
@@ -248,9 +248,13 @@ input[type="checkbox"] {
 }
 
 #nextmatch {
-  /* background: white; */
   background: rgb(247, 245, 243);
+  font-size: 1.3em;
+  text-align: center;
   box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.5);
+}
+#nextmatch b {
+  font-size: 1.6em;
 }
 
 #buy {

@@ -1,33 +1,34 @@
 import React, { } from "react";
+import uuid from "uuid/v1";
 
-function Buy({ showBuyImage, ticketURL }) {
-  console.log("Buy");
-  console.log("Buy showBuyImage", showBuyImage);
-  console.log("Buy ticketURL", ticketURL);
+function NextMatch({ teamDates }) {
+  console.log("NextMatch");
+  console.log("NextMatch teamDates", teamDates);
 
-  if (ticketURL) {
+  if (teamDates) {
     return (
-      <div style={{ textAlign: "center", backgroundColor: "lightblue" }}>
-        <a href={ticketURL.textContent}>
-          <img
-            src={require("../images/buy.png")}
-            style={{ 'height': "100%" }}
-            alt="buybutton" />
-        </a>
+      <div>
+        <div>
+          <b><p>Next Match</p></b>
+        </div>
+        <div className="">
+          {
+            teamDates.slice(0, 1).map((team) => (
+              <div>
+                <b><p key={uuid()}>{team.utcDate}</p></b>
+                <p key={uuid()}>{team.homeCity}</p>
+                <p key={uuid()}>{team.awayCity}</p>
+              </div>
+            ))
+          }
+        </div>
       </div>
     )
   } else {
     return (
-      <div style={{ textAlign: "center", backgroundColor: "rgb(241, 236, 237)" }}>
-        <img
-          src={require("../images/buy_background.png")}
-          style={{ 'height': "100%" }}
-          alt="buybutton" />
-      </div>
+      <p>Pending team dates</p>
     )
   }
 }
 
-// src={showBuyImage ? require("../images/buy.png") : require("../images/buy_background.png")}
-
-export default Buy;
+export default NextMatch;
