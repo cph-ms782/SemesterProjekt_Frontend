@@ -336,7 +336,7 @@ input[type="checkbox"] {
   white-space: nowrap;
   overflow: hidden;
   box-sizing: border-box;
-  /* position: fixed; */
+  position: relative;
 }
 .marquee:before,
 .marquee:after {

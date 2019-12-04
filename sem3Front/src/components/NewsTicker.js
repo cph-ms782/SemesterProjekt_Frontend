@@ -11,29 +11,34 @@ function NewsTicker({ standings }) {
           <img
             src={require("../images/premier-league-trophy.jpg")}
             className="thumbnailFootball"
+            alt={"Number one"}
           />
+            <img className="thumbnailFootball" src={firstPlace.crestUrl} alt={firstPlace.tla} />
           {standings.splice(0, 1).map(firstPlace => (
-            <img className="thumbnailFootball" src={firstPlace.crestUrl} />
+            <img className="thumbnailFootball" src={firstPlace.crestUrl} alt={firstPlace.tla}/>
           ))}
 
           <img
             src={require("../images/premier-league-trophy.jpg")}
             className="thumbnailFootball"
+            alt={"Number one"}
           />
-          {standings.splice(1, 16).map(element => (
+          {crest.splice(1, 16).map(element => (
             <img className="thumbnailFootball" src={element.crestUrl} />
           ))}
 
           <img
             src={require("../images/down-arrow.jpg")}
             className="thumbnailFootball"
+            alt={"Moving down -> "}
           />
           {standings.splice(-3).map(movingDown => (
-            <img className="thumbnailFootball" src={movingDown.crestUrl} />
+            <img className="thumbnailFootball" src={movingDown.crestUrl} alt={movingDown.tla}/>
           ))}
           <img
             src={require("../images/down-arrow.jpg")}
             className="thumbnailFootball"
+            alt={" <- Moving down"}
           />
         </ul>
       </div>
