@@ -165,7 +165,13 @@ function App({ apiFacade }) {
               <div id="logo">
                 <img alt="icon" src={require("./images/BDlogo_150px.png")} />
               </div>
-              <div id="banner">Biggus Tickets</div>
+              <div id="banner">
+                <img src={require("./images/banner_marple.png")}
+                  style={{ 'height': "100%" }}
+                  alt="banner"
+                />
+              </div>
+              {/* <div id="banner">Biggus Tickets</div> */}
             </div>
           </div>
           {/* <div className="container">
