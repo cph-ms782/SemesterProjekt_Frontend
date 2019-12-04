@@ -10,6 +10,7 @@ import UserInfo from "./components/UserInfo";
 import Leaderboard from "./components/Leaderboard";
 import Buy from "./components/Buy";
 import Map from "./components/Map";
+import NextMatch from "./components/NextMatch";
 
 function App({ apiFacade }) {
   console.log("App");
@@ -171,7 +172,6 @@ function App({ apiFacade }) {
                   alt="banner"
                 />
               </div>
-              {/* <div id="banner">Biggus Tickets</div> */}
             </div>
           </div>
           {/* <div className="container">
@@ -209,7 +209,10 @@ function App({ apiFacade }) {
             <div id="cont-2">
               <div id="part-1">
                 <div id="map"><Map /></div>
-                <div id="nextmatch">nextmatch</div>
+                <div id="nextmatch">
+                  <NextMatch
+                    teamDates={teamDates}
+                  /></div>
                 <div id="buy">
                   <Buy
                     showBuyImage={showBuyImage}
