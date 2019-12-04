@@ -28,7 +28,7 @@ function NewsApi() {
             <p>/api/fb/teams </p>
             <p>/api/fb/allteammatchdates/<b>id</b> --&gt; ie. for Arsenal: <b>id = 57 </b></p>
             <p>/api/fb/allteammatchresults/<b>id</b> --&gt; ie. for Arsenal: <b>id = 57  </b></p>
-            <p>/api/fb/teammembers/g<b>id</b> --&gt; ie. for Arsenal: <b>id = 57  </b></p>
+            <p>/api/fb/teammembers/<b>id</b> --&gt; ie. for Arsenal: <b>id = 57  </b></p>
             <br />
 
             {/* <p><strong>User</strong> </p>

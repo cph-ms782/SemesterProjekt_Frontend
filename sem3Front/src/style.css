@@ -143,11 +143,11 @@ body {
 
 #header #banner {
   /* background: #b5b1aa; */
-  background: rgba(221, 218, 215, 0.877);
+  /* background: rgba(221, 218, 215, 0.877); */
   display: grid;
   justify-items: center;
   align-items: center;
-  font-size: calc(60px + 6vmin);
+  /* font-size: calc(60px + 6vmin); */
   /* text-shadow: 3px 3px 18px red; */
   text-shadow: 0 0 3px rgb(3, 1, 10), 0 0 3px #0000ff;
 }
@@ -248,9 +248,13 @@ input[type="checkbox"] {
 }
 
 #nextmatch {
-  /* background: white; */
   background: rgb(247, 245, 243);
+  font-size: 1.3em;
+  text-align: center;
   box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.5);
+}
+#nextmatch b {
+  font-size: 1.6em;
 }
 
 #buy {
