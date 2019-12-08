@@ -1,46 +1,26 @@
-import React, { useState, useEffect } from "react";
-import URL from "../settings";
+import React, { } from "react";
 import uuid from "uuid/v1";
 
-function Leaderboard(props) {
+function Leaderboard({ teams, standings }) {
   console.log("Leaderboard");
-  console.log("props.teams", props.teams);
-  const [standings, setStandings] = useState([]);
-  console.log("Leaderboard - standings", standings);
+  console.log("Leaderboard props.teams", teams);
+  console.log("Leaderboard props.teams.length", teams.length);
+  console.log("Leaderboard props.standing", standings);
+  console.log("Leaderboard props.teams.length", standings.length);
 
-  useEffect(() => {
-    console.log("useEffect");
-
-    console.log("teams");
-    let urlStandings = URL + "/api/fb/standings";
-    console.log("Leaderboard - useEffect - urlStandings", urlStandings);
-
-    fetch(urlStandings)
-      .then(handleHttpErrors)
-      .then(data => {
-        console.log("Leaderboard - fetch - data", data);
-        setStandings(data);
-      })
-      .catch(console.log.bind(console));
-  }, []);
-
-  console.log("standings", standings);
-  console.log("props.teams", props.teams);
-  console.log("props.teams.length", props.teams.length);
-
-  if (props.teams.length == 0) {
+  if (teams.length === 0 && standings.length === 0) {
     return (
       <p>Server pending</p>
     )
   } else {
     let board = standings.map(standing => {
-      const teamWithSameID = props.teams.find(team => {
+      const teamWithSameID = teams.find(team => {
         return team.teamID == standing.teamID;
       });
       standing.tla = teamWithSameID.tla;
       return standing;
     });
-    console.log("board", board);
+    console.log("Leaderboard board", board);
     return (
       <div style={{ textAlign: "center" }}>
         <table className="table">
